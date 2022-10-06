@@ -1,12 +1,6 @@
-<!-- Output copied to clipboard! -->
-
-<!-- Yay, no errors, warnings, or alerts! -->
-
-
-
-
-## Getting Started with MistySOM
 <img src="img/2018_MistyWest_LogoCombo_FINAL_RGB.png" alt="MistyWest" width="400"/>
+
+# Getting Started with MistySOM
 
 ### MistySOM
 
@@ -52,7 +46,7 @@
 ### Table Of Contents
 
 
-[TOC]
+[Getting Started with MistySOM](https://github.com/MistySOM/wiki/edit/master/GettingStarted.md#getting-started-with-mistysom-1)
 
 
 
