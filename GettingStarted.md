@@ -5,18 +5,10 @@
 
 
 
-## 
-Getting Started with MistySOM
+## Getting Started with MistySOM
+<img src="img/2018_MistyWest_LogoCombo_FINAL_RGB.png" alt="MistyWest" width="400"/>
 
-
-### 
-MistySOM
-
-
-Prepared for [Client]
-
-
-[Date]
+### MistySOM
 
 
 ### 
