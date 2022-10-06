@@ -65,7 +65,7 @@
             - [Note to WSL users](#note-to-wsl-users)
             - [Files](#files)
             - [Run time information](#run-time-information)
-     - [Develop example application](#develop-sxample-application)
+     - [Develop example application](#develop-example-application)
          - [Hello World](#hello-world)
 	     - [Source File](#source-file)
 	     - [Build using the installed SDK](#build-using-the-installed-sdk)
