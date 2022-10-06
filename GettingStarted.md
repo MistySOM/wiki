@@ -36,10 +36,13 @@ Prepared for [Client]
   </tr>
   <tr>
    <td>
+	   1.0
    </td>
    <td>
+	   Initial Version
    </td>
    <td>
+	   10/05/2022
    </td>
   </tr>
   <tr>
