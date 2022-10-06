@@ -45,9 +45,31 @@
 
 ### Table Of Contents
 
-
-[Getting Started with MistySOM](https://github.com/MistySOM/wiki/edit/master/GettingStarted.md#getting-started-with-mistysom-1)
-
+                                
+- [Getting Started with MistySOM](#getting-started-with-mistysom-1)
+    - [Introduction](#introduction)
+        - [Why build using Docker](#why-build-using-docker)
+        - [Setting Up Host Computer](#setting-up-host-computer)
+            - [Ubuntu](#ubuntu)
+            - [Debian](#debian)
+            - [Fedora](#fedora)
+            - [Arch](#arch)
+    - [Container usage](#container-usage)
+        - [Building and starting the container](#building-and-starting-the-container)
+        - [Building the SDK](#building-the-sdk)
+        - [Installation of the SDK](#installation-of-the-sdk)
+        - [Description of advanced container options](#description-of-advanced-container-options)
+            - [Building the BSP](#building-the-bsp)
+            - [Building the SDK](#building -the-sdk)
+            - [Output](#output)
+            - [Note to WSL users](#note-to-wsl-users)
+            - [Files](#files)
+            - [Run time information](#run-time-information)
+     - [Develop example application](#develop-sxample-application)
+         - [Hello World](#hello-world)
+	     - [Source File](#source-file)
+	     - [Build using the installed SDK](#build-using-the-installed-sdk)
+	     - [Build using Yocto](#build-using-yocto)
 
 
 
@@ -86,7 +108,7 @@ Docker's efficiency allows multiple containers to be run simultaneously without 
 For building the MistySOM BSP and SDK, a Linux host with running docker daemon is needed. Docker can be installed through a distribution’s packaging manager. Lookup how to install docker and start dockerd for your respective distributions. Some links to find documentation about some common distributions aer listed below:
 
 
-#### Debian/Ubuntu
+#### Ubuntu
 
 [https://docs.docker.com/engine/install/ubuntu/](https://docs.docker.com/engine/install/ubuntu/) 
 
@@ -209,7 +231,7 @@ $ source /opt/poky/3.1.5/environment-setup-aatch64-poky-linux
 This command has to be invoked every time before the SDK is being used.
 
 
-### Advanced usage description of container options
+### Description of advanced container options
 
 
 #### Building the BSP
