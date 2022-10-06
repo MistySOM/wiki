@@ -34,5 +34,14 @@ to:
 --- a/arch/arm64/boot/dts/renesas/rzg2l-smarc-pinfunction.dtsi
 +++ b/arch/arm64/boot/dts/renesas/rzg2l-smarc-pinfunction.dtsi
 ```
-10. Copy the patch to the custom layer (called mistysom in this example)
-11. 
+10. Copy the patch to the custom layer (called meta-mistysom in this example)
+    * Reurn back into the build directory `$ cd ~/rzv_vlp_v3.0.0/`
+    * source the environment (just in case `$ source poky/oe-init-build-env`)
+    * leave the build/ directory `$ cd ..`
+    * create a recipe dir `$ mkdir -p meta-mistysom`
+    * Change into the newly created directory `$ cd meta-mistysom`
+    * Create a kernel-patch dir `$ mkdir -p recipes-kernel/linux/`
+    * Copy the patch file into the newly created dir `$ cp ~/tmp/0001-example.patch recipes-kernel/linux/`
+    * Lookup kernel name `$ oe-pkgdata-util lookup-recipe kernel`<br>
+ expected result `linux-renesas`
+    * Create append file with kernel name (for any kernel version) `$ vim recipes-kernel/linux/linux-renesas_%.bbappend`
