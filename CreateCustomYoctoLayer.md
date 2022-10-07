@@ -1,5 +1,9 @@
 # Create custom Yocto layer
 
+*Note:The following instructions describes device tree modification for the MistySOM CARRIER and needs to be customized to fit a different hardware platform.*
+
+## Steps to follow
+
 To create a custom layer, follow the below steps:
 1. Enter the build container
 2. Enter the mistysom root directory `cd ~/rzv_vlp_v3.0.0/`
