@@ -3,4 +3,6 @@
 # MistySOM wiki
 
 ## Articles
-* [Getting Started ]( GettingStarted.md )
+* [Getting Started]( GettingStarted.md )
+* [Customize the Device Tree](CustomizeDevicetree.md)
+* [Create Custom Yocto Layer](CreateCustomYoctoLayer.md)
