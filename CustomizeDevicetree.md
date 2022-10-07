@@ -34,7 +34,8 @@ to:
 --- a/arch/arm64/boot/dts/renesas/rzg2l-smarc-pinfunction.dtsi
 +++ b/arch/arm64/boot/dts/renesas/rzg2l-smarc-pinfunction.dtsi
 ```
-10. Copy the patch to the custom layer (called meta-mistysom in this example)
+10. [Add a custom Yocto Layer](CreateCustomYoctoLayer.md) that applies the patch to the build
+11. Copy the patch to the custom layer (called meta-mistysom in this example)
     * Reurn back into the build directory `$ cd ~/rzv_vlp_v3.0.0/`
     * source the environment (just in case `$ source poky/oe-init-build-env`)
     * leave the build/ directory `$ cd ..`
