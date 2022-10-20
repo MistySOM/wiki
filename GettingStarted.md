@@ -463,7 +463,7 @@ $ bitbake-layers create-layer --priority 3 meta-mistysom
 ```
 
 
-Use the `hello.c` and `hello.bb` files from above tp create the following directory structure within the `meta-mistysom/`
+Use the `hello.c` and `hello.bb` files from above tp create the following directory structure within the `meta-mistysom/` directory:
 
 
 ```
