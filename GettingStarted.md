@@ -151,7 +151,7 @@ it means your installation is working correctly.
 
 ### Building and starting the container
 
-Download an extract The MistySOMContainer archive, enter the directory and execute
+Clone the MistySOM/rzv2l or MistySOM/rzg2l repository from GitHub[^1], enter the `Build/` directory. and execute
 
 
 ```
@@ -365,7 +365,7 @@ Z:\WebDownload\mh11\rzv2l\VerifiedLinuxPackage_v3.0.0
 ### Hello World
 
 
-#### Source File
+#### Source Files
 
 Create a file called` helloworld.c` with the following contents:
 
@@ -379,6 +379,27 @@ int main() {
 }
 ```
 
+Create a file called `hello.bb` with that contains:
+
+
+```
+DESCRIPTION = "Simple helloworld application"
+LICENSE = "MIT"
+LIC_FILES_CHKSUM = "file://${COMMON_LICENSE_DIR}/MIT;md5=0835ade698e0bcf8506ecda2f7b4f302"
+
+SRC_URI = "file://myhello.c"
+
+S = "${WORKDIR}"
+
+do_compile() {
+	${CC} myhello.c ${LDFLAGS} -o myhello
+}
+
+do_install() {
+	install -d ${D}${bindir}
+	install -m 0755 myhello ${D}${bindir}
+}
+```
 
 
 #### Build using the installed SDK
@@ -412,5 +433,119 @@ For testing this, the container should be started into a dev shell with:
 ```
 ./run.sh -n
 ```
+
+
+or
+
+
+```
+./run.sh -c /path/to/dir -n
+```
+
+
+to launch it with the cache directory mounted
+
+
+#### Source the build environment
+
+
+```
+$ source poky/oe-init-build-env
+```
+
+
+
+#### Create Custom Layer
+
+
+```
+$ bitbake-layers create-layer --priority 3 meta-mistysom
+```
+
+
+Use the `hello.c` and `hello.bb` files from above tp create the following directory structure within the `meta-mistysom/`
+
+
+```
+$ tree meta-mistysom
+meta-mistysom
+├── conf
+│   └── layer.conf
+├── COPYING.MIT
+├── README
+└── recipes-example
+    ├── example
+    │   └── example_0.1.bb
+    └── myhello
+        ├── files
+        │   └── myhello.c
+        └── myhello.bb
+```
+
+
+
+#### Add new layer to configuration
+
+Execute the following command to add the line  `${TOPDIR}/../meta-mistysom \` to the file `conf/bblayers.conf` (after the `meta-renesas` layer).
+
+
+```
+$ sed -i 's/renesas \\/&\n  ${TOPDIR}\/..\/meta-mistysom \\/' conf/bblayers.conf
+```
+
+
+
+#### Build MyHello
+
+By invocation of
+
+
+```
+$ bitbake myhello
+```
+
+
+The `myhello` test application will be built utilizing the bitbake server.
+
+With 
+
+
+```
+$ find . -name myhello*
+```
+
+
+The output package can be investigated.
+
+To add the output of this recipe to the output images, add the following to your `conf/local.conf` file in your Yocto build directory:
+
+
+```
+IMAGE_INSTALL_append = " myhello"
+```
+
+
+This will put the myhello app to the rootfs.
+
+
+## MistySOM Development shell
+
+When to container gets started with the `-n` argument like:
+
+
+```
+./run.sh -n
+```
+
+
+The container image gets started with the Yocto build environment setup. For administrative tasks, the primary user in the container image is called `yocto` with the password set to `yocto`.
+
+
+<!-- Footnotes themselves at the bottom. -->
+## Notes
+
+[^1]:
+     [https://github.com/MistySOM/rzv2l](https://github.com/MistySOM/rzv2l) or [https://github.com/MistySOM/rzg2l](https://github.com/MistySOM/rzg2l) 
+
 
 
