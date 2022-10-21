@@ -159,14 +159,10 @@ $ ./build.sh
 ```
 
 
-This will download the required files and build the container. Upon completion of the build,
-
-create a directory to cache the source packages that will get downloaded during the image/SDK build. This directory can be reused for every subsequent container run, so that the files do not need to be downloaded multiple times. In the below example, that directory is called `/path/to/dir/`
+This will download the required files and build the container. To enable caching,create a directory to cache the source packages and object build files.  This directory can be reused for every subsequent container run, so that the files do not need to be downloaded & built multiple times. In the below example, that directory is called `/path/to/dir/`
 
 
-```
-Important: the directory needs to have read and write access for uid 1000
-```
+**Important: the directory needs to have read and write access for uid 1000 and gid 1000**
 
 
 The owner uid and gid setting can be confirmed with
@@ -190,7 +186,7 @@ Invoke the container and pass the cache directory like:
 
 
 ```
-$ ./run.sh -d /path/to/dir
+$ ./run.sh -c /path/to/dir
 ```
 
 
@@ -203,7 +199,7 @@ For development purposes, the SDK can be built with the above container, for thi
 
 
 ```
-$ ./run.sh -d /path/to/dir -s
+$ ./run.sh -c /path/to/dir -s
 ```
 
 
@@ -238,7 +234,7 @@ This command has to be invoked every time before the SDK is being used.
 
 
 
-* The script `run.sh` can be supplied with an external path to a directory with `-d /path/to/dir` or `--dpath /path/to/dir` where the Yocto downloads can be cached (it requires about 7.3GB of empty space as of 10/04/2022) so that they do not need to be re-downloaded for every container run (just resubmit the same path).  To allow the container to cache the data, the target directory needs to be writeable by uid and gid 1000 (which is the default user id  & group id of the first user on a Linux system, confirm with `id -u`, `id -g `& `ln -n`).
+* The script `run.sh` can be supplied with an external path to a directory with `-c /path/to/dir` or `--cpath /path/to/dir` where the Yocto downloads and the built object files can be cached (it requires about 17GB of empty space as of 10/20/2022) so that they do not need to be re-downloaded and re-built for every container run (just resubmit the same directory path).  To allow the container to cache the data, the target directory needs to be writeable by uid and gid 1000 (which is the default user id  & group id of the first user on a Linux system, confirm with `id -u`, `id -g `& `ln -n`).
 * When no download path is submitted, the container will build the binaries in offline mode, utilizing the data & files that have been downloaded during the container build.
 
 
@@ -255,7 +251,7 @@ The `run.sh` script in addition can be started with the argument `-s` to auto tr
    </td>
   </tr>
   <tr>
-   <td><code>-d</code> <code>--dpath</code> <code>DIRECTORY</code>
+   <td><code>-c</code> <code>--cpath</code> <code>DIRECTORY</code>
    </td>
    <td>Path to download cache directory
    </td>
