@@ -67,7 +67,7 @@
             - [Run time information](#run-time-information)
      - [Develop example application](#develop-example-application)
          - [Hello World](#hello-world)
-	     - [Source File](#source-file)
+	     - [Source Files](#source-files)
 	     - [Build using the installed SDK](#build-using-the-installed-sdk)
 	     - [Build using Yocto](#build-using-yocto)
 
