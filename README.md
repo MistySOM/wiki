@@ -3,4 +3,11 @@
 # MistySOM wiki
 
 ## Articles
+
+### General
+
 * [Getting Started ]( GettingStarted.md )
+
+### Device Tree
+
+* [Access Device Tree information from User Space]( DeviceTreeFromUserSpace.md )
