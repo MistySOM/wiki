@@ -11,3 +11,4 @@
 ### Device Tree
 
 * [Access Device Tree information from User Space]( DeviceTreeFromUserSpace.md )
+* [DEVICE TREE IMPLEMENTATION FOR THE AUDIO CODEC TLV320AIC23B]( AudioCodec.md )
