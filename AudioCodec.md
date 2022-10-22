@@ -40,7 +40,7 @@ The Audio CODEC is connected on the MistyCarrier as follows:
 sound {
         compatible = "fsl,imx-audio-tlv320";
         model = "imx-tlv320";
-        ssi-controller = <&ssi2>;
+        ssi-controller = <&ssi0>;
         audio-codec = <&codec>;
         audio-routing =
             "MICIN", "Mic Jack",
@@ -94,7 +94,7 @@ about clock
             >;
         };
     };
-&ssi2 {
+&ssi0 {
     fsl,mode = "i2s-slave";
     status = "okay";
 };
