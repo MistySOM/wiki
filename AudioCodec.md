@@ -1,4 +1,4 @@
-<img src="img/2018_MistyWest_LogoCombo_FINAL_RGB.png" alt="MistyWest" width="400"/>
+<img src="img/2018_MistyWest_LogoCombo_FINAL_RGB.png" alt="MistyWest" width="400"/><div style="text-align: right">back to [index]( README.md)</div>
 
 # Device Tree implementation for the Audio CODEC TLV320AIC23B
 ### Revision History
