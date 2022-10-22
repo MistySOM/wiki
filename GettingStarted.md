@@ -234,7 +234,7 @@ This command has to be invoked every time before the SDK is being used.
 
 
 
-* The script `run.sh` can be supplied with an external path to a directory with `-c /path/to/dir` or `--cpath /path/to/dir` where the Yocto downloads and the built object files can be cached (it requires about 17GB of empty space as of 10/20/2022) so that they do not need to be re-downloaded and re-built for every container run (just resubmit the same directory path).  To allow the container to cache the data, the target directory needs to be writeable by uid and gid 1000 (which is the default user id  & group id of the first user on a Linux system, confirm with `id -u`, `id -g `& `ln -n`).
+* The script `run.sh` can be supplied with an external path to a directory with `-c /path/to/dir` or `--cpath /path/to/dir` where the Yocto downloads and the built object files can be cached (it requires about 10GB of empty space as of 10/20/2022) so that they do not need to be re-downloaded and re-built for every container run (just resubmit the same directory path).  To allow the container to cache the data, the target directory needs to be writeable by uid and gid 1000 (which is the default user id  & group id of the first user on a Linux system, confirm with `id -u`, `id -g `& `ln -n`).
 * When no download path is submitted, the container will build the binaries in offline mode, utilizing the data & files that have been downloaded during the container build.
 
 
