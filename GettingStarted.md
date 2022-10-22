@@ -67,7 +67,7 @@
             - [Run time information](#run-time-information)
      - [Develop example application](#develop-example-application)
          - [Hello World](#hello-world)
-	     - [Source File](#source-file)
+	     - [Source Files](#source-files)
 	     - [Build using the installed SDK](#build-using-the-installed-sdk)
 	     - [Build using Yocto](#build-using-yocto)
 
@@ -449,22 +449,28 @@ to launch it with the cache directory mounted
 $ source poky/oe-init-build-env
 ```
 
+and change  to the directory where the layer is going to be located at
+
+```
+$ cd ..
+```
+
 
 
 #### Create Custom Layer
 
 
 ```
-$ bitbake-layers create-layer --priority 3 meta-mistysom
+$ bitbake-layers create-layer --priority 3 meta-helloworld
 ```
 
 
-Use the `hello.c` and `hello.bb` files from above tp create the following directory structure within the `meta-mistysom/` directory:
+Use the `hello.c` and `hello.bb` files from above tp create the following directory structure within the `meta-helloworld/` directory:
 
 
 ```
-$ tree meta-mistysom
-meta-mistysom
+$ tree meta-helloworld
+meta-helloworld
 ├── conf
 │   └── layer.conf
 ├── COPYING.MIT
@@ -482,11 +488,11 @@ meta-mistysom
 
 #### Add new layer to configuration
 
-Execute the following command to add the line  `${TOPDIR}/../meta-mistysom \` to the file `conf/bblayers.conf` (after the `meta-renesas` layer).
+Execute the following command to add the line  `${TOPDIR}/../meta-helloworld \` to the file `conf/bblayers.conf` (after the `meta-renesas` layer).
 
 
 ```
-$ sed -i 's/renesas \\/&\n  ${TOPDIR}\/..\/meta-mistysom \\/' conf/bblayers.conf
+$ sed -i 's/renesas \\/&\n  ${TOPDIR}\/..\/meta-helloworld \\/' conf/bblayers.conf
 ```
 
 
