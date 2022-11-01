@@ -48,6 +48,7 @@
                                 
 - [Getting Started with MistySOM](#getting-started-with-mistysom-1)
     - [Introduction](#introduction)
+        - [Dependencies](#dependencies)
         - [Why build using Docker](#why-build-using-docker)
         - [Setting Up Host Computer](#setting-up-host-computer)
             - [Ubuntu](#ubuntu)
@@ -82,6 +83,12 @@
 This guide gets you started and setup to develop software and/or firmware for MistySOM.
 
 MistyWest provides an environment in a docker container to build the BSP and a SDK for both versions of MistYSOM. The host computer requires docker to be configured, setup and running. The requirements to satisfy are explained in the section **[Setting Up Host Computer](#smartreference=y9bhykzhncl5)**.
+
+### Dependencies
+
+The below instructions have some dependencies, they include:
+* A running Linux host
+* Installed `docker`, running `dockerd`(docker daemon) and added the current user to the `docker` group to allow execution of docker commands
 
 
 ### Why build using Docker
