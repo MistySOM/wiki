@@ -7,6 +7,7 @@
 ### General
 
 * [Getting Started ]( GettingStarted.md )
+* [Board Start Up Guide]( StartUpGuide.md)
 
 ### Device Tree
 
