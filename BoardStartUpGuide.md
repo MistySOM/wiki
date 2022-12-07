@@ -123,3 +123,79 @@ In case a message to prompt to clear data like above appears, please enter “y�
 After writing two loader files normally, turn off the power of the board and set SW2 into QSPI boot mode:
 * BOOT1 ON
 * BOOT2 OFF
+
+
+
+### Configure U-Boot
+
+Upon power cycling the board, the following should be seen:
+```
+þÿNOTICE:  BL2: v2.5(release):v2.5/rzg2l-1.00-49-g7b68034f7
+NOTICE:  BL2: Built : 18:44:43, Dec  7 2022
+NOTICE:  BL2: Booting BL31
+NOTICE:  BL31: v2.5(release):v2.5/rzg2l-1.00-49-g7b68034f7
+NOTICE:  BL31: Built : 18:44:43, Dec  7 2022
+
+
+U-Boot 2021.10-g8a08fc7390 (Dec 07 2022 - 10:44:16 -0800)
+
+CPU:   Renesas Electronics K rev 16.15
+Model: smarc-rzg2l
+DRAM:  1.9 GiB
+MMC:   sd@11c00000: 0, sd@11c10000: 1
+Loading Environment from MMC... *** Warning - bad CRC, using default environment
+
+In:    serial@1004b800
+Out:   serial@1004b800
+Err:   serial@1004b800
+Net:   No ethernet found.
+
+Hit any key to stop autoboot:  0
+## Resetting to default environment
+Card did not respond to voltage select! : -110
+** No partition table - mmc 0 **
+Couldn't find partition mmc 0:1
+Can't set block device
+** No partition table - mmc 0 **
+Couldn't find partition mmc 0:1
+Can't set block device
+Error: Bad gzipped data
+Bad Linux ARM64 Image magic!
+=>
+``` 
+the bottom prompt `=>` indicates the U-Boot prompt.
+Enter 
+```
+=> env default -a
+## Resetting to default environment
+=> saveenv
+Saving Environment to MMC... Writing to MMC(0)....OK
+=>
+```
+to reset the values to a defined default state, ready for custom configuration.
+
+After the SDcard has been prepared and inserted, set the variables in U-boot with:
+```
+setenv bootcmd 'mmc dev 1;fatload mmc 1:1 0x48080000 Image;fatload mmc 1:1 0x48000000 r9a07g044l2-smarc.dtb; booti 0x48080000 - 0x48000000'
+setenv bootargs 'root=/dev/mmcblk1p2 rootwait'
+```
+
+Confirm SDcard contents
+```
+=> mmc list
+sd@11c00000: 0 (eMMC)
+sd@11c10000: 1
+=> mmc dev 1
+switch to partitions #0, OK
+mmc1 is current device
+=> mmc part
+
+Partition Map for MMC device 1  --   Partition Type: DOS
+
+Part    Start Sector    Num Sectors     UUID            Type
+  1     2048            67584           a1d1165e-01     0b
+  2     69632           62451712        a1d1165e-02     83
+=>
+```
+
+
