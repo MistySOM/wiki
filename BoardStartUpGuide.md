@@ -72,7 +72,7 @@ please send ! ('.' & CR stop load)
 ```
 Send the data of “bl2_bp-smarc-rzv2l_pmic.srec” from terminal software after the message “please send !” is shown.
 
-After successfully download the binary, messages like below are shown on the terminal.
+After successful download of the binary, messages like below are shown on the terminal.
 ```
 SPI Data Clear(H'FF) Check :H'00000000-0000FFFF Erasing..Erase Completed
 SAVE SPI-FLASH.......
@@ -105,7 +105,7 @@ please send ! ('.' & CR stop load)
 ```
 Send the data of “fip-smarc-rzv2l_pmic.srec” from terminal software after the message “please send !” is shown.
 
-Send the data of “fip-smarc-rzv2l_pmic.srec” from terminal software after the message “please send !” is shown.
+After successful download of the binary, messages like below are shown on the terminal.
 ```
 SPI Data Clear(H'FF) Check :H'00000000-0000FFFF Erasing..Erase Completed
 SAVE SPI-FLASH.......
