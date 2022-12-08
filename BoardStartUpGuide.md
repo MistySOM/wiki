@@ -180,22 +180,6 @@ setenv bootcmd 'mmc dev 1;fatload mmc 1:1 0x48080000 Image;fatload mmc 1:1 0x480
 setenv bootargs 'root=/dev/mmcblk1p2 rootwait'
 ```
 
-Confirm SDcard contents
-```
-=> mmc list
-sd@11c00000: 0 (eMMC)
-sd@11c10000: 1
-=> mmc dev 1
-switch to partitions #0, OK
-mmc1 is current device
-=> mmc part
 
-Partition Map for MMC device 1  --   Partition Type: DOS
-
-Part    Start Sector    Num Sectors     UUID            Type
-  1     2048            67584           a1d1165e-01     0b
-  2     69632           62451712        a1d1165e-02     83
-=>
-```
 
 
