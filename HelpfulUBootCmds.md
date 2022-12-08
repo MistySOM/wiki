@@ -37,6 +37,7 @@
 ### SDCard & MMC commands
 
 ## Confirm SDcard contents
+
 ```
 => mmc list
 sd@11c00000: 0 (eMMC)
@@ -61,4 +62,20 @@ Part    Start Sector    Num Sectors     UUID            Type
  83493724   image.tgz
 
 7 file(s), 0 dir(s)
+```
+
+## Restore default configuration
+
+```
+env default -a
+```
+
+## Variables that need to be updated to boot MistySOM
+
+```
+bootargs
+```
+
+```
+bootcmd
 ```
