@@ -46,7 +46,7 @@ Dependencies include the following packages (on Ubuntu distributions, installati
 
 The bootloaders are separte per SOM basis, as documented below:
 * [MistySOMG2L ]( #MistySOMG2L)
-* [MistySOMV2L ]( #MidtySOMV2L)
+* [MistySOMV2L ]( #MistySOMV2L)
 
 ## MistySOMG2L
 
