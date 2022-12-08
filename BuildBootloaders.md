@@ -54,7 +54,7 @@ Change directories to a location from where the source code can be built
 ```
 $ git clone git@github.com:MistySOM/rzg2_bsp_scripts.git
 $ git checkout MistySOMG2L
-$ git submodule update --init --recursive --remote
+$ git submodule update --init --recursive
 $ cd build_scripts/
 ```
 
@@ -66,6 +66,6 @@ Change directories to a location from where the source code can be built
 ```
 $ git clone git@github.com:MistySOM/rzg2_bsp_scripts.git
 $ git checkout MistySOMV2L
-$ git submodule update --init --recursive --remote
+$ git submodule update --init --recursive
 $ cd build_scripts/
 ```
