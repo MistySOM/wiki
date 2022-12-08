@@ -8,6 +8,7 @@
 
 * [Getting Started ]( GettingStarted.md )
 * [Board Start Up Guide]( BoardStartUpGuide.md)
+* [Build Bootloaders]( BuildBootloaders.md)
 * [Helpful U-Boot Commands]( HelpfulUBootCmds.md)
 
 ### Device Tree
