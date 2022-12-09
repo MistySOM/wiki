@@ -39,10 +39,9 @@ In order to boot MistySOM into Linux, it requires to be lo be loaded with bootlo
 ### Dependencies
 The bootloaders are set to be built on a Linux machine. 
 Dependencies include the following packages (on Ubuntu distributions, installation of the `build-essentials package will resolve all dependencies):
-* SDK (see th [Getting Started](https://github.com/MistySOM/wiki/blob/master/GettingStarted.md) Guide on information about how to [build](https://github.com/MistySOM/wiki/blob/master/GettingStarted.md#building-the-sdk-1) and [install](https://github.com/MistySOM/wiki/blob/master/GettingStarted.md#installation-of-the-sdk) the SDK)
-* git
-* make
-* gcc
+* installed SDK (see th [Getting Started](https://github.com/MistySOM/wiki/blob/master/GettingStarted.md) Guide on information about how to [build](https://github.com/MistySOM/wiki/blob/master/GettingStarted.md#building-the-sdk-1) and [install](https://github.com/MistySOM/wiki/blob/master/GettingStarted.md#installation-of-the-sdk) the SDK)
+* installed git package
+* installed make package
 
 The bootloaders are separte per SOM basis, as documented below:
 * [MistySOMG2L ]( #MistySOMG2L)
