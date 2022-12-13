@@ -34,9 +34,9 @@
 </table>
 
 
-### SDCard & MMC commands
+## SDCard & MMC commands
 
-## Confirm SDcard contents
+### Confirm SDcard contents
 
 ```
 => mmc list
