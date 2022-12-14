@@ -45,7 +45,12 @@ You need to have built the SDK by following the [Getting Started](GettingStarted
 
 #### OpenOCD
 
-Install `OpenOCD` using your distributions' package manager
+To build OpenOCD you can use this [script](https://github.com/renesas-rz/rzg_openocd/blob/master/build_openocd), e.g.: 
+```
+$ wget https://raw.githubusercontent.com/renesas-rz/rzg_openocd/master/build_openocd
+$ chmod +x build_openocd
+$ ./build_openocd
+```
 
 
 ## Connect to the board
@@ -108,4 +113,5 @@ entering the command
 ```
 gdb) monitor reset init
 ```
-will reset the MPU which can be confirmed by watching theoutput on the seial console.
+will reset the MPU which can be confirmed by watching theoutput on the serial console.
+Follow info on [Z-G/RZG2 Eclipse develop and debug](https://renesas.info/wiki/RZ-G/RZG2_Eclipse_develop_and_debug#Cross_debugging_bare_metal_programs_using_GDB_and_OpenOCD) to setup Eclipse with OCD for debugging Flash Writer.
