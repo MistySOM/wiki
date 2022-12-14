@@ -113,5 +113,5 @@ entering the command
 ```
 gdb) monitor reset init
 ```
-will reset the MPU which can be confirmed by watching theoutput on the serial console.
+will reset the MPU which can be confirmed by watching theoutput on the serial console.<br/>
 Follow info on [Z-G/RZG2 Eclipse develop and debug](https://renesas.info/wiki/RZ-G/RZG2_Eclipse_develop_and_debug#Cross_debugging_bare_metal_programs_using_GDB_and_OpenOCD) to setup Eclipse with OCD for debugging Flash Writer.
