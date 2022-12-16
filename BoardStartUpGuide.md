@@ -88,7 +88,7 @@ SPI Data Clear(H'FF) Check : H'00000000-0000FFFF,Clear OK?(y/n)
 In case a message to prompt to clear data like above appears, please enter “y”.
 
 
-Next, write another loader file by using XLS2 command again.
+Next, write another loader file by using `XLS2` command again.
 ```
 >XLS2
 ===== Qspi writing of RZ/G2 Board Command =============
