@@ -32,7 +32,8 @@
    </td>
   </tr>
 </table>
+
 ### Useful Bitbake commands
 
-Compile single recipe with bitbake:<br>
+* Compile single recipe with bitbake:<br>
 `$ bitbake -b name_of_recipe`
