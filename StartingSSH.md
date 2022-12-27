@@ -1,0 +1,59 @@
+<img src="img/2018_MistyWest_LogoCombo_FINAL_RGB.png" alt="MistyWest" width="400"/><div style="text-align: right">back to [index]( README.md)</div>
+
+# SSH Server
+### Revision History
+
+<table>
+  <tr>
+   <td>Version
+   </td>
+   <td>Description of Changes
+   </td>
+   <td>Date
+   </td>
+  </tr>
+  <tr>
+   <td>
+	   1.0
+   </td>
+   <td>
+	   Initial Version
+   </td>
+   <td>
+	   12/27/2022
+   </td>
+  </tr>
+  <tr>
+   <td>
+   </td>
+   <td>
+   </td>
+   <td>
+   </td>
+  </tr>
+</table>
+
+### Start ssh server
+
+To enable the ssh daemon, login with the serial terminal and enter:
+```
+# systemctl start sshd
+```
+
+#### Autostart ssh server on reboot
+
+To start the ssh server automatically after subsequent reboots, enter:
+```
+# systemctl enable sshd
+```
+
+#### Allow clients to connect using rsa
+
+Some ssh clients neeed top be configured explicitly allow to connect via with rsa encryption. To do do so, create a file `~/.ssh/config` anda add the following contents:
+```
+Host 192.168.1.15
+    User git
+    PubkeyAcceptedAlgorithms +ssh-rsa
+    HostkeyAlgorithms +ssh-rsa
+```
+Where the IP address following `Host ` has to ber the same as the one that MistySOM leased from your DHCP server. To find the address on MistySOM, type `# ip a` and look for the address listed under the interface `eth2:`
