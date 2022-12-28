@@ -37,3 +37,7 @@
 
 * Compile single recipe with bitbake:<br>
 `$ bitbake -b name_of_recipe`
+
+### Additional Ressources
+
+* [Variables Glossary](https://docs.yoctoproject.org/bitbake/dev/bitbake-user-manual/bitbake-user-manual-ref-variables.html)
