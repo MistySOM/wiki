@@ -41,3 +41,4 @@
 ### Additional Ressources
 
 * [Variables Glossary](https://docs.yoctoproject.org/bitbake/dev/bitbake-user-manual/bitbake-user-manual-ref-variables.html)
+* [Find existing bb recipes](https://layers.openembedded.org/layerindex/branch/dunfell/recipes/)
