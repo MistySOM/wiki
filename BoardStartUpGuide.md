@@ -55,7 +55,14 @@ Flash writer for RZ/V2 Series V1.02 Nov.15,2021
 
 ### Writing Bootloader
 
-For the boot operation, two boot loader files need to be written to the target board.
+For the boot operation, two boot loader files need to be written to the target board.<br>
+Type 
+```
+XLS2
+```
+and confirm with [ENTER]:
+Enter the top address `11E00`<br>
+and the Qspi address `00000`:
 ```
 >XLS2
 ===== Qspi writing of RZ/G2 Board Command =============
@@ -70,7 +77,7 @@ Please Input : H'00000
 Work RAM(H'50000000-H'53FFFFFF) Clear....
 please send ! ('.' & CR stop load)
 ```
-Send the data of “bl2_bp-smarc-rzv2l_pmic.srec” from terminal software after the message “please send !” is shown.
+Send the data of “`bl2_bp-smarc-rzv2l_pmic.srec`” from terminal software after the message “please send !” is shown.
 
 After successful download of the binary, messages like below are shown on the terminal.
 ```
@@ -88,7 +95,9 @@ SPI Data Clear(H'FF) Check : H'00000000-0000FFFF,Clear OK?(y/n)
 In case a message to prompt to clear data like above appears, please enter “y”.
 
 
-Next, write another loader file by using `XLS2` command again.
+Next, write another loader file by using `XLS2` command again.<br>
+With top address `00000`<br> 
+and Qspi address `1D200`:
 ```
 >XLS2
 ===== Qspi writing of RZ/G2 Board Command =============
@@ -103,7 +112,7 @@ Please Input : H'1D200
 Work RAM(H'50000000-H'53FFFFFF) Clear....
 please send ! ('.' & CR stop load)
 ```
-Send the data of “fip-smarc-rzv2l_pmic.srec” from terminal software after the message “please send !” is shown.
+Send the data of “`fip-smarc-rzv2l_pmic.srec`” from terminal software after the message “please send !” is shown.
 
 After successful download of the binary, messages like below are shown on the terminal.
 ```
