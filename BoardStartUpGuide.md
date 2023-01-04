@@ -45,7 +45,7 @@
 -- Load Program to SystemRAM ---------------
 please send !  
 ```  
-7. Select `File -> Send File...` and select the file `Flash_Writer_SCIF__.mot`. A transfer dialog will appear displaying the progress of the file transfer over the setial connection. <br/>
+7. Select `File -> Send File...` and select the file `Flash_Writer_SCIF__.mot`([download]( files/bootloader/rzg2l/Flash_Writer_SCIF__.mot)). A transfer dialog will appear displaying the progress of the file transfer over the setial connection. <br/>
 After succesful downlaoding the vbinary, Flash Writer strarts autimatically and shows a message like belowe on the terminal
 ```
 Flash writer for RZ/V2 Series V1.02 Nov.15,2021
@@ -77,7 +77,7 @@ Please Input : H'00000
 Work RAM(H'50000000-H'53FFFFFF) Clear....
 please send ! ('.' & CR stop load)
 ```
-Send the data of “`bl2_bp-smarc-rzv2l_pmic.srec`” from terminal software after the message “please send !” is shown.
+Send the data of “`bl2_bp-smarc-rzv2l_pmic.srec`”([download]( files/bootloader/rzg2l/bl2_bp-MistySOMG2L.srec)) from terminal software after the message “please send !” is shown.
 
 After successful download of the binary, messages like below are shown on the terminal.
 ```
@@ -112,7 +112,7 @@ Please Input : H'1D200
 Work RAM(H'50000000-H'53FFFFFF) Clear....
 please send ! ('.' & CR stop load)
 ```
-Send the data of “`fip-smarc-rzv2l_pmic.srec`” from terminal software after the message “please send !” is shown.
+Send the data of “`fip-smarc-rzv2l_pmic.srec`”([download]( files/bootloader/rzg2l/fip-MistySOMG2L.srec)) from terminal software after the message “please send !” is shown.
 
 After successful download of the binary, messages like below are shown on the terminal.
 ```
