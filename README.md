@@ -1,4 +1,4 @@
-<img src="img/2018_MistyWest_LogoCombo_FINAL_RGB.png" alt="MistyWest" width="400"/>
+<img src="files/img/2018_MistyWest_LogoCombo_FINAL_RGB.png" alt="MistyWest" width="400"/>
 
 # MistySOM wiki
 
