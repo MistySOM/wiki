@@ -24,11 +24,14 @@
    </td>
   </tr>
   <tr>
-   <td>
+    <td>
+	   1.1
    </td>
    <td>
+	   Added links to Flash Writer & bootloader files
    </td>
    <td>
+	   01/04/2023
    </td>
   </tr>
 </table>
