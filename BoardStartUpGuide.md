@@ -183,10 +183,20 @@ Saving Environment to MMC... Writing to MMC(0)....OK
 ```
 to reset the values to a defined default state, ready for custom configuration.
 
-After the SDcard has been prepared and inserted, set the variables in U-boot with:
+After the SDcard has been prepared and inserted, set the boot variables on U-boot prompt with:
 ```
-setenv bootcmd 'mmc dev 1;fatload mmc 1:1 0x48080000 Image;fatload mmc 1:1 0x48000000 r9a07g044l2-smarc.dtb; booti 0x48080000 - 0x48000000'
-setenv bootargs 'root=/dev/mmcblk1p2 rootwait'
+=> setenv bootcmd 'mmc dev 1;fatload mmc 1:1 0x48080000 Image;fatload mmc 1:1 0x48000000 r9a07g044l2-smarc.dtb; booti 0x48080000 - 0x48000000'
+=> setenv bootargs 'root=/dev/mmcblk1p2 rootwait'
+```
+Confirm with 
+```
+=> saveenv
+```
+power cycle the board and it should now boot up to a Linux prompt where you an login with root
+```
+Poky (Yocto Project Reference Distro) 3.1.14 smarc-rzg2l ttySC0
+
+smarc-rzg2l login: root
 ```
 
 
