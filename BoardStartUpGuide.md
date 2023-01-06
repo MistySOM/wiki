@@ -38,18 +38,25 @@
 
 ### Booting Flash Writer
 1. Set the boot mode to SCIF. On the MistySOM Carrier board, on SW2, set BOOT1 OFF and Boot2  to ON position.
-2. Connect the `FTDI cable` to `J40` on the MistyCarrier board and a USB port on the computer
-3. Start TeraTerm and select the `COMn: USB Serial Port (COMn)` interface.
-4. Set the Baud rate under `Setup -> Serial Port... -> Speed:` to `115200` and click the `New Setting` button.
-5. Power on the MistySOM bord.
-6. Upon application of power, you should see the following in your terminal window:   
-```SCIF Download mode
-  (C) Renesas Electronics Corp.
--- Load Program to SystemRAM ---------------
-please send !  
-```  
-7. Select `File -> Send File...` and select the file `Flash_Writer_SCIF__.mot`([download]( files/bootloader/rzg2l/Flash_Writer_SCIF__.mot)). A transfer dialog will appear displaying the progress of the file transfer over the setial connection. <br/>
-After succesful downlaoding the vbinary, Flash Writer strarts autimatically and shows a message like belowe on the terminal
+   ![BootOption_SPIF](files/img/BootOptions_SPIF.JPG)
+3. Connect the `FTDI cable` to `J40` on the MistyCarrier board and a USB port on the computer
+4. **On Windows:**
+	- Start TeraTerm and select the `COMn: USB Serial Port (COMn)` interface.
+	- Set the Baud rate under `Setup -> Serial Port... -> Speed:` to `115200` and click the `New Setting` button.
+
+   **On Linux:** Open a terminal and run the command: `sudo screen /dev/ttyUSB0 115200`
+6. Power on the MistySOM bord.
+7. Upon application of power, you should see the following in your terminal window:   
+      ```SCIF Download mode
+        (C) Renesas Electronics Corp.
+      -- Load Program to SystemRAM ---------------
+      please send !  
+      ```  
+7. Download and save the file `Flash_Writer_SCIF__.mot`([link]( files/bootloader/rzg2l/Flash_Writer_SCIF__.mot)) by clicking on **Raw** button and then using **Save as** over the openned content.
+8. **On Windows:** Select `File -> Send File...` and select the file `Flash_Writer_SCIF__.mot`. A transfer dialog will appear displaying the progress of the file transfer over the serial connection. <br/>
+   **On Linux:** Open another terminal and run the command: `pv Flash_Writer_SCIF__.mot | sudo dd of=/dev/ttyUSB0`
+   
+After succesful downlaoding the vbinary, Flash Writer starts autimatically and shows a message like belowe on the terminal
 ```
 Flash writer for RZ/V2 Series V1.02 Nov.15,2021
  Product Code : RZ/V2L
@@ -59,11 +66,7 @@ Flash writer for RZ/V2 Series V1.02 Nov.15,2021
 ### Writing Bootloader
 
 For the boot operation, two boot loader files need to be written to the target board.<br>
-Type 
-```
-XLS2
-```
-and confirm with [ENTER]:
+Type `XLS2` and confirm with [ENTER]:<br>
 Enter the top address `11E00`<br>
 and the Qspi address `00000`:
 ```
@@ -80,7 +83,7 @@ Please Input : H'00000
 Work RAM(H'50000000-H'53FFFFFF) Clear....
 please send ! ('.' & CR stop load)
 ```
-Send the data of “`bl2_bp-smarc-rzv2l_pmic.srec`”([download]( files/bootloader/rzg2l/bl2_bp-MistySOMG2L.srec)) from terminal software after the message “please send !” is shown.
+Send the data of “`bl2_bp-MistySOMG2L.srec`” ([download]( files/bootloader/rzg2l/bl2_bp-MistySOMG2L.srec)) from terminal software after the message “please send !” is shown.
 
 After successful download of the binary, messages like below are shown on the terminal.
 ```
@@ -90,9 +93,7 @@ SAVE SPI-FLASH.......
 SpiFlashMemory Stat Address : H'00000000
 SpiFlashMemory End Address : H'00009A80
 ===========================================================
-```
 
-```
 SPI Data Clear(H'FF) Check : H'00000000-0000FFFF,Clear OK?(y/n)
 ```
 In case a message to prompt to clear data like above appears, please enter “y”.
@@ -115,7 +116,7 @@ Please Input : H'1D200
 Work RAM(H'50000000-H'53FFFFFF) Clear....
 please send ! ('.' & CR stop load)
 ```
-Send the data of “`fip-smarc-rzv2l_pmic.srec`”([download]( files/bootloader/rzg2l/fip-MistySOMG2L.srec)) from terminal software after the message “please send !” is shown.
+Send the data of “`fip-MistySOMG2L.srec`”([download]( files/bootloader/rzg2l/fip-MistySOMG2L.srec)) from terminal software after the message “please send !” is shown.
 
 After successful download of the binary, messages like below are shown on the terminal.
 ```
@@ -124,9 +125,7 @@ SAVE SPI-FLASH.......
 ======= Qspi Save Information =================
 SpiFlashMemory Stat Address : H'0001D200
 SpiFlashMemory End Address : H'000CC73F
-```
 
-```  
 SPI Data Clear(H'FF) Check : H'00000000-0000FFFF,Clear OK?(y/n)
 ```
 In case a message to prompt to clear data like above appears, please enter “y”.
@@ -135,7 +134,8 @@ In case a message to prompt to clear data like above appears, please enter “y�
 After writing two loader files normally, turn off the power of the board and set SW2 into QSPI boot mode:
 * BOOT1 ON
 * BOOT2 OFF
-
+  
+  ![BootOption_QSPI](files/img/BootOptions_QSPI.jpg)
 
 
 ### Configure U-Boot
