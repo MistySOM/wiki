@@ -1,4 +1,4 @@
-<img src="img/2018_MistyWest_LogoCombo_FINAL_RGB.png" alt="MistyWest" width="400"/>
+<img src="img/2018_MistyWest_LogoCombo_FINAL_RGB.png" alt="MistyWest" width="400"/><div style="text-align: right">back to [index]( README.md)</div>
 
 # Getting Started with MistySOM
 
@@ -28,7 +28,7 @@
 	   Initial Version
    </td>
    <td>
-	   10/05/2022
+	   10/20/2022
    </td>
   </tr>
   <tr>
@@ -48,6 +48,7 @@
                                 
 - [Getting Started with MistySOM](#getting-started-with-mistysom-1)
     - [Introduction](#introduction)
+        - [Dependencies](#dependencies)
         - [Why build using Docker](#why-build-using-docker)
         - [Setting Up Host Computer](#setting-up-host-computer)
             - [Ubuntu](#ubuntu)
@@ -56,18 +57,18 @@
             - [Arch](#arch)
     - [Container usage](#container-usage)
         - [Building and starting the container](#building-and-starting-the-container)
-        - [Building the SDK](#building-the-sdk)
+        - [Building the SDK](#building-the-sdk-1)
         - [Installation of the SDK](#installation-of-the-sdk)
         - [Description of advanced container options](#description-of-advanced-container-options)
             - [Building the BSP](#building-the-bsp)
-            - [Building the SDK](#building -the-sdk)
+            - [Building the SDK](#building-the-sdk-1)
             - [Output](#output)
             - [Note to WSL users](#note-to-wsl-users)
             - [Files](#files)
             - [Run time information](#run-time-information)
      - [Develop example application](#develop-example-application)
          - [Hello World](#hello-world)
-	     - [Source File](#source-file)
+	     - [Source Files](#source-files)
 	     - [Build using the installed SDK](#build-using-the-installed-sdk)
 	     - [Build using Yocto](#build-using-yocto)
 
@@ -82,6 +83,12 @@
 This guide gets you started and setup to develop software and/or firmware for MistySOM.
 
 MistyWest provides an environment in a docker container to build the BSP and a SDK for both versions of MistYSOM. The host computer requires docker to be configured, setup and running. The requirements to satisfy are explained in the section **[Setting Up Host Computer](#smartreference=y9bhykzhncl5)**.
+
+### Dependencies
+
+The below instructions have some dependencies, they include:
+* A running Linux host
+* Installed `docker`, running `dockerd`(docker daemon) and added the current user to the `docker` group to allow execution of docker commands
 
 
 ### Why build using Docker
@@ -151,7 +158,7 @@ it means your installation is working correctly.
 
 ### Building and starting the container
 
-Download an extract The MistySOMContainer archive, enter the directory and execute
+Clone the MistySOM/rzv2l or MistySOM/rzg2l repository from GitHub[^1], enter the `Build/` directory. and execute
 
 
 ```
@@ -159,14 +166,10 @@ $ ./build.sh
 ```
 
 
-This will download the required files and build the container. Upon completion of the build,
-
-create a directory to cache the source packages that will get downloaded during the image/SDK build. This directory can be reused for every subsequent container run, so that the files do not need to be downloaded multiple times. In the below example, that directory is called `/path/to/dir/`
+This will download the required files and build the container. To enable caching,create a directory to cache the source packages and object build files.  This directory can be reused for every subsequent container run, so that the files do not need to be downloaded & built multiple times. In the below example, that directory is called `/path/to/dir/`
 
 
-```
-Important: the directory needs to have read and write access for uid 1000
-```
+**Important: the directory needs to have read and write access for uid 1000 and gid 1000**
 
 
 The owner uid and gid setting can be confirmed with
@@ -190,7 +193,7 @@ Invoke the container and pass the cache directory like:
 
 
 ```
-$ ./run.sh -d /path/to/dir
+$ ./run.sh -c /path/to/dir
 ```
 
 
@@ -203,7 +206,7 @@ For development purposes, the SDK can be built with the above container, for thi
 
 
 ```
-$ ./run.sh -d /path/to/dir -s
+$ ./run.sh -c /path/to/dir -s
 ```
 
 
@@ -238,7 +241,7 @@ This command has to be invoked every time before the SDK is being used.
 
 
 
-* The script `run.sh` can be supplied with an external path to a directory with `-d /path/to/dir` or `--dpath /path/to/dir` where the Yocto downloads can be cached (it requires about 7.3GB of empty space as of 10/04/2022) so that they do not need to be re-downloaded for every container run (just resubmit the same path).  To allow the container to cache the data, the target directory needs to be writeable by uid and gid 1000 (which is the default user id  & group id of the first user on a Linux system, confirm with `id -u`, `id -g `& `ln -n`).
+* The script `run.sh` can be supplied with an external path to a directory with `-c /path/to/dir` or `--cpath /path/to/dir` where the Yocto downloads and the built object files can be cached (it requires about 10GB of empty space as of 10/20/2022) so that they do not need to be re-downloaded and re-built for every container run (just resubmit the same directory path).  To allow the container to cache the data, the target directory needs to be writeable by uid and gid 1000 (which is the default user id  & group id of the first user on a Linux system, confirm with `id -u`, `id -g `& `ln -n`).
 * When no download path is submitted, the container will build the binaries in offline mode, utilizing the data & files that have been downloaded during the container build.
 
 
@@ -255,7 +258,7 @@ The `run.sh` script in addition can be started with the argument `-s` to auto tr
    </td>
   </tr>
   <tr>
-   <td><code>-d</code> <code>--dpath</code> <code>DIRECTORY</code>
+   <td><code>-c</code> <code>--cpath</code> <code>DIRECTORY</code>
    </td>
    <td>Path to download cache directory
    </td>
@@ -365,7 +368,7 @@ Z:\WebDownload\mh11\rzv2l\VerifiedLinuxPackage_v3.0.0
 ### Hello World
 
 
-#### Source File
+#### Source Files
 
 Create a file called` helloworld.c` with the following contents:
 
@@ -379,6 +382,27 @@ int main() {
 }
 ```
 
+Create a file called `hello.bb` with that contains:
+
+
+```
+DESCRIPTION = "Simple helloworld application"
+LICENSE = "MIT"
+LIC_FILES_CHKSUM = "file://${COMMON_LICENSE_DIR}/MIT;md5=0835ade698e0bcf8506ecda2f7b4f302"
+
+SRC_URI = "file://myhello.c"
+
+S = "${WORKDIR}"
+
+do_compile() {
+	${CC} myhello.c ${LDFLAGS} -o myhello
+}
+
+do_install() {
+	install -d ${D}${bindir}
+	install -m 0755 myhello ${D}${bindir}
+}
+```
 
 
 #### Build using the installed SDK
@@ -412,5 +436,125 @@ For testing this, the container should be started into a dev shell with:
 ```
 ./run.sh -n
 ```
+
+
+or
+
+
+```
+./run.sh -c /path/to/dir -n
+```
+
+
+to launch it with the cache directory mounted
+
+
+#### Source the build environment
+
+
+```
+$ source poky/oe-init-build-env
+```
+
+and change  to the directory where the layer is going to be located at
+
+```
+$ cd ..
+```
+
+
+
+#### Create Custom Layer
+
+
+```
+$ bitbake-layers create-layer --priority 3 meta-helloworld
+```
+
+
+Use the `hello.c` and `hello.bb` files from above tp create the following directory structure within the `meta-helloworld/` directory:
+
+
+```
+$ tree meta-helloworld
+meta-helloworld
+├── conf
+│   └── layer.conf
+├── COPYING.MIT
+├── README
+└── recipes-example
+    ├── example
+    │   └── example_0.1.bb
+    └── myhello
+        ├── files
+        │   └── myhello.c
+        └── myhello.bb
+```
+
+
+
+#### Add new layer to configuration
+
+Execute the following command to add the line  `${TOPDIR}/../meta-helloworld \` to the file `conf/bblayers.conf` (after the `meta-renesas` layer).
+
+
+```
+$ sed -i 's/renesas \\/&\n  ${TOPDIR}\/..\/meta-helloworld \\/' conf/bblayers.conf
+```
+
+
+
+#### Build MyHello
+
+By invocation of
+
+
+```
+$ bitbake myhello
+```
+
+
+The `myhello` test application will be built utilizing the bitbake server.
+
+With 
+
+
+```
+$ find . -name myhello*
+```
+
+
+The output package can be investigated.
+
+To add the output of this recipe to the output images, add the following to your `conf/local.conf` file in your Yocto build directory:
+
+
+```
+IMAGE_INSTALL_append = " myhello"
+```
+
+
+This will put the myhello app to the rootfs.
+
+
+## MistySOM Development shell
+
+When to container gets started with the `-n` argument like:
+
+
+```
+./run.sh -n
+```
+
+
+The container image gets started with the Yocto build environment setup. For administrative tasks, the primary user in the container image is called `yocto` with the password set to `yocto`.
+
+
+<!-- Footnotes themselves at the bottom. -->
+## Notes
+
+[^1]:
+     [https://github.com/MistySOM/rzv2l](https://github.com/MistySOM/rzv2l) or [https://github.com/MistySOM/rzg2l](https://github.com/MistySOM/rzg2l) 
+
 
 

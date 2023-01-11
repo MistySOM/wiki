@@ -3,6 +3,21 @@
 # MistySOM wiki
 
 ## Articles
-* [Getting Started]( GettingStarted.md )
-* [Customize the Device Tree](CustomizeDevicetree.md)
-* [Create Custom Yocto Layer](CreateCustomYoctoLayer.md)
+
+### General
+
+* [Getting Started ]( GettingStarted.md )
+* [Board Start Up Guide]( BoardStartUpGuide.md)
+* [Build Bootloaders]( BuildBootloaders.md)
+* [Helpful U-Boot Commands]( HelpfulUBootCmds.md)
+* [Connect In-Circuit Debugger]( ConnectInCircuitDebugger.md)
+
+### Device Tree
+
+* [Access Device Tree information from User Space]( DeviceTreeFromUserSpace.md )
+* [Audio CODEC TLV320AIC23B]( AudioCodec.md )
+
+### Yocto
+
+* [Creating a custom Yocto Layer and Image]( CreatingCustomYoctoLayer.md )
+* [Bitbake Cheat Sheet]( BitbakeCheatSheet.md )
