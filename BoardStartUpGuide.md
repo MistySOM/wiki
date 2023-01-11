@@ -36,6 +36,16 @@
   </tr>
 </table>
 
+### Requirements
+- **For Windows:**
+  - TerasTerm (link to download)
+- **For Linux:**
+  - root permissions (sudo)
+  - (use your distributuion's package manager to install the following utilities):
+    - screen
+    - dd
+    - pv
+
 ### Booting Flash Writer
 1. Set the boot mode to SCIF. On the MistySOM Carrier board, on SW2, set BOOT1 OFF and Boot2  to ON position.
    ![BootOption_SPIF](files/img/BootOptions_SPIF.JPG)
@@ -45,7 +55,7 @@
 	- Set the Baud rate under `Setup -> Serial Port... -> Speed:` to `115200` and click the `New Setting` button.
 
    **On Linux:** Open a terminal and run the command: `sudo screen /dev/ttyUSB0 115200`
-6. Power on the MistySOM bord.
+6. Power on the MistySOM board.
 7. Upon application of power, you should see the following in your terminal window:   
       ```SCIF Download mode
         (C) Renesas Electronics Corp.
@@ -54,7 +64,7 @@
       ```  
 7. Download and save the file `Flash_Writer_SCIF__.mot`([link]( files/bootloader/rzg2l/Flash_Writer_SCIF__.mot)) by clicking on **Raw** button and then using **Save as** over the openned content.
 8. **On Windows:** Select `File -> Send File...` and select the file `Flash_Writer_SCIF__.mot`. A transfer dialog will appear displaying the progress of the file transfer over the serial connection. <br/>
-   **On Linux:** Open another terminal and run the command: `pv Flash_Writer_SCIF__.mot | sudo dd of=/dev/ttyUSB0`
+   **On Linux:** Open another terminal window and run the command: `pv Flash_Writer_SCIF__.mot | sudo dd of=/dev/ttyUSB0`
    
 After succesful downlaoding the vbinary, Flash Writer starts autimatically and shows a message like belowe on the terminal
 ```
