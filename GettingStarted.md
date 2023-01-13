@@ -71,6 +71,7 @@
 	     - [Source Files](#source-files)
 	     - [Build using the installed SDK](#build-using-the-installed-sdk)
 	     - [Build using Yocto](#build-using-yocto)
+     - [MistySOM Development Shell](#mistysom-development-shell)
 
 
 
