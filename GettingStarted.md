@@ -82,7 +82,7 @@
 
 This guide gets you started and setup to develop software and/or firmware for MistySOM.
 
-MistyWest provides an environment in a docker container to build the BSP and a SDK for both versions of MistYSOM. The host computer requires docker to be configured, setup and running. The requirements to satisfy are explained in the section **[Setting Up Host Computer](#setting-up-host-computer)**.
+MistyWest provides an environment in a docker container to build the BSP[^2] and a SDK[^3] for both versions of MistYSOM. The host computer requires docker to be configured, setup and running. The requirements to satisfy are explained in the section **[Setting Up Host Computer](#setting-up-host-computer)**.
 
 ### Dependencies
 
@@ -158,8 +158,19 @@ it means your installation is working correctly.
 
 ### Building and starting the container
 
-Clone the MistySOM/rzv2l or MistySOM/rzg2l repository from GitHub[^1], enter the `Build/` directory. and execute
-
+Clone the MistySOM/rzv2l or MistySOM/rzg2l repository from GitHub[^1], 
+```
+$ git clone git@github.com:MistySOM/rzg2l.git
+```
+or
+```
+$ git clone git@github.com:MistySOM/rzv2l.git
+```
+enter the `Build/` directory. 
+```
+$ cd Build/
+```
+and execute
 
 ```
 $ ./build.sh
@@ -197,7 +208,7 @@ $ ./run.sh -c /path/to/dir
 ```
 
 
-Upon completion of the build, the created image files are copied to the directory `output/`, this directory got created at the path as where `./run.sh` was invoked from. The rootfs, kernel and device tree blob, can now be copied to the destination uSD card, see section **[Output](#smartreference=ccmxbdlxn17w)** below.
+Upon completion of the build, the created image files are copied to the directory `output/`, this directory got created at the path as where `./run.sh` was invoked from. The rootfs, kernel and device tree blob, can now be copied to the destination uSD card, see section **[Output](#output)** below.
 
 
 ### Building the SDK
@@ -359,7 +370,7 @@ Z:\WebDownload\mh11\rzv2l\VerifiedLinuxPackage_v3.0.0
 * `./build.sh` Builds the container image from the Dockerfile and downloads the required files, from the above resource
 * `./run.sh` Will start the container image, upon start, the `exec.sh` script is executed from within the container
 * `exec.sh` invokes `start.sh` which sets up the Yocto build environment inside the container
-* after the environment has been setup, `exec.sh` will invoke the bitbake commands required to build the binary files
+* after the environment has been setup, `exec.sh` will invoke the bitbake[^4] commands required to build the binary files
 
 
 ## Develop example application
@@ -382,7 +393,7 @@ int main() {
 }
 ```
 
-Create a file called `hello.bb` with that contains:
+Create a file called `hello.bb`[^5] with that contains:
 
 
 ```
@@ -407,7 +418,7 @@ do_install() {
 
 #### Build using the installed SDK
 
-This step requires completion of the previous steps: **[Building the SDK](#smartreference=b9t70lsdf2mg) **and **[Installation of the SDK](#smartreference=3n4ql6l1haxs)**.
+This step requires completion of the previous steps: [Building the SDK](#building-the-sdk-1) and [Installation of the SDK](#installation-of-the-sdk).
 
 After the SDK has been installed, set the paths in your environment by executing:
 
@@ -554,7 +565,15 @@ The container image gets started with the Yocto build environment setup. For adm
 ## Notes
 
 [^1]:
-     [https://github.com/MistySOM/rzv2l](https://github.com/MistySOM/rzv2l) or [https://github.com/MistySOM/rzg2l](https://github.com/MistySOM/rzg2l) 
+     [https://github.com/MistySOM/rzv2l](https://github.com/MistySOM/rzv2l) or [https://github.com/MistySOM/rzg2l](https://github.com/MistySOM/rzg2l)
+[^2]:
+     BSP Board Support Package, also see: [Board Support Package on Wikipedia](https://en.wikipedia.org/wiki/Board_support_package)
+[^3]:
+     SDK Software Development Kit, also see [Software Development Kit on Wikipedia](https://en.wikipedia.org/wiki/Software_development_kit)
+[^4]:
+     BitBake, also see [BitBake](https://en.wikipedia.org/wiki/BitBake)
+[^5]:
+     bb files are bitbake recipes, also see [Recipes in BitBake User Manual](https://docs.yoctoproject.org/1.6/bitbake-user-manual/bitbake-user-manual.html#recipes)
 
 
 
