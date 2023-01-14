@@ -8,41 +8,6 @@
 ### 
 
 
-### Revision History
-
-
-<table>
-  <tr>
-   <td>Version
-   </td>
-   <td>Description of Changes
-   </td>
-   <td>Date
-   </td>
-  </tr>
-  <tr>
-   <td>
-	   1.0
-   </td>
-   <td>
-	   Initial Version
-   </td>
-   <td>
-	   10/20/2022
-   </td>
-  </tr>
-  <tr>
-   <td>
-   </td>
-   <td>
-   </td>
-   <td>
-   </td>
-  </tr>
-</table>
-
-
-
 ### Table Of Contents
 
                                 
