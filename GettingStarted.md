@@ -72,6 +72,7 @@
 	     - [Build using the installed SDK](#build-using-the-installed-sdk)
 	     - [Build using Yocto](#build-using-yocto)
      - [MistySOM Development Shell](#mistysom-development-shell)
+     - [Configure U-Boot](#configure-u-boot)
      - [Connecting the hardware](#connecting-the-hardware)
 
 
@@ -320,7 +321,7 @@ The files in the above `images/` directory include:
   <tr>
    <td>Device tree blob
    </td>
-   <td><code>r9a07g05l2-smarc.dtb</code>
+   <td><code>r9a07g044l2-smarc.dtb</code>
    </td>
   </tr>
   <tr>
@@ -357,11 +358,11 @@ In order to test the newly built BSP, files need to be loaded to an uSD card tha
 After the uSD card has been prepared, mount the two partitions and copy the following files:
 * Linux kernel to the first partition (FAT32):
 ```
-sudo cp /path/to/output/imges/smarc-rzg2l/Image-smarc-rzv2l.bin /path/to/mountpart1/
+sudo cp /path/to/output/imges/smarc-rzg2l/Image-smarc-rzv2l.bin /path/to/mountpart1/Image
 ```
 * Device tree blob to the first partition (FAT32)
 ```
-sudo cp /path/to/output/imges/smarc-rzg2l/r9a07g05l2-smarc.dtb /path/to/mountpart1/
+sudo cp /path/to/output/imges/smarc-rzg2l/r9a07g044l2-smarc.dtb /path/to/mountpart1/
 ```
 * Root filesystem to the second partition (ext4) 
 ```
@@ -569,6 +570,9 @@ When to container gets started with the `-n` argument like:
 ./run.sh -n
 ```
 The container image gets started with the Yocto build environment setup. For administrative tasks, the primary user in the container image is called `yocto` with the password set to `yocto`.
+
+## Configure U-Boot 
+In order for MistySOM to boot with the files copied onto the uSD card above, the bootloader needs to be configured accordingly. For instructions on how to configure U-Boot, please follow the information on [Configure U-Boot](BoardStartUpGuide.md#configure-u-boot)
 
 ## Connecting the hardware
 
