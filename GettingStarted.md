@@ -8,41 +8,6 @@
 ### 
 
 
-### Revision History
-
-
-<table>
-  <tr>
-   <td>Version
-   </td>
-   <td>Description of Changes
-   </td>
-   <td>Date
-   </td>
-  </tr>
-  <tr>
-   <td>
-	   1.0
-   </td>
-   <td>
-	   Initial Version
-   </td>
-   <td>
-	   10/20/2022
-   </td>
-  </tr>
-  <tr>
-   <td>
-   </td>
-   <td>
-   </td>
-   <td>
-   </td>
-  </tr>
-</table>
-
-
-
 ### Table Of Contents
 
                                 
@@ -63,14 +28,17 @@
             - [Building the BSP](#building-the-bsp)
             - [Building the SDK](#building-the-sdk-1)
             - [Output](#output)
+            - [Load Files to uSD card](#load-files-to-usd-card)
             - [Note to WSL users](#note-to-wsl-users)
-            - [Files](#files)
             - [Run time information](#run-time-information)
      - [Develop example application](#develop-example-application)
          - [Hello World](#hello-world)
 	     - [Source Files](#source-files)
 	     - [Build using the installed SDK](#build-using-the-installed-sdk)
 	     - [Build using Yocto](#build-using-yocto)
+     - [MistySOM Development Shell](#mistysom-development-shell)
+     - [Configure U-Boot](#configure-u-boot)
+     - [Connecting the hardware](#connecting-the-hardware)
 
 
 
@@ -82,7 +50,7 @@
 
 This guide gets you started and setup to develop software and/or firmware for MistySOM.
 
-MistyWest provides an environment in a docker container to build the BSP and a SDK for both versions of MistYSOM. The host computer requires docker to be configured, setup and running. The requirements to satisfy are explained in the section **[Setting Up Host Computer](#smartreference=y9bhykzhncl5)**.
+MistyWest provides an environment in a docker container to build the BSP[^2] and a SDK[^3] for both versions of MistYSOM. The host computer requires docker to be configured, setup and running. The requirements to satisfy are explained in the section **[Setting Up Host Computer](#setting-up-host-computer)**.
 
 ### Dependencies
 
@@ -158,8 +126,19 @@ it means your installation is working correctly.
 
 ### Building and starting the container
 
-Clone the MistySOM/rzv2l or MistySOM/rzg2l repository from GitHub[^1], enter the `Build/` directory. and execute
-
+Clone the MistySOM/rzv2l or MistySOM/rzg2l repository from GitHub[^1], 
+```
+$ git clone git@github.com:MistySOM/rzg2l.git
+```
+or
+```
+$ git clone git@github.com:MistySOM/rzv2l.git
+```
+enter the `Build/` directory. 
+```
+$ cd Build/
+```
+and execute
 
 ```
 $ ./build.sh
@@ -197,7 +176,7 @@ $ ./run.sh -c /path/to/dir
 ```
 
 
-Upon completion of the build, the created image files are copied to the directory `output/`, this directory got created at the path as where `./run.sh` was invoked from. The rootfs, kernel and device tree blob, can now be copied to the destination uSD card, see section **[Output](#smartreference=ccmxbdlxn17w)** below.
+Upon completion of the build, the created image files are copied to the directory `output/`, this directory got created at the path as where `./run.sh` was invoked from. The rootfs, kernel and device tree blob, can now be copied to the destination uSD card, see section **[Output](#output)** below.
 
 
 ### Building the SDK
@@ -307,7 +286,7 @@ The files in the above `images/` directory include:
   <tr>
    <td>Device tree blob
    </td>
-   <td><code>r9a07g05l2-smarc.dtb</code>
+   <td><code>r9a07g044l2-smarc.dtb</code>
    </td>
   </tr>
   <tr>
@@ -339,27 +318,38 @@ The files in the above `images/` directory include:
 
 and the resources can simply be copied to the host with `docker cp  NAME:SRC DST` where `NAME` is the name of the running container that can be retrieved by running `docker ps` on the host.
 
+#### Load files to uSD card
+In order to test the newly built BSP, files need to be loaded to an uSD card that MistySOM will boot from. Bfoe the files can be copied, the card has to be prepared accordingly, please follow the instructions on the [Preparing uSD card instructions](preparing_usd.md) page accordingly.
+After the uSD card has been prepared, mount the two partitions and copy the following files:
+* Linux kernel to the first partition (FAT32):
+```
+sudo cp /path/to/output/imges/smarc-rzg2l/Image-smarc-rzv2l.bin /path/to/mountpart1/Image
+```
+* Device tree blob to the first partition (FAT32)
+```
+sudo cp /path/to/output/imges/smarc-rzg2l/r9a07g044l2-smarc.dtb /path/to/mountpart1/
+```
+* Root filesystem to the second partition (ext4) 
+```
+sudo cp /path/to/output/imges/smarc-rzg2l/<image-name>-smarc-rzv2l.tar.bz2 /path/to/mountpart2/
+cd /path/to/mountpart2/
+tar -xvf <image-name>-smarc-rzv2l.tar.bz2
+```
+After this, your uSD card is ready to be inserted into the MistyCarrier uSD slot.
 
 #### Note to WSL users:
 
 Make sure to work with files on Linux mounts (avoid use of mounted Windows partitions)
 
 
-#### Files
-
-Files that get downloaded by the Dockerfile on build are stored under:
-
-Z:\WebDownload\mh11\rzv2l\VerifiedLinuxPackage_v3.0.0
-
-
 #### Run time information
 
 
 
-* `./build.sh` Builds the container image from the Dockerfile and downloads the required files, from the above resource
+* `./build.sh` Builds the container image from the Dockerfile and downloads the required files, from the web. 
 * `./run.sh` Will start the container image, upon start, the `exec.sh` script is executed from within the container
 * `exec.sh` invokes `start.sh` which sets up the Yocto build environment inside the container
-* after the environment has been setup, `exec.sh` will invoke the bitbake commands required to build the binary files
+* after the environment has been setup, `exec.sh` will invoke the bitbake[^4] commands required to build the binary files
 
 
 ## Develop example application
@@ -382,7 +372,7 @@ int main() {
 }
 ```
 
-Create a file called `hello.bb` with that contains:
+Create a file called `hello.bb`[^5] with that contains:
 
 
 ```
@@ -407,7 +397,7 @@ do_install() {
 
 #### Build using the installed SDK
 
-This step requires completion of the previous steps: **[Building the SDK](#smartreference=b9t70lsdf2mg) **and **[Installation of the SDK](#smartreference=3n4ql6l1haxs)**.
+This step requires completion of the previous steps: [Building the SDK](#building-the-sdk-1) and [Installation of the SDK](#installation-of-the-sdk).
 
 After the SDK has been installed, set the paths in your environment by executing:
 
@@ -541,20 +531,46 @@ This will put the myhello app to the rootfs.
 
 When to container gets started with the `-n` argument like:
 
-
 ```
 ./run.sh -n
 ```
-
-
 The container image gets started with the Yocto build environment setup. For administrative tasks, the primary user in the container image is called `yocto` with the password set to `yocto`.
+
+## Configure U-Boot 
+In order for MistySOM to boot with the files copied onto the uSD card above, the bootloader needs to be configured accordingly. For instructions on how to configure U-Boot, please follow the information on [Configure U-Boot](BoardStartUpGuide.md#configure-u-boot)
+
+## Connecting the hardware
+
+To test the Build generated by following the above instructions, the MistySOM hardware has to be connected and powered up.
+For development purposes, use the FTDI serial console cable cable[^6] and the UISB-C power cable[^7]
+Connect the FTDI able to connector `J40` on MistyCarrier and connect the USB-C power cable to `J1`. The locations of the two connectors are hightlighted on the below image: 
+<img src="files/img/MistyCarrier_PowerFTDI.png" alt="MistyWest" width="400"/>
+
+Open a serial terminal:([instructions with tera Term for Windows](https://learn.sparkfun.com/tutorials/terminal-basics/tera-term-windows) or [instructions with screen for Linux](https://www.cyberciti.biz/faq/unix-linux-apple-osx-bsd-screen-set-baud-rate/)) and set the baudrate to `115200`bps. when you connected the board succesfully and connected t it in thwe first few seconds while it is booting, you should see boot messages followed by a login prompt:
+```
+smarc-rzg2l login:
+```
+If you don't see anything, after a key-press on the `Enter` key, the above login prompt should appear. You can now login with useranme `root` which will bring you to the shell from where you can invoke and execute commands.
+
+
 
 
 <!-- Footnotes themselves at the bottom. -->
 ## Notes
 
 [^1]:
-     [https://github.com/MistySOM/rzv2l](https://github.com/MistySOM/rzv2l) or [https://github.com/MistySOM/rzg2l](https://github.com/MistySOM/rzg2l) 
-
+     [https://github.com/MistySOM/rzv2l](https://github.com/MistySOM/rzv2l) or [https://github.com/MistySOM/rzg2l](https://github.com/MistySOM/rzg2l)
+[^2]:
+     BSP Board Support Package, also see: [Board Support Package on Wikipedia](https://en.wikipedia.org/wiki/Board_support_package)
+[^3]:
+     SDK Software Development Kit, also see [Software Development Kit on Wikipedia](https://en.wikipedia.org/wiki/Software_development_kit)
+[^4]:
+     BitBake, also see [BitBake](https://en.wikipedia.org/wiki/BitBake)
+[^5]:
+     bb files are bitbake recipes, also see [Recipes in BitBake User Manual](https://docs.yoctoproject.org/1.6/bitbake-user-manual/bitbake-user-manual.html#recipes)
+[^6]:
+     USB to TTL Serial Cable (3V3): type number: FTDI TTL-232R-3V3-2MM  
+[^7]:
+     USB-C power cable that is connected to a 5V/3A power brick
 
 
