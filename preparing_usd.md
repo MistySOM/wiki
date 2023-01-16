@@ -14,12 +14,12 @@ sudo fdisk -l
 3. Create the partition table with a FAT32 and an EXT4 partition
 ```
 sudo parted /dev/sdc --script -- mklabel gpt
-sudo parted /dev/sdb --script -- mkpart primary fat32 0% 30MiB
-sudo parted /dev/sdb --script -- mkpart primary ext4 30MiB 100%
+sudo parted /dev/sdc --script -- mkpart primary fat32 0% 30MiB
+sudo parted /dev/sdc --script -- mkpart primary ext4 30MiB 100%
 ```
 4. Format the partitions to FAT32 and EXT4
 ```
-sudo mkfs.fat -F 32  /dev/sdb1
+sudo mkfs.fat -F 32  /dev/sdc1
 sudo mkfs.ext4 -F /dev/sdc2
 ```
 5. Confirm the partition table is set as expected
