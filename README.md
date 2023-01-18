@@ -13,6 +13,7 @@
 * [Connect In-Circuit Debugger]( ConnectInCircuitDebugger.md)
 * [Starting SSH server]( StartingSSH.md)
 * [Preparing uSD card instructions](preparing_usd.md)
+* [Setup WiFi](SetupWifi.md)
 
 ### Device Tree
 
