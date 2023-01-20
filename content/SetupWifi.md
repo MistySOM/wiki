@@ -1,3 +1,4 @@
+
 # Setup WiFi
 
 After you plug the supported WiFi adapter into the USB port, you can manually bring up the device with `ifconfig wlan0 up`. Confirm with `ifconfig` that your device is up:
