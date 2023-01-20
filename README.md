@@ -6,21 +6,22 @@
 
 ### General
 
-* [Getting Started ]( GettingStarted.md )
-* [Board Start Up Guide]( BoardStartUpGuide.md)
-* [Build Bootloaders]( BuildBootloaders.md)
-* [Helpful U-Boot Commands]( HelpfulUBootCmds.md)
-* [Connect In-Circuit Debugger]( ConnectInCircuitDebugger.md)
-* [Starting SSH server]( StartingSSH.md)
-* [Preparing uSD card instructions](preparing_usd.md)
-* [Setup WiFi](SetupWifi.md)
+* [Getting Started ]( content/GettingStarted.md )
+* [Board Start Up Guide]( content/BoardStartUpGuide.md)
+* [Build Bootloaders]( content/BuildBootloaders.md)
+* [Helpful U-Boot Commands]( content/HelpfulUBootCmds.md)
+* [Connect In-Circuit Debugger]( content/ConnectInCircuitDebugger.md)
+* [Starting SSH server]( content/StartingSSH.md)
+* [Preparing uSD card instructions](content/preparing_usd.md)
+* [Setup WiFi](content/SetupWifi.md)
+* [GPIO Header](content/GPIOHeader.md)
 
 ### Device Tree
 
-* [Access Device Tree information from User Space]( DeviceTreeFromUserSpace.md )
-* [Audio CODEC TLV320AIC23B]( AudioCodec.md)
+* [Access Device Tree information from User Space]( content/DeviceTreeFromUserSpace.md )
+* [Audio CODEC TLV320AIC23B]( content/AudioCodec.md)
 
 ### Yocto
 
-* [Creating a custom Yocto Layer and Image]( CreatingCustomYoctoLayer.md)
-* [Bitbake Cheat Sheet]( BitbakeCheatSheet.md)
+* [Creating a custom Yocto Layer and Image]( content/CreatingCustomYoctoLayer.md)
+* [Bitbake Cheat Sheet]( content/BitbakeCheatSheet.md)

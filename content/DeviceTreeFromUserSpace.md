@@ -1,4 +1,4 @@
-<img src="files/img/2018_MistyWest_LogoCombo_FINAL_RGB.png" alt="MistyWest" width="400"/><div style="text-align: right">back to [index]( README.md)</div>
+<img src="../files/img/2018_MistyWest_LogoCombo_FINAL_RGB.png" alt="MistyWest" width="400"/><div style="text-align: right">back to [index](../README.md)</div>
 
 # Access device tree information from User Space
 ### Revision History
@@ -32,6 +32,7 @@
    </td>
   </tr>
 </table>
+
 ### Introduction
 
 The value of some dtb entry might have to be checked for debugging, or to verify that the dtb really got updated after it was modified, etc. Although a .dts-file-like view of the device tree which was loaded cannot be achieved, values can be verified using the entries on the in `/proc/device-tree`.
