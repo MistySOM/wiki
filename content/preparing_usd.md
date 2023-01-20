@@ -26,3 +26,15 @@ sudo mkfs.ext4 -F /dev/sdc2
 ```
 sudo parted /dev/sdc --script print
 ```
+Expected output:
+```
+Model: SD EB1QT (sd/mmc)
+Disk /dev/sdc: 32.0GB
+Sector size (logical/physical): 512B/512B
+Partition Table: gpt
+Disk Flags: 
+
+Number  Start   End     Size    File system  Name     Flags
+ 1      1049kB  31.5MB  30.4MB  fat32        primary  msftdata
+ 2      31.5MB  32.0GB  32.0GB  ext4         primary
+```
