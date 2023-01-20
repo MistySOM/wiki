@@ -14,6 +14,7 @@
 * [Starting SSH server]( content/StartingSSH.md)
 * [Preparing uSD card instructions](content/preparing_usd.md)
 * [Setup WiFi](content/SetupWifi.md)
+* [GPIO Header](content/GPIOHeader.md)
 
 ### Device Tree
 
