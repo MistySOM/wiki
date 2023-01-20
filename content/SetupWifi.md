@@ -1,4 +1,24 @@
-# Scan
+# Setup WiFi
+
+After you plug the supported WiFi adapter into the USB port, you can manually bring up the device with `ifconfig wlan0 up`. Confirm with `ifconfig` that your device is up:
+```
+# ifconfig
+lo        Link encap:Local Loopback
+          inet addr:127.0.0.1  Mask:255.0.0.0
+          UP LOOPBACK RUNNING  MTU:65536  Metric:1
+          RX packets:96 errors:0 dropped:0 overruns:0 frame:0
+          TX packets:96 errors:0 dropped:0 overruns:0 carrier:0
+          collisions:0 txqueuelen:1000
+          RX bytes:6048 (5.9 KiB)  TX bytes:6048 (5.9 KiB)
+
+wlan0     Link encap:Ethernet  HWaddr 18:A6:F7:0A:65:2D
+          UP BROADCAST MULTICAST  MTU:1500  Metric:1
+          RX packets:0 errors:0 dropped:0 overruns:0 frame:0
+          TX packets:0 errors:0 dropped:0 overruns:0 carrier:0
+          collisions:0 txqueuelen:1000
+          RX bytes:0 (0.0 B)  TX bytes:0 (0.0 B)
+```
+## Scan
 
 In case you want to scan for every Wifi access point in your environment, you can use the command below to list their SSIDs:
 
