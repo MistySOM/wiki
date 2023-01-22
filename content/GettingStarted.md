@@ -148,7 +148,8 @@ $ ./build.sh
 This will download the required files and build the container. To enable caching,create a directory to cache the source packages and object build files.  This directory can be reused for every subsequent container run, so that the files do not need to be downloaded & built multiple times. In the below example, that directory is called `/path/to/dir/`
 
 
-**Important: the directory needs to have read and write access for uid 1000 and gid 1000**
+**Important: the directory needs to have read and write access for uid 1000 and gid 1000**<br/>
+_(hint: you can execute `chmod -R 777 /path/to/dir` to grant read, write & execute access for everybody on your system to the directory)_
 
 
 The owner uid and gid setting can be confirmed with
