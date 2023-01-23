@@ -25,3 +25,7 @@
 
 * [Creating a custom Yocto Layer and Image]( content/CreatingCustomYoctoLayer.md)
 * [Bitbake Cheat Sheet]( content/BitbakeCheatSheet.md)
+
+### OtherResources
+
+* [Design Files](content/DesignFiles.md)
