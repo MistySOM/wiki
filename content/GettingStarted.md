@@ -50,7 +50,7 @@
 
 This guide gets you started and setup to develop software and/or firmware for MistySOM.
 
-MistyWest provides an environment in a docker container to build the BSP[^2](Board Support Package) and a SDK[^3](Software Development Kit) for both versions of MistySOM. The host computer requires docker to be configured, setup and running. The requirements for setting up the host computer are described in the section **[Setting Up Host Computer](#setting-up-host-computer)**.
+MistyWest provides an environment in a docker container to build the BSP[^2] and a SDK[^3] for both versions of MistySOM. The host computer requires docker to be configured, setup and running. The requirements for setting up the host computer are described in the section **[Setting Up Host Computer](#setting-up-host-computer)**.
 
 ### Dependencies
 
