@@ -61,7 +61,7 @@ The following instructions have some dependencies, they include:
 
 ### Why build using Docker
 
-Each version of Yocto may have unique Host requirements (e.g. Ubuntu 16.04, Ubuntu 18.04...). This can be cumbersome during development if you are working on multiple projects at the same time. Dedicated build machines do not seem feasible for multiple reasons, one of which is the cost of hardware where virtual machines have definite shortcomings as they reserve and virtualize the host hardware and only provide a limited set of resources to the build process.
+Each version of Yocto may have unique Host requirements (e.g., Ubuntu 16.04, Ubuntu 18.04). This can be cumbersome during development if you are working on multiple projects at the same time. Dedicated build machines do not seem feasible for multiple reasons, one of which is the cost of hardware. Virtual machines have definite shortcomings as they reserve and virtualize the host hardware and only provide a limited set of resources to the build process.
 
 Docker is a great solution to this problem and provides:
 
