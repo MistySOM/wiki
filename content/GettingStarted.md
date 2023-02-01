@@ -59,28 +59,28 @@ The following instructions have some dependencies, they include:
 * Installed `docker`, running `dockerd`(docker daemon) and added the current user to the `docker` group to allow execution of docker commands
 
 
-### Why build using Docker
+### Why Build Using Docker
 
-Each version of Yocto may have unique Host requirements (e.g., Ubuntu 16.04, Ubuntu 18.04). This can be cumbersome during development if you are working on multiple projects at the same time. Dedicated build machines do not seem feasible for multiple reasons, one of which is the cost of hardware. Virtual machines have definite shortcomings as they reserve and virtualize the host hardware and only provide a limited set of resources to the build process.
+Each version of Yocto may have unique Host requirements (e.g., Ubuntu 16.04, Ubuntu 18.04). This can be cumbersome during development if you are working on multiple projects at the same time. Dedicated build machines seem unfeasible for multiple reasons, one of which is the cost of hardware. Virtual machines have definite shortcomings as they reserve and virtualize the host hardware and only provide a limited set of resources to the build process.
 
 Docker is a great solution to this problem and provides:
 
 
 
-* Lightweight and simple to share configuration and setup files (that allows creation of identical environments)
+* Lightweight and simple to share configuration and setup files (allows creation of identical environments)
 * A git revision controlled build environment
-* Does not require strict allocation of RAM and hard drive memory
-* Has very little CPU/IO overhead, does not impact build time
-* Containers start and stop in 1-2 seconds
-* Can run multiple containers simultaneously
-* Build environment is kept isolated from host machine
+* Flexible allocation of RAM and hard drive memory
+* Little CPU/IO overhead (build time is not impacted)
+* Containers that start and stop within 2 seconds
+* The ability to run multiple containers simultaneously
+* A build environment that is kept isolated from the host machine
 
 Docker's efficiency allows multiple containers to be run simultaneously without burdening the host OS.
 
 
 ### Setting Up Host Computer
 
-For building the MistySOM BSP and SDK, a Linux host with running docker daemon is needed. Docker can be installed through a distribution’s packaging manager. Lookup how to install docker and start dockerd for your respective distributions. Some links to find documentation about some common distributions are listed below:
+A Linux host with running docker daemon is required for building the MistySOM BSP and SDK. Docker can be installed through a distribution’s packaging manager. Look up how to install docker and start dockerd for your respective distributions. Some links to find documentation about some common distributions are listed below:
 
 
 #### Ubuntu
@@ -102,7 +102,7 @@ For building the MistySOM BSP and SDK, a Linux host with running docker daemon i
 
 [https://docs.docker.com/desktop/install/archlinux/](https://docs.docker.com/desktop/install/archlinux/) 
 
-After docker has been installed and started, you can confirm the functionality of the installation with:
+After docker has been installed and started, you can confirm the functionality of the installation with the command:
 
 
 ```
@@ -121,12 +121,12 @@ Hello from Docker!
 it means your installation is working correctly.
 
 
-## Container usage
+## Container Usage
 
 
-### Building and starting the container
+### Building and Starting the Container
 
-Clone the MistySOM/rzv2l or MistySOM/rzg2l repository from GitHub[^1], 
+The first step is to clone the MistySOM/rzv2l or MistySOM/rzg2l repository from GitHub[^1] using the commands:
 ```
 $ git clone git@github.com:MistySOM/rzg2l.git
 ```
@@ -134,7 +134,7 @@ or
 ```
 $ git clone git@github.com:MistySOM/rzv2l.git
 ```
-enter the `Build/` directory. 
+then enter the `Build/` directory. 
 ```
 $ cd Build/
 ```
@@ -145,11 +145,11 @@ $ ./build.sh
 ```
 
 
-This will download the required files and build the container. To enable caching,create a directory to cache the source packages and object build files.  This directory can be reused for every subsequent container run, so that the files do not need to be downloaded & built multiple times. In the below example, that directory is called `/path/to/dir/`
+This will download the required files and build the container. To enable caching, create a directory to cache the source packages and object build files.  This directory can be reused for every subsequent container run, so that the files do not need to be downloaded and built multiple times. In the example below, that directory is called `/path/to/dir/`
 
 
 **Important: the directory needs to have read and write access for uid 1000 and gid 1000**<br/>
-_(hint: you can execute `chmod -R 777 /path/to/dir` to grant read, write & execute access for everybody on your system to the directory)_
+_(hint: you can execute `chmod -R 777 /path/to/dir` to grant read, write & execute access for the directory to everybody on your system )_
 
 
 The owner uid and gid setting can be confirmed with
@@ -160,7 +160,7 @@ $ ls -na /path/to/dir
 ```
 
 
-Which should provide a line that looks like (there will be other lines too):
+Which should provide a line similar to the one below if the first user on a Linux system was used to create the directory:
 
 
 ```
@@ -168,8 +168,9 @@ drwxr-xr-x 1 1000 1000    0 Month  # HH:MM ./
 ```
 
 
-If the first user on a Linux system was used to create the directory. If uid and gid do not indicate ` 1000 1000`, please read about file permissions and attributes, see [here](https://wiki.archlinux.org/title/File_permissions_and_attributes#Changing_permissions). \
-Invoke the container and pass the cache directory like:
+If uid and gid do not indicate ` 1000 1000`, please read about file permissions and attributes, see [here](https://wiki.archlinux.org/title/File_permissions_and_attributes#Changing_permissions). \
+
+Invoke the container and pass the cache directory with the command:
 
 
 ```
@@ -177,12 +178,12 @@ $ ./run.sh -c /path/to/dir
 ```
 
 
-Upon completion of the build, the created image files are copied to the directory `output/`, this directory got created at the path as where `./run.sh` was invoked from. The rootfs, kernel and device tree blob, can now be copied to the destination uSD card, see section **[Output](#output)** below.
+Upon completion of the build, the created image files are copied to the directory `output/`. This directory got created in the same path as where `./run.sh` was invoked from. The rootfs, kernel, and device tree blob can now be copied to the destination uSD card. See section **[Output](#output)** below.
 
 
 ### Building the SDK
 
-For development purposes, the SDK can be built with the above container, for this, append the `-s` flag to the `./run.sh` call:
+For development purposes, the SDK can be built with the above container. To do this, append the `-s` flag to the `./run.sh` call:
 
 
 ```
@@ -214,7 +215,7 @@ $ source /opt/poky/3.1.5/environment-setup-aatch64-poky-linux
 This command has to be invoked every time before the SDK is being used.
 
 
-### Description of advanced container options
+### Description of Advanced Container Options
 
 
 #### Building the BSP
