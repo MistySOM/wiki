@@ -33,27 +33,27 @@
   </tr>
 </table>
 
-### Start ssh server
+### Start SSH Server
 
 To enable the ssh daemon, login with the serial terminal and enter:
 ```
 # systemctl start sshd
 ```
 
-#### Autostart ssh server on reboot
+#### Autostart SSH Server on Reboot
 
 To start the ssh server automatically after subsequent reboots, enter:
 ```
 # systemctl enable sshd
 ```
 
-#### Allow clients to connect using rsa
+#### Allow Clients to Connect Using RSA
 
-Some ssh clients neeed top be configured explicitly allow to connect via with rsa encryption. To do do so, create a file `~/.ssh/config` anda add the following contents:
+Some ssh clients need to be configured explicitly to allow connection via rsa encryption. To do so, create a file `~/.ssh/config` and add the following contents:
 ```
 Host 192.168.1.15
     User git
     PubkeyAcceptedAlgorithms +ssh-rsa
     HostkeyAlgorithms +ssh-rsa
 ```
-Where the IP address following `Host ` has to ber the same as the one that MistySOM leased from your DHCP server. To find the address on MistySOM, type `# ip a` and look for the address listed under the interface `eth2:`
+Where the IP address following `Host ` has to be the same as the one that MistySOM leased from your DHCP server. To find the address on MistySOM, type `# ip a` and look for the address listed under the interface `eth2:`
