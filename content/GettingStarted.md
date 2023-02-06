@@ -1,4 +1,4 @@
-<img src="files/img/2018_MistyWest_LogoCombo_FINAL_RGB.png" alt="MistyWest" width="400"/><div style="text-align: right">back to [index]( README.md)</div>
+<img src="../files/img/2018_MistyWest_LogoCombo_FINAL_RGB.png" alt="MistyWest" width="400"/><div style="text-align: right">back to [index](../README.md)</div>
 
 # Getting Started with MistySOM
 
@@ -50,18 +50,18 @@
 
 This guide gets you started and setup to develop software and/or firmware for MistySOM.
 
-MistyWest provides an environment in a docker container to build the BSP[^2] and a SDK[^3] for both versions of MistYSOM. The host computer requires docker to be configured, setup and running. The requirements to satisfy are explained in the section **[Setting Up Host Computer](#setting-up-host-computer)**.
+MistyWest provides an environment in a docker container to build the BSP[^2] and a SDK[^3] for both versions of MistySOM. The host computer requires docker to be configured, setup and running. The requirements for setting up the host computer are described in the section **[Setting Up Host Computer](#setting-up-host-computer)**.
 
 ### Dependencies
 
-The below instructions have some dependencies, they include:
+The following instructions have some dependencies, they include:
 * A running Linux host
 * Installed `docker`, running `dockerd`(docker daemon) and added the current user to the `docker` group to allow execution of docker commands
 
 
 ### Why build using Docker
 
-Each version of Yocto mah have unique Host requirements (e.g. Ubuntu 16.04, Ubuntu 18.04...). This can be cumbersome during development if you are working on multiple projects at the same time. Dedicated build machines do not seem feasible for multiple reasons, one of which is the cost of hardware where virtual machines have definite shortcomings as they reserve and virtualize the host hardware and only provide a limited set of resources to the build process.
+Each version of Yocto may have unique Host requirements (e.g., Ubuntu 16.04, Ubuntu 18.04). This can be cumbersome during development if you are working on multiple projects at the same time. Dedicated build machines do not seem feasible for multiple reasons, one of which is the cost of hardware. Virtual machines have definite shortcomings as they reserve and virtualize the host hardware and only provide a limited set of resources to the build process.
 
 Docker is a great solution to this problem and provides:
 
@@ -80,7 +80,7 @@ Docker's efficiency allows multiple containers to be run simultaneously without 
 
 ### Setting Up Host Computer
 
-For building the MistySOM BSP and SDK, a Linux host with running docker daemon is needed. Docker can be installed through a distribution’s packaging manager. Lookup how to install docker and start dockerd for your respective distributions. Some links to find documentation about some common distributions aer listed below:
+For building the MistySOM BSP and SDK, a Linux host with running docker daemon is needed. Docker can be installed through a distribution’s packaging manager. Lookup how to install docker and start dockerd for your respective distributions. Some links to find documentation about some common distributions are listed below:
 
 
 #### Ubuntu
@@ -102,7 +102,7 @@ For building the MistySOM BSP and SDK, a Linux host with running docker daemon i
 
 [https://docs.docker.com/desktop/install/archlinux/](https://docs.docker.com/desktop/install/archlinux/) 
 
-After docker has been installed and started, you can confirm functionality of the installation with:
+After docker has been installed and started, you can confirm the functionality of the installation with:
 
 
 ```
@@ -110,7 +110,7 @@ $ docker run hello-world
 ```
 
 
-When you see:
+If you see:
 
 
 ```
@@ -148,7 +148,8 @@ $ ./build.sh
 This will download the required files and build the container. To enable caching,create a directory to cache the source packages and object build files.  This directory can be reused for every subsequent container run, so that the files do not need to be downloaded & built multiple times. In the below example, that directory is called `/path/to/dir/`
 
 
-**Important: the directory needs to have read and write access for uid 1000 and gid 1000**
+**Important: the directory needs to have read and write access for uid 1000 and gid 1000**<br/>
+_(hint: you can execute `chmod -R 777 /path/to/dir` to grant read, write & execute access for everybody on your system to the directory)_
 
 
 The owner uid and gid setting can be confirmed with
@@ -220,7 +221,7 @@ This command has to be invoked every time before the SDK is being used.
 
 
 
-* The script `run.sh` can be supplied with an external path to a directory with `-c /path/to/dir` or `--cpath /path/to/dir` where the Yocto downloads and the built object files can be cached (it requires about 10GB of empty space as of 10/20/2022) so that they do not need to be re-downloaded and re-built for every container run (just resubmit the same directory path).  To allow the container to cache the data, the target directory needs to be writeable by uid and gid 1000 (which is the default user id  & group id of the first user on a Linux system, confirm with `id -u`, `id -g `& `ln -n`).
+* The script `run.sh` can be supplied with an external path to a directory with `-c /path/to/dir` or `--cpath /path/to/dir` where the Yocto downloads and the built object files can be cached (it requires about 10GB of empty space as of 10/20/2022) so that they do not need to be re-downloaded and re-built for every container run (just resubmit the same directory path).  To allow the container to cache the data, the target directory needs to be writable by uid and gid 1000 (which is the default user id  & group id of the first user on a Linux system, confirm with `id -u`, `id -g `& `ln -n`).
 * When no download path is submitted, the container will build the binaries in offline mode, utilizing the data & files that have been downloaded during the container build.
 
 
@@ -319,7 +320,7 @@ The files in the above `images/` directory include:
 and the resources can simply be copied to the host with `docker cp  NAME:SRC DST` where `NAME` is the name of the running container that can be retrieved by running `docker ps` on the host.
 
 #### Load files to uSD card
-In order to test the newly built BSP, files need to be loaded to an uSD card that MistySOM will boot from. Bfoe the files can be copied, the card has to be prepared accordingly, please follow the instructions on the [Preparing uSD card instructions](preparing_usd.md) page accordingly.
+In order to test the newly built BSP, files need to be loaded to an uSD card that MistySOM will boot from. Before the files can be copied, the card has to be prepared accordingly, please follow the instructions on the [Preparing uSD card instructions](preparing_usd.md) page accordingly.
 After the uSD card has been prepared, mount the two partitions and copy the following files:
 * Linux kernel to the first partition (FAT32):
 ```
@@ -372,7 +373,7 @@ int main() {
 }
 ```
 
-Create a file called `hello.bb`[^5] with that contains:
+Create a file called `hello.bb`[^5] that contains:
 
 
 ```
@@ -542,7 +543,7 @@ In order for MistySOM to boot with the files copied onto the uSD card above, the
 ## Connecting the hardware
 
 To test the Build generated by following the above instructions, the MistySOM hardware has to be connected and powered up.
-For development purposes, use the FTDI serial console cable cable[^6] and the UISB-C power cable[^7]
+For development purposes, use the FTDI serial console cable[^6] and the UISB-C power cable[^7]
 Connect the FTDI able to connector `J40` on MistyCarrier and connect the USB-C power cable to `J1`. The locations of the two connectors are hightlighted on the below image: 
 <img src="files/img/MistyCarrier_PowerFTDI.png" alt="MistyWest" width="400"/>
 

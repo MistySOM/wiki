@@ -1,4 +1,4 @@
-<img src="files/img/2018_MistyWest_LogoCombo_FINAL_RGB.png" alt="MistyWest" width="400"/><div style="text-align: right">back to [index]( README.md)</div>
+<img src="../files/img/2018_MistyWest_LogoCombo_FINAL_RGB.png" alt="MistyWest" width="400"/><div style="text-align: right">back to [index](../README.md)</div>
 
 # Board Start-Up Guide MistySOM
 ### Revision History
@@ -48,7 +48,7 @@
 
 ### Booting Flash Writer
 1. Set the boot mode to SCIF. On the MistySOM Carrier board, on SW2, set BOOT1 OFF and Boot2  to ON position.
-   ![BootOption_SPIF](files/img/BootOptions_SPIF.JPG)
+   ![BootOption_SPIF](../files/img/BootOptions_SPIF.JPG)
 3. Connect the `FTDI cable` to `J40` on the MistyCarrier board and a USB port on the computer
 4. **On Windows:**
 	- Start TeraTerm and select the `COMn: USB Serial Port (COMn)` interface.
@@ -62,7 +62,7 @@
       -- Load Program to SystemRAM ---------------
       please send !  
       ```  
-7. Download and save the file `Flash_Writer_SCIF__.mot`([link]( files/bootloader/rzg2l/Flash_Writer_SCIF__.mot)) by clicking on **Raw** button and then using **Save as** over the openned content.
+7. Download and save the file `Flash_Writer_SCIF__.mot`([link](../files/bootloader/rzg2l/Flash_Writer_SCIF__.mot)) by clicking on **Raw** button and then using **Save as** over the openned content.
 8. **On Windows:** Select `File -> Send File...` and select the file `Flash_Writer_SCIF__.mot`. A transfer dialog will appear displaying the progress of the file transfer over the serial connection. <br/>
    **On Linux:** Open another terminal window and run the command: `pv Flash_Writer_SCIF__.mot | sudo dd of=/dev/ttyUSB0`
    
@@ -93,7 +93,7 @@ Please Input : H'00000
 Work RAM(H'50000000-H'53FFFFFF) Clear....
 please send ! ('.' & CR stop load)
 ```
-Send the data of “`bl2_bp-MistySOMG2L.srec`” ([download]( files/bootloader/rzg2l/bl2_bp-MistySOMG2L.srec)) from terminal software after the message “please send !” is shown.
+Send the data of “`bl2_bp-MistySOMG2L.srec`” ([download](../files/bootloader/rzg2l/bl2_bp-MistySOMG2L.srec)) from terminal software after the message “please send !” is shown.
 
 After successful download of the binary, messages like below are shown on the terminal.
 ```
@@ -126,7 +126,7 @@ Please Input : H'1D200
 Work RAM(H'50000000-H'53FFFFFF) Clear....
 please send ! ('.' & CR stop load)
 ```
-Send the data of “`fip-MistySOMG2L.srec`”([download]( files/bootloader/rzg2l/fip-MistySOMG2L.srec)) from terminal software after the message “please send !” is shown.
+Send the data of “`fip-MistySOMG2L.srec`”([download](../files/bootloader/rzg2l/fip-MistySOMG2L.srec)) from terminal software after the message “please send !” is shown.
 
 After successful download of the binary, messages like below are shown on the terminal.
 ```
@@ -145,7 +145,7 @@ After writing two loader files normally, turn off the power of the board and set
 * BOOT1 ON
 * BOOT2 OFF
   
-  ![BootOption_QSPI](files/img/BootOptions_QSPI.jpg)
+  ![BootOption_QSPI](../files/img/BootOptions_QSPI.jpg)
 
 
 ### Configure U-Boot
