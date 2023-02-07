@@ -9,8 +9,8 @@ The 40 pin GPIO Header on MistySOM can be configured to expose a different funct
 ||||	5V| 1|2|3.3V | |
 ||||	1.8V	|3|	4|	GND	| |
 ||||	GND|	5|	6|	1.2V	||
-|||RIIC1_SDA|	dedicated I2C|	7|	8|	GND	||
-|||RIIC1_SCL|	dedicated I2C|	9|	10|	2.5V	||
+|||RIIC1_SDA|	dedicated IIC|	7|	8|	GND	||
+|||RIIC1_SCL|	dedicated IIC|	9|	10|	2.5V	||
 ||RIIC2_SDA|	P42_3|	3.3V GPIO|	11|	12|	GND	||
 ||RIIC2_SCL|	P42_4|	3.3V GPIO	|13	|14	|GND		||
 |||NMI	|input	|15	|16	|Analog	|ADC_CH0	|
