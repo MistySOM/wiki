@@ -15,7 +15,7 @@
 * [Preparing uSD card instructions](content/preparing_usd.md)
 * [Setup WiFi](content/SetupWifi.md)
 * [Streaming Video](content/StreamingVideo.md)
-* [GPIO Header](content/GPIOHeader.md)
+* [GPIO Pins](content/GPIOPins.md)
 
 ### Device Tree
 
