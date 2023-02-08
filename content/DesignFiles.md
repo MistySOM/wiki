@@ -3,7 +3,7 @@
 # Design Files
 
 ## MistySOM
-* [Schematic (.pdf)](../files/designfiles/2022-12-23_SOM_001_B_SchPrints.PDF)
+* [Schematic (.pdf)](https://remote.mistywest.io/download/mh11/designfiles/2022-12-23_SOM_001_B_SchPrints.PDF)
 
 ## MistyCarrier
 * [Altium design package (.zip)](#)
