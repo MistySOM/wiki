@@ -49,7 +49,7 @@ To start the ssh server automatically after subsequent reboots, enter:
 
 #### Allow clients to connect using rsa
 
-Some ssh clients neeed top be configured explicitly allow to connect via with rsa encryption. To do do so, create a file `~/.ssh/config` anda add the following contents:
+Some ssh clients neeed top be configured explicitly allow to connect via with rsa encryption. To do do so, create a file `~/.ssh/config` and add the following contents:
 ```
 Host 192.168.1.15
     User git
