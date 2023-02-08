@@ -2,4 +2,13 @@
 
 # Design Files
 
-Design files are available upon request: mistysom@mistywest.com
+## MistySOM
+* [Schematic (.pdf)](../files/designfiles/2022-12-23_SOM_001_B_SchPrints.PDF)
+
+## MistyCarrier
+* [Altium design package (.zip)](../files/designfiles/CARRIER_001_Rev_A.zip)
+
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+
+Additional design files are available upon request: mistysom@mistywest.com
