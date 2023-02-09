@@ -63,7 +63,12 @@ if you look at the contents of your `MY_DEVICE.cfg` it should look similar to:
 cat $WORK/meta-renesas/recipes-common/recipes-kernel/linux/linux-renesas/MY_DEVICE.cfg 
 CONFIG_TYP_MY_DEVICE=y
 ```
-After the fragment has been added to, edit the kernel bitbake recipe located at `$WORK/meta-renesas/recipes-common/recipes-kernel/linux/linux-renesas_#.##.bb` and add `my_DEVICE.cfg` to the configuration fragments listed under `SRC_URI_append = " \`.
+After the fragment has been added to, edit the kernel bitbake recipe located at `$WORK/meta-renesas/recipes-common/recipes-kernel/linux/linux-renesas_#.##.bb` and add `MY_DEVICE.cfg` to the configuration fragments listed under `SRC_URI_append = " \` like so:
+```
+SRC_URI_append = " \
+file://MY_DEVICE.cfg \ (new)
+" 
+```
 invocation of 
 ```
 bitbake mistysom-image
