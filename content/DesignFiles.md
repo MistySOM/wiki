@@ -4,6 +4,7 @@
 
 ## MistySOM
 * [Schematic (.pdf)](https://remote.mistywest.io/download/mh11/designfiles/2022-12-23_SOM_001_B_SchPrints.PDF)
+* [Pin map for connectors](PinMap.md)
 
 ## MistyCarrier
 * [Altium design package (.zip)](https://remote.mistywest.io/download/mh11/designfiles/CARRIER_001_Rev_A.zip)
