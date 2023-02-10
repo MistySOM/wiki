@@ -39,10 +39,10 @@ The Prerequisite for the below steps are, that the new device already is support
  
 To add a custom device to the MistySOM distrution, multiple steps are required. They can be separated as follows:
  
-1. Update Linux kernel configuration to compile the driver for the new device 
-2. Patch the device tree to configure the driver for the new device.
-3. Rebuild the kernel & device tree
-4. Load & boot the rebuilt files for testing
+1. [Update Linux kernel configuration to compile the driver for the new device](#1-update-linux-kernel-configuration-to-compile-the-driver-for-the-new-device)
+2. [Patch the device tree to configure the driver for the new device.](#2-patch-the-device-tree-to-configure-the-driver-for-the-new-device)
+3. [Rebuild the kernel & device tree](#3-rebuild-the-kernel--device-tree)
+4. [Load & boot the rebuilt files for testing](#4-load--boot-the-rebuilt-files-for-testing)
 
 
 #### 1. Update Linux kernel configuration to compile the driver for the new device 
@@ -76,8 +76,20 @@ bitbake mistysom-image
 will now build the kernel with the newly added device driver included.
 
 #### 2. Patch the device tree to configure the driver for the new device.
+
+An excellent tutorial that relates to editing the device tree, can be found here: [Intro to Embedded Linux Part 5 - How to Enable I2C in the Yocto Project](https://www.digikey.com/en/maker/projects/intro-to-embedded-linux-part-5-how-to-enable-i2c-in-the-yocto-project/6843bbf9a83c4c96888fccada1e7aedf)
+
 #### 3. Rebuild the kernel & device tree
+
+Invoke 
+```
+bitbake virtual/kernel -c compile -f && bitbake virtual/kernel
+```
+to re-compile the kernel and the device tree
+
 #### 4. Load & boot the rebuilt files for testing
+
+Prepare a uSD card according to instructions [here](preparing_usd.md), copy the Linux kernel and the device tree blob (.dtb) files to the first partition (see [here](https://github.com/MistySOM/wiki/blob/master/content/GettingStarted.md#output) for details about the output files) and extract the root filesystem to the second partition.
 
 
   
