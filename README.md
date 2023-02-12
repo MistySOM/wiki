@@ -15,11 +15,12 @@
 * [Preparing uSD card instructions](content/preparing_usd.md)
 * [Setup WiFi](content/SetupWifi.md)
 * [Streaming Video](content/StreamingVideo.md)
-* [GPIO Header](content/GPIOHeader.md)
+* [GPIO Pins](content/GPIOPins.md)
 
 ### Device Tree
 
 * [Access Device Tree information from User Space]( content/DeviceTreeFromUserSpace.md )
+* [How to add a custom device]( content/HowToAddACustomDevice.md)
 * [Audio CODEC TLV320AIC23B]( content/AudioCodec.md)
 
 ### Yocto

@@ -49,11 +49,15 @@ To start the ssh server automatically after subsequent reboots, enter:
 
 #### Allow Clients to Connect Using RSA
 
-Some ssh clients need to be configured explicitly to allow connection via rsa encryption. To do so, create a file `~/.ssh/config` and add the following contents:
+
+Some ssh clients neeed top be configured explicitly allow to connect with rsa encryption. To do do so, create a file `~/.ssh/config` and add the following contents:
+
 ```
 Host 192.168.1.15
     User git
     PubkeyAcceptedAlgorithms +ssh-rsa
     HostkeyAlgorithms +ssh-rsa
 ```
+
 Where the IP address following `Host ` has to be the same as the one that MistySOM leased from your DHCP server. To find the address on MistySOM, type `# ip a` and look for the address listed under the interface `eth2:`
+
