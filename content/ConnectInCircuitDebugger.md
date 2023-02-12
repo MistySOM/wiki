@@ -53,11 +53,11 @@ $ ./build_openocd
 ```
 
 
-## Connect to the board
+## Connect to the Board
 
 ### Settings
  
-Power cycke the MistyCarrier board, with both switches, **1 & 2** on **SW1** in the **OFF** position. 
+Power cycle the MistyCarrier board, with both switches, **1 & 2** on **SW1** in the **OFF** position. 
 
 ## OpenOCD
 
@@ -80,7 +80,7 @@ In the new window launch `gdb` from the installed SDK:
 $ /opt/poky/3.1.14/sysroots/x86_64-pokysdk-linux/usr/bin/aarch64-poky-linux/aarch64-poky-linux-gdb Flash_Writer_SCIF_RZV2L_SMARC_PMIC_DDR4_2GB_1PCS.mot
 ```
 with the `Flash_Writer` binary that was compiled following the instructions about [building the bootloaders](BuildBootloaders.md).
-Upon execution of the above command, a screeb similar to the below is expected:
+Upon execution of the above command, a screen similar to the below is expected:
 ```
 GNU gdb (GDB) 9.1
 Copyright (C) 2020 Free Software Foundation, Inc.
@@ -113,5 +113,5 @@ entering the command
 ```
 gdb) monitor reset init
 ```
-will reset the MPU which can be confirmed by watching theoutput on the serial console.<br/>
+will reset the MPU which can be confirmed by watching the output on the serial console.<br/>
 Follow info on [Z-G/RZG2 Eclipse develop and debug](https://renesas.info/wiki/RZ-G/RZG2_Eclipse_develop_and_debug#Cross_debugging_bare_metal_programs_using_GDB_and_OpenOCD) to setup Eclipse with OCD for debugging Flash Writer.

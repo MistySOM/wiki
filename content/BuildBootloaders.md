@@ -35,7 +35,7 @@
 
 ## Introduction
 
-In order to boot MistySOM into Linux, it requires to be lo be loaded with bootloaders. 
+In order to boot MistySOM into Linux, it requires to be loaded with bootloaders. 
 ### Dependencies
 The bootloaders are set to be built on a Linux machine. 
 Dependencies include the following packages (on Ubuntu distributions, installation of the `build-essentials package will resolve all dependencies):
@@ -43,13 +43,13 @@ Dependencies include the following packages (on Ubuntu distributions, installati
 * installed git package
 * installed make package
 
-The bootloaders are separte per SOM basis, as documented below:
+The bootloaders are seperate per SOM basis, as documented below:
 * [MistySOMG2L ]( #MistySOMG2L)
 * [MistySOMV2L ]( #MistySOMV2L)
 
 ## MistySOMG2L
 
-### Clone source code
+### Clone Source Code
 Change directories to a location from where the source code can be built
 ```
 $ git clone git@github.com:MistySOM/rzg2_bsp_scripts.git
@@ -61,7 +61,7 @@ $ cd build_scripts/
 
 ## MistySOMV2L
 
-### Clone source code
+### Clone Source Code
 Change directories to a location from where the source code can be built
 ```
 $ git clone git@github.com:MistySOM/rzg2_bsp_scripts.git
