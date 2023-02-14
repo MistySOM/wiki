@@ -59,28 +59,28 @@ The following instructions have some dependencies, they include:
 * Installed `docker`, running `dockerd`(docker daemon) and added the current user to the `docker` group to allow execution of docker commands
 
 
-### Why build using Docker
+### Why Build Using Docker
 
-Each version of Yocto may have unique Host requirements (e.g., Ubuntu 16.04, Ubuntu 18.04). This can be cumbersome during development if you are working on multiple projects at the same time. Dedicated build machines do not seem feasible for multiple reasons, one of which is the cost of hardware. Virtual machines have definite shortcomings as they reserve and virtualize the host hardware and only provide a limited set of resources to the build process.
+Each version of Yocto may have unique Host requirements (e.g., Ubuntu 16.04, Ubuntu 18.04). This can be cumbersome during development if you are working on multiple projects at the same time. Dedicated build machines seem unfeasible for multiple reasons, one of which is the cost of hardware. Virtual machines have definite shortcomings as they reserve and virtualize the host hardware and only provide a limited set of resources to the build process.
 
 Docker is a great solution to this problem and provides:
 
 
 
-* Lightweight and simple to share configuration and setup files (that allows creation of identical environments)
+* Lightweight and simple to share configuration and setup files (allows creation of identical environments)
 * A git revision controlled build environment
-* Does not require strict allocation of RAM and hard drive memory
-* Has very little CPU/IO overhead, does not impact build time
-* Containers start and stop in 1-2 seconds
-* Can run multiple containers simultaneously
-* Build environment is kept isolated from host machine
+* Flexible allocation of RAM and hard drive memory
+* Little CPU/IO overhead (build time is not impacted)
+* Containers that start and stop within 2 seconds
+* The ability to run multiple containers simultaneously
+* A build environment that is kept isolated from the host machine
 
 Docker's efficiency allows multiple containers to be run simultaneously without burdening the host OS.
 
 
 ### Setting Up Host Computer
 
-For building the MistySOM BSP and SDK, a Linux host with running docker daemon is needed. Docker can be installed through a distribution’s packaging manager. Lookup how to install docker and start dockerd for your respective distributions. Some links to find documentation about some common distributions are listed below:
+A Linux host with running docker daemon is required for building the MistySOM BSP and SDK. Docker can be installed through a distribution’s packaging manager. Look up how to install docker and start dockerd for your respective distributions. Some links to find documentation about some common distributions are listed below:
 
 
 #### Ubuntu
@@ -102,7 +102,7 @@ For building the MistySOM BSP and SDK, a Linux host with running docker daemon i
 
 [https://docs.docker.com/desktop/install/archlinux/](https://docs.docker.com/desktop/install/archlinux/) 
 
-After docker has been installed and started, you can confirm the functionality of the installation with:
+After docker has been installed and started, you can confirm the functionality of the installation with the command:
 
 
 ```
@@ -121,12 +121,12 @@ Hello from Docker!
 it means your installation is working correctly.
 
 
-## Container usage
+## Container Usage
 
 
-### Building and starting the container
+### Building and Starting the Container
 
-Clone the MistySOM/rzv2l or MistySOM/rzg2l repository from GitHub[^1], 
+The first step is to clone the MistySOM/rzv2l or MistySOM/rzg2l repository from GitHub[^1] using the commands:
 ```
 $ git clone git@github.com:MistySOM/rzg2l.git
 ```
@@ -134,7 +134,7 @@ or
 ```
 $ git clone git@github.com:MistySOM/rzv2l.git
 ```
-enter the `Build/` directory. 
+then enter the `Build/` directory. 
 ```
 $ cd Build/
 ```
@@ -145,11 +145,11 @@ $ ./build.sh
 ```
 
 
-This will download the required files and build the container. To enable caching,create a directory to cache the source packages and object build files.  This directory can be reused for every subsequent container run, so that the files do not need to be downloaded & built multiple times. In the below example, that directory is called `/path/to/dir/`
+This will download the required files and build the container. To enable caching, create a directory to cache the source packages and object build files.  This directory can be reused for every subsequent container run, so that the files do not need to be downloaded and built multiple times. In the example below, that directory is called `/path/to/dir/`
 
 
 **Important: the directory needs to have read and write access for uid 1000 and gid 1000**<br/>
-_(hint: you can execute `chmod -R 777 /path/to/dir` to grant read, write & execute access for everybody on your system to the directory)_
+_(hint: you can execute `chmod -R 777 /path/to/dir` to grant read, write & execute access for the directory to everybody on your system )_
 
 
 The owner uid and gid setting can be confirmed with
@@ -160,7 +160,7 @@ $ ls -na /path/to/dir
 ```
 
 
-Which should provide a line that looks like (there will be other lines too):
+Which should provide a line similar to the one below if the first user on a Linux system was used to create the directory:
 
 
 ```
@@ -168,8 +168,9 @@ drwxr-xr-x 1 1000 1000    0 Month  # HH:MM ./
 ```
 
 
-If the first user on a Linux system was used to create the directory. If uid and gid do not indicate ` 1000 1000`, please read about file permissions and attributes, see [here](https://wiki.archlinux.org/title/File_permissions_and_attributes#Changing_permissions). \
-Invoke the container and pass the cache directory like:
+If uid and gid do not indicate ` 1000 1000`, please read about file permissions and attributes, see [here](https://wiki.archlinux.org/title/File_permissions_and_attributes#Changing_permissions). \
+
+Invoke the container and pass the cache directory with the command:
 
 
 ```
@@ -177,12 +178,12 @@ $ ./run.sh -c /path/to/dir
 ```
 
 
-Upon completion of the build, the created image files are copied to the directory `output/`, this directory got created at the path as where `./run.sh` was invoked from. The rootfs, kernel and device tree blob, can now be copied to the destination uSD card, see section **[Output](#output)** below.
+Upon completion of the build, the created image files are copied to the directory `output/`. This directory got created in the same path as where `./run.sh` was invoked from. The rootfs, kernel, and device tree blob can now be copied to the destination uSD card. See section **[Output](#output)** below.
 
 
 ### Building the SDK
 
-For development purposes, the SDK can be built with the above container, for this, append the `-s` flag to the `./run.sh` call:
+For development purposes, the SDK can be built with the above container. To do this, append the `-s` flag to the `./run.sh` call:
 
 
 ```
@@ -195,7 +196,9 @@ This will automatically build the BSP and the SDK and copy the resulting files i
 
 ### Installation of the SDK
 
-To install the SDK, execute it as user root on host, e.g. with sudo like (where` /path/to/` is the location of your extracted MistySOMContainer archive):
+To install the SDK, execute it as user root on host, e.g. with sudo as shown in the command below 
+
+(Note that ` /path/to/` is the location of your extracted MistySOMContainer archive)
 
 
 ```
@@ -211,10 +214,10 @@ $ source /opt/poky/3.1.5/environment-setup-aatch64-poky-linux
 ```
 
 
-This command has to be invoked every time before the SDK is being used.
+This command has to be invoked every time before the SDK is used.
 
 
-### Description of advanced container options
+### Description of Advanced Container Options
 
 
 #### Building the BSP
@@ -246,7 +249,7 @@ The `run.sh` script in addition can be started with the argument `-s` to auto tr
   <tr>
    <td><code>-n --no</code>
    </td>
-   <td>Container will start, setup the environment but not auto issue a build but instead start a dev shell
+   <td>Container will start and environment will be setup. No build will be auto issued but a dev shell will start.
    </td>
   </tr>
   <tr>
@@ -320,7 +323,7 @@ The files in the above `images/` directory include:
 and the resources can simply be copied to the host with `docker cp  NAME:SRC DST` where `NAME` is the name of the running container that can be retrieved by running `docker ps` on the host.
 
 #### Load files to uSD card
-In order to test the newly built BSP, files need to be loaded to an uSD card that MistySOM will boot from. Before the files can be copied, the card has to be prepared accordingly, please follow the instructions on the [Preparing uSD card instructions](preparing_usd.md) page accordingly.
+In order to test the newly built BSP, files need to be loaded to a uSD card that MistySOM will boot from. Before the files can be copied, the card has to be prepared accordingly, please follow the instructions on the [Preparing uSD card instructions](preparing_usd.md) page accordingly.
 After the uSD card has been prepared, mount the two partitions and copy the following files:
 * Linux kernel to the first partition (FAT32):
 ```
@@ -347,13 +350,13 @@ Make sure to work with files on Linux mounts (avoid use of mounted Windows parti
 
 
 
-* `./build.sh` Builds the container image from the Dockerfile and downloads the required files, from the web. 
+* `./build.sh` Builds the container image from the Dockerfile and downloads the required files from the web. 
 * `./run.sh` Will start the container image, upon start, the `exec.sh` script is executed from within the container
 * `exec.sh` invokes `start.sh` which sets up the Yocto build environment inside the container
 * after the environment has been setup, `exec.sh` will invoke the bitbake[^4] commands required to build the binary files
 
 
-## Develop example application
+## Develop Example Application
 
 
 ### Hello World
@@ -396,7 +399,7 @@ do_install() {
 ```
 
 
-#### Build using the installed SDK
+#### Build Using the Installed SDK
 
 This step requires completion of the previous steps: [Building the SDK](#building-the-sdk-1) and [Installation of the SDK](#installation-of-the-sdk).
 
@@ -437,10 +440,10 @@ or
 ```
 
 
-to launch it with the cache directory mounted
+to launch it with the cache directory mounted.
 
 
-#### Source the build environment
+#### Source the Build Environment
 
 
 ```
@@ -463,7 +466,7 @@ $ bitbake-layers create-layer --priority 3 meta-helloworld
 ```
 
 
-Use the `hello.c` and `hello.bb` files from above tp create the following directory structure within the `meta-helloworld/` directory:
+Use the `hello.c` and `hello.bb` files from above to create the following directory structure within the `meta-helloworld/` directory:
 
 
 ```
@@ -484,7 +487,7 @@ meta-helloworld
 
 
 
-#### Add new layer to configuration
+#### Add New Layer to Configuration
 
 Execute the following command to add the line  `${TOPDIR}/../meta-helloworld \` to the file `conf/bblayers.conf` (after the `meta-renesas` layer).
 
@@ -528,9 +531,9 @@ IMAGE_INSTALL_append = " myhello"
 This will put the myhello app to the rootfs.
 
 
-## MistySOM Development shell
+## MistySOM Development Shell
 
-When to container gets started with the `-n` argument like:
+When the container gets started with the `-n` argument like:
 
 ```
 ./run.sh -n
@@ -540,18 +543,18 @@ The container image gets started with the Yocto build environment setup. For adm
 ## Configure U-Boot 
 In order for MistySOM to boot with the files copied onto the uSD card above, the bootloader needs to be configured accordingly. For instructions on how to configure U-Boot, please follow the information on [Configure U-Boot](BoardStartUpGuide.md#configure-u-boot)
 
-## Connecting the hardware
+## Connecting the Hardware
 
-To test the Build generated by following the above instructions, the MistySOM hardware has to be connected and powered up.
+To test the build generated by following the instructions above, the MistySOM hardware has to be connected and powered up.
 For development purposes, use the FTDI serial console cable[^6] and the UISB-C power cable[^7]
-Connect the FTDI able to connector `J40` on MistyCarrier and connect the USB-C power cable to `J1`. The locations of the two connectors are hightlighted on the below image: 
+Connect the FTDI able to connector `J40` on MistyCarrier and connect the USB-C power cable to `J1`. The locations of the two connectors are hightlighted in the following image: 
 <img src="files/img/MistyCarrier_PowerFTDI.png" alt="MistyWest" width="400"/>
 
-Open a serial terminal:([instructions with tera Term for Windows](https://learn.sparkfun.com/tutorials/terminal-basics/tera-term-windows) or [instructions with screen for Linux](https://www.cyberciti.biz/faq/unix-linux-apple-osx-bsd-screen-set-baud-rate/)) and set the baudrate to `115200`bps. when you connected the board succesfully and connected t it in thwe first few seconds while it is booting, you should see boot messages followed by a login prompt:
+Open a serial terminal: ([instructions with tera Term for Windows](https://learn.sparkfun.com/tutorials/terminal-basics/tera-term-windows) or [instructions with screen for Linux](https://www.cyberciti.biz/faq/unix-linux-apple-osx-bsd-screen-set-baud-rate/)) and set the baudrate to `115200`bps. If you connect the board succesffuly within the first few seconds of it booting, you should see boot messages followed by a login prompt:
 ```
 smarc-rzg2l login:
 ```
-If you don't see anything, after a key-press on the `Enter` key, the above login prompt should appear. You can now login with useranme `root` which will bring you to the shell from where you can invoke and execute commands.
+If you don't see anything, press the `Enter` key and the above login prompt should appear. You can now login with username `root` which will bring you to the shell from where you can invoke and execute commands.
 
 
 

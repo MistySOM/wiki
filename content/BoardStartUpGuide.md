@@ -47,7 +47,7 @@
     - pv
 
 ### Booting Flash Writer
-1. Set the boot mode to SCIF. On the MistySOM Carrier board, on SW2, set BOOT1 OFF and Boot2  to ON position.
+1. Set the boot mode to SCIF. On the MistySOM Carrier board, on SW2, set BOOT1 OFF and BOOT2 to ON.
    ![BootOption_SPIF](../files/img/BootOptions_SPIF.JPG)
 3. Connect the `FTDI cable` to `J40` on the MistyCarrier board and a USB port on the computer
 4. **On Windows:**
@@ -56,17 +56,17 @@
 
    **On Linux:** Open a terminal and run the command: `sudo screen /dev/ttyUSB0 115200`
 6. Power on the MistySOM board.
-7. Upon application of power, you should see the following in your terminal window:   
+7. Upon application of power, you should see the following on your terminal window:   
       ```SCIF Download mode
         (C) Renesas Electronics Corp.
       -- Load Program to SystemRAM ---------------
       please send !  
       ```  
-7. Download and save the file `Flash_Writer_SCIF__.mot`([link](../files/bootloader/rzg2l/Flash_Writer_SCIF__.mot)) by clicking on **Raw** button and then using **Save as** over the openned content.
+7. Download and save the file `Flash_Writer_SCIF__.mot`([link](../files/bootloader/rzg2l/Flash_Writer_SCIF__.mot)) by clicking on **Raw** button and then using **Save as** over the opened content.
 8. **On Windows:** Select `File -> Send File...` and select the file `Flash_Writer_SCIF__.mot`. A transfer dialog will appear displaying the progress of the file transfer over the serial connection. <br/>
    **On Linux:** Open another terminal window and run the command: `pv Flash_Writer_SCIF__.mot | sudo dd of=/dev/ttyUSB0`
    
-After succesful downlaoding the vbinary, Flash Writer starts autimatically and shows a message like belowe on the terminal
+After successful downloading of the vbinary, Flash Writer starts automatically and shows a message like the one shown below on the terminal
 ```
 Flash writer for RZ/V2 Series V1.02 Nov.15,2021
  Product Code : RZ/V2L
@@ -106,7 +106,7 @@ SpiFlashMemory End Address : H'00009A80
 
 SPI Data Clear(H'FF) Check : H'00000000-0000FFFF,Clear OK?(y/n)
 ```
-In case a message to prompt to clear data like above appears, please enter “y”.
+In case a message prompt to clear data like above appears, please enter “y”.
 
 
 Next, write another loader file by using `XLS2` command again.<br>

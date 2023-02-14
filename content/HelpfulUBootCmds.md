@@ -1,6 +1,6 @@
 <img src="../files/img/2018_MistyWest_LogoCombo_FINAL_RGB.png" alt="MistyWest" width="400"/><div style="text-align: right">back to [index](../README.md)</div>
 
-# Helpful U-Boot commands
+# Helpful U-Boot Commands
 ### Revision History
 
 <table>
@@ -36,20 +36,20 @@
 
 ## SDCard & MMC commands
 
-### Confirm SDcard contents
+### Confirm SDcard Contents
 
 ```
 => mmc list
 sd@11c00000: 0 (eMMC)
 sd@11c10000: 1
 ```
-### select device
+### Select Device
 ```
 => mmc dev 1
 switch to partitions #0, OK
 mmc1 is current device
 ```
-### list partitions
+### List Partitions
 ```
 => mmc part
 
@@ -59,7 +59,7 @@ Part    Start Sector    Num Sectors     UUID            Type
   1     2048            67584           a1d1165e-01     0b
   2     69632           62451712        a1d1165e-02     83
 ```  
-### list files on partition (`fatls` for fat,  `ext4ls` for ext4 partitions)
+### List Files on Partition (`fatls` for fat,  `ext4ls` for ext4 partitions)
 ```  
 => fatls mmc 1:1
  16955904   Image
@@ -68,13 +68,13 @@ Part    Start Sector    Num Sectors     UUID            Type
 2 file(s), 0 dir(s)
 ```
 
-## Restore default configuration
+## Restore Default Configuration
 
 ```
 env default -a
 ```
 
-## Variables that need to be updated to boot MistySOM
+## Variables that need to be Updated to Boot MistySOM
 
 ```
 bootargs

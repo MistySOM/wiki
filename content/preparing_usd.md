@@ -1,8 +1,8 @@
-## Preparing uSD card instructions
+## Preparing uSD Card Instructions
 ### Partition and Format the uSD
-The uSD card should be formatted with two partitions, FAT32 nd EXT4. Parted provides a terminal utility to do this, alternatively `gparted` or another graphical partition editor can be used from the GUI.
+The uSD card should be formatted with two partitions, FAT32 and EXT4. Parted provides a terminal utility to do this, alternatively `gparted` or another graphical partition editor can be used from the GUI.
 
-1. Install the tool (below example applies to Ubuntu or Debian based systems, use the package manager of your distribution accordingly)
+1. Install the tool (example below applies to Ubuntu or Debian based systems, use the package manager of your distribution accordingly)
 ```
 sudo apt update
 sudo apt install parted
