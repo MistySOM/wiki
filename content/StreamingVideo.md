@@ -78,7 +78,7 @@ H="${3:-1080}"
 ./v4l2-init.sh
 echo "Streaming to ${1} with resolution ${W}x${H}..."
 
-gst-launch-1.0 v4l2src device=/dev/video0 \
+gst-launch-1.0 v4l2src device=/dev/video0 ! video/x-raw, width=1920, height=1080 \
 	! vspmfilter dmabuf-use=true ! video/x-raw,format=NV12,width=$W,height=$H \
 	! omxh264enc control-rate=2 target-bitrate=10485760 interval_intraframes=14 periodicty-idr=2 \
 	! video/x-h264,profile=\(string\)high,level=\(string\)4.2 \
