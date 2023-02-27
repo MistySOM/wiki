@@ -27,7 +27,7 @@
 
 * [Creating a custom Yocto Layer and Image]( content/CreatingCustomYoctoLayer.md)
 * [Bitbake Cheat Sheet]( content/BitbakeCheatSheet.md)
-* [Adding a desired application to the build or flow chart for bitbake recipe creation](files/img/BitBakeRecipeCreationFlowChart.pdf)
+* [How to add a desired application to the MistySOM build and flow chart for bitbake recipe creation](files/img/BitBakeRecipeCreationFlowChart.pdf)
 * [How To Create Bitbake recipe from a repository](content/HowToCreateBitbakeRecipeGitHub.md)
 * [How To Create Bitbake recipe from local sources](content/HowToCreateBitbakeRecipeLocSrc.md)
 
