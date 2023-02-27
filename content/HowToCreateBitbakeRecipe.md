@@ -2,7 +2,7 @@
 
 # How to create a custom bitbake recipe
 
-1. Open a terminal and navigate to the directory where you want to store the recipe.
+1. Open a terminal and navigate to the directory where you want to store the recipe. We assume that the application to add is called **DesiredApp**(adjust the name accordingly).
 2. Create a new file with the .bb extension using your preferred text editor. For this example, we'll call the file "desiredapp.bb".
 3. Start the recipe by defining the metadata. Here's an example:
 ```
