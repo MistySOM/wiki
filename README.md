@@ -27,6 +27,8 @@
 
 * [Creating a custom Yocto Layer and Image]( content/CreatingCustomYoctoLayer.md)
 * [Bitbake Cheat Sheet]( content/BitbakeCheatSheet.md)
+* [How To Create Bitbake recipe from a repository](content/HowToCreateBitbakeRecipeGitHub.md)
+* [How To Create Bitbake recipe from local sources](content/HowToCreateBitbakeRecipeLocSrc.md)
 
 ### OtherResources
 
