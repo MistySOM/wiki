@@ -1,3 +1,7 @@
+<img src="../files/img/2018_MistyWest_LogoCombo_FINAL_RGB.png" alt="MistyWest" width="400"/><div style="text-align: right">back to [index](../README.md)</div>
+
+# How to create a custom bitbake recipe from local sources
+
 Here is an example recipe that you can use:
 ```
 SUMMARY = "Recipe for DesiredApp"
