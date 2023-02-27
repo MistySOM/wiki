@@ -29,7 +29,7 @@ The below tables contain detailed pin mapping of the Samtec Board to Board & Mez
 | CSI_DATA1_P            | 43   | 44   | CSI_DATA3_P            |
 | GND                    | 45   | 46   | GND                    |
 | CSI_DATA0_N            | 47   | 48   | CSI_CLK_N              |
-| DSI_DATA0_P            | 49   | 50   | CSI_CLK_P              |
+| CSI_DATA0_P            | 49   | 50   | CSI_CLK_P              |
 | GND                    | 51   | 52   | GND                    |
 | DSI_DATA2_N            | 53   | 54   | CSI_DATA2_N            |
 | DSI_DATA2_P            | 55   | 56   | CSI_DATA2_P            |
