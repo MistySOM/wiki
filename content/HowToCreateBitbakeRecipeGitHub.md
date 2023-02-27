@@ -1,6 +1,6 @@
 <img src="../files/img/2018_MistyWest_LogoCombo_FINAL_RGB.png" alt="MistyWest" width="400"/><div style="text-align: right">back to [index](../README.md)</div>
 
-# How to create a custom bitbake recipe
+# How to create a custom bitbake recipe from a public repository
 
 1. Open a terminal and navigate to the directory where you want to store the recipe. We assume that the application to add is called **DesiredApp**(adjust the name accordingly).
 2. Create a new file with the .bb extension using your preferred text editor. For this example, we'll call the file "desiredapp.bb".
