@@ -13,12 +13,12 @@ LIC_FILES_CHKSUM = "file://LICENSE;md5=4d92cd373abda3937c2bc47fbc49d690"
 SECTION = "examples"
 
 SRC_URI = "git://github.com/user/DesiredApp.git;protocol=https"
-SRCREV = "master"
+SRCREV = "8fdea40ca783de02d3bc5833a97d6113e772495f"
 S = "${WORKDIR}/git"
 
 inherit cmake
 ```
-4. In the metadata, the **SRC_URI** parameter defines the URL of the GitHub repository to be cloned. The **SRCREV** parameter specifies which branch or commit to check out. The S parameter specifies the location where the source code will be stored after cloning.
+4. In the metadata, the **SRC_URI** parameter defines the URL of the GitHub repository to be cloned. The **SRCREV** parameter specifies which branch or commit to check out, it generally is recommended to use a SHA hash here to point to a particular commit in history. The S parameter specifies the location where the source code will be stored after cloning.
 5. The **inherit** parameter tells BitBake which class to inherit from for building the application. In this case, we're using the **cmake** class, which will automatically generate the Makefiles and build the application using the CMake build system.
 6. The **COREBASE** variable is a predefined variable in BitBake that contains the path to the top-level directory of the OpenEmbedded-Core layer. 
 7. Save and close the file.
