@@ -11,7 +11,6 @@ DESCRIPTION = "Compiles DesiredApp from a public GitHub repository"
 LICENSE = "MIT"
 LIC_FILES_CHKSUM = "file://LICENSE;md5=4d92cd373abda3937c2bc47fbc49d690"
 SECTION = "examples"
-DEPENDS = "git"
 
 SRC_URI = "git://github.com/user/DesiredApp.git;protocol=https"
 SRCREV = "master"
