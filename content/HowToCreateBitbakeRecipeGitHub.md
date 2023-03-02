@@ -9,7 +9,7 @@
 SUMMARY = "Recipe for DesiredApp"
 DESCRIPTION = "Compiles DesiredApp from a public GitHub repository"
 LICENSE = "MIT"
-LIC_FILES_CHKSUM = "file://${COREBASE}/LICENSE;md5=4d92cd373abda3937c2bc47fbc49d690"
+LIC_FILES_CHKSUM = "file://LICENSE;md5=4d92cd373abda3937c2bc47fbc49d690"
 SECTION = "examples"
 DEPENDS = "git"
 
