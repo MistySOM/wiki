@@ -13,14 +13,24 @@ such as a file (filesrc), a network stream (udpsrc), or a camera device (v4l2src
 with bounding boxes on inferred objects using the DRPAI. Later, this video can be linked to any kind of 
 output, such as the display (autovideosink), a network stream (udpsink), or a file (filesink).
 
-```mermaid
-graph LR
-    DRPAI(GStreamer \n DRPAI Plugin \n\n *libgstdrpai.so*)
-    Src(Input / Source<br><img src='https://raw.githubusercontent.com/MistySOM/wiki/drpai/files/img/gst-drpai-src.PNG' width='360' height='240' />)
-    Sink(Output / Sink<br><img src='https://raw.githubusercontent.com/MistySOM/wiki/drpai/files/img/gst-drpai-sink.PNG' width='360' height=240 />)
-    Src ==> DRPAI 
-    DRPAI ==> Sink
-```
+
+<div style="display:flex;align-items: center; text-align: center">
+<div>
+Input / Source
+<br>
+<img src='https://raw.githubusercontent.com/MistySOM/wiki/drpai/files/img/gst-drpai-src.PNG' height='240' />
+</div>
+<div style="font-size: 50pt">&rarr;</div>
+<div style="padding:30px;border:black ; background:white; height:min-content; color: black; border-radius: 20px">
+<b>GStreamer <br> DRPAI Plugin</b> <br><br> (libgstdrpai.so)
+</div>
+<div style="font-size: 50pt">&rarr;</div>
+<div>
+Output / Sink
+<br>
+<img src='https://raw.githubusercontent.com/MistySOM/wiki/drpai/files/img/gst-drpai-sink.PNG' height=240 />
+</div>
+</div>
 
 The plugin uses the following pad template capabilities for both **src** and **sink** which requires you
 to prepare before your DRPAI element (for example, using a `videoconvert` element):
