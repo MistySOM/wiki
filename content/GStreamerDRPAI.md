@@ -28,16 +28,16 @@ video/x-raw
 
 The plugin also provides you with the following parameters:
 
-| Name                  | Type                | Default | Description                                                                                      |
-|-----------------------|---------------------|--------:|--------------------------------------------------------------------------------------------------|
-| **multithread**       | Boolean             |    true | Use a separate thread for object detection.                                                      |
-| **log-detects**       | Boolean             |   false | Print detected objects in standard output.                                                       |
-| **show-fps**          | Boolean             |   false | Render video and object detection frame rates at the corner of the video.                        |
-| **stop-error**        | Boolean             |    true | Stop the gstreamer if kernel modules fail to open.                                               |
-| **max-video-rate**    | Float [0.001 - 120] |     120 | Intentionally add thread sleeps to control the maximum video framerate.                          |
-| **max-drpai-rate**    | Float [0 - 120]     |     120 | Intentionally add thread sleeps to control the maximum DRPAI framerate.<br/>Zero means disabled. |
-| **smooth-video-rate** | Float [1 - 1000]    |       1 | Number of last video framerates to averages for a more smooth value.                             |
-| **smooth-drpai-rate** | Float [1 - 1000]    |       1 | Number of last DRPAI framerates to averages for a more smooth value.                             |
+| Name                  | Type                | Default | Description                                                                  |
+|-----------------------|---------------------|--------:|------------------------------------------------------------------------------|
+| **multithread**       | Boolean             |    true | Use a separate thread for object detection.                                  |
+| **log-detects**       | Boolean             |   false | Print detected objects in standard output.                                   |
+| **show-fps**          | Boolean             |   false | Render frame rates of video and object detection at the corner of the video. |
+| **stop-error**        | Boolean             |    true | Stop the gstreamer if kernel modules fail to open.                           |
+| **max-video-rate**    | Float [0.001 - 120] |     120 | Force maximum video frame rate using thread sleeps.                          |
+| **max-drpai-rate**    | Float [0 - 120]     |     120 | Force maximum DRPAI frame rate using thread sleeps.                          |
+| **smooth-video-rate** | Float [1 - 1000]    |       1 | Number of last video frame rates to average for a more smooth value.         |
+| **smooth-drpai-rate** | Float [1 - 1000]    |       1 | Number of last DRPAI frame rates to average for a more smooth value.         |
 
 ## Some examples of running GStreamer with the DRPAI
 ### Read Camera and Show on Screen
