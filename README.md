@@ -16,6 +16,7 @@
 * [Setup WiFi](content/SetupWifi.md)
 * [Streaming Video](content/StreamingVideo.md)
 * [GPIO Pins](content/GPIOPins.md)
+* [Video Inference with DRPAI and GStreamer](content/GStreamerDRPAI.md)
 
 ### Device Tree
 
