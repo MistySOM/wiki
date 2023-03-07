@@ -14,10 +14,10 @@ with bounding boxes on inferred objects using the DRPAI. Later, this video can b
 output, such as the display (autovideosink), a network stream (udpsink), or a file (filesink).
 
 ```mermaid
-flowchart LR
+graph LR
     DRPAI(GStreamer \n DRPAI Plugin \n\n *libgstdrpai.so*)
-    Src(Input / Source<br><img src='../files/img/gst-drpai-src.PNG' width='100' />)
-    Sink(Output / Sink<br><img src='../files/img/gst-drpai-sink.PNG' width='100' />)
+    Src(Input / Source<br><img src='https://raw.githubusercontent.com/MistySOM/wiki/drpai/files/img/gst-drpai-src.PNG' width='360' height='240' />)
+    Sink(Output / Sink<br><img src='https://raw.githubusercontent.com/MistySOM/wiki/drpai/files/img/gst-drpai-sink.PNG' width='360' height=240 />)
     Src ==> DRPAI 
     DRPAI ==> Sink
 ```
