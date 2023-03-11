@@ -71,3 +71,4 @@ The column **func0** indicates the default mux setting on the pin.
 |TP56|DISP_VSYNC|P7_0|DISP_VSYNC|||
 
 
+documentation about GPIO usage can be found [here](Using_GPIOs.md)
