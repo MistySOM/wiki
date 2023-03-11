@@ -1,11 +1,11 @@
-<img src="files/img/2018_MistyWest_LogoCombo_FINAL_RGB.png" alt="MistyWest" width="400"/><div style="text-align: right">back to [index](../README.md)</div>
+<img src="../files/img/2018_MistyWest_LogoCombo_FINAL_RGB.png" alt="MistyWest" width="400"/><div style="text-align: right">back to [index](../README.md)</div>
 
 # Using GPIO on MistySOM and MistyCarrier to Test Toggling a LED With Libgpiod Utilities
 
 ## Introduction
 The ultimate purpose of this tutorial and test procedure is to demonstrate that selected digital General Purpose Input-Output (GPIO) pins on the MistySOM Carrier board have proper continuity and are fully functional for control of external digital i/o devices. Specifically, the procedure outlined here explains how the GPIO pins  on the MistyCarrier board with a RZ/G2L MistySOM module can be used to toggle a LED on an attached breadboard by using the standard Linux libgpiod command line utilities which are provided in the Renesas VLP 3.0.x Linux RZ/G2L build with the custom MistySOM yocto Board Support Package. Individual pins on both the 40-pin J4 connector and debug pads for TP test pins can each be individually be connected and used to toggle the LED using the corresponding .sh shell script file which uses the libgpiod gpioset and gpiofind utilities.
 
-| ![MH11_GPIO_LED_Toggle_Test_Setup](files/img/MH11_GPIO_LED_Toggle_Test_Setup.png) |
+| ![MH11_GPIO_LED_Toggle_Test_Setup](../files/img/MH11_GPIO_LED_Toggle_Test_Setup.png) |
 | ------------------------------------------------------------ |
 | Fig. 1 - MistySOM Carrier Board with Simple GPIO Test Setup Connection to LED Breadboard Circuit |
 
@@ -17,7 +17,7 @@ The ultimate purpose of this tutorial and test procedure is to demonstrate that 
 
 **Standard +3.3V FTDI TTL-232R-3V3-2MM USB to UART serial cable** (https://ftdichip.com/products/ttl-232r-3v3/) connecting the 1x8-pin keyed J40 connector on the MistyCarrier to a USB 2.0 Type-A port on a host Linux or Windows PC.
 
-![TTL-232R-3V3](files/img/TTL-232R-3V3.jpg)
+![TTL-232R-3V3](../files/img/TTL-232R-3V3.jpg)
 
 **Terminal emulator software** running on host PC for a serial terminal console session  (e.g picocom, minicom on a Linux PC or puTTY, TeraTerm on a Windows PC).
 
@@ -37,37 +37,37 @@ Refer to Fig 2 below showing the connector soldered to the J4 dual-row 2x20-pin 
 The schematic for the MistySOM signals on this J4 connector is provided in Fig 3, and the mapping of the RZ/G2L Pin Mux functions to the pins is provided in Fig. 4. Finally Fig 5 shows an example of a Fritzing breadboard diagram of connecting the 3.3V J4 header pin 40 (3v3 RZ/G2L GPIO pin P43_3)  via the 330Ω resistor to the LED anode.  The LED cathode is connected indirectly to pin 4 GND on the J4 header via the GND rail on the breadboard. Toggling the LED on and off is covered in the test procedure section further below. For testing GPIO pin P43_3 on J4 pin 40, the corresponding gpio_J4_pin_40_toggle
 script is used to toggle the LED on and off 3 times at 1-second intervals.  For testing other GPIO signals on the J4 header, the jumper should be reconnected to the desired GPIO header pin, and the corresponding [gpio_J4_pin_NN_toggle.sh](https://github.com/MistySOM/HW-Bringup-Tests/tree/main/gpio/gpio_J4_pin_NN_toggle.sh) should be invoked from the command line. 
 
-| ![VO-REVAFRONT-20221104_merge_alt](files/img/VO-REVAFRONT-20221104_merge_alt.png) |
+| ![VO-REVAFRONT-20221104_merge_alt](../files/img/VO-REVAFRONT-20221104_merge_alt.png) |
 | ------------------------------------------------------------ |
 | Fig 2 - MistyCarrier with mezzanine MistySOM showing J4 2x20-pin header at top center |
 
-| ![MistyCarrier_J4_40-pin_header_schematic](files/img/MistyCarrier_J4_40-pin_header_schematic.png) |
+| ![MistyCarrier_J4_40-pin_header_schematic](../files/img/MistyCarrier_J4_40-pin_header_schematic.png) |
 | ------------------------------------------------------------ |
 | Fig. 3 - MistyCarrier J4 Connector schematic pinout for pins 1-40 with available GPIO signal subset |
 
-| ![MistyCarrier J4 40-pin Header Pinout Mapping to RZ/G2L Pin Mux Functions](files/img/MistyCarrier_J4_Pinout.png) |
+| ![MistyCarrier J4 40-pin Header Pinout Mapping to RZ/G2L Pin Mux Functions](../files/img/MistyCarrier_J4_Pinout.png) |
 | ------------------------------------------------------------ |
 | Fig. 4 - Mapping of MistyCarrier J4 Header pinout to Available GPIO RZ/G2L pins on func0 pin mux selection |
 
-| ![Toggle_LED_GPIO_J4_pin_40_P43_3.jpg](files/img/Toggle_LED_GPIO_J4_pin_40_P43_3.jpg) |
+| ![Toggle_LED_GPIO_J4_pin_40_P43_3.jpg](../files/img/Toggle_LED_GPIO_J4_pin_40_P43_3.jpg) |
 | ------------------------------------------------------------ |
 | Fig. 5 - Breadboard Circuit Image of J4 pin 40 (3v3 RZ/G2L GPIO pin P43_3) connected via resistor to LED anode. |
 
 The schematic for the MistySOM GPIO signals on the Test Points TP39-TP66 debug pads in provided in Fig 6 below, and the mapping of the RZ/G2L Pin Mux functions to the TPnn test point pins is provided in Fig. 7. Pictures of the Debug Pad Test Points on the MistyCarrier are shown in Fig 8 and Fig. 9. For testing the LED toggling of the debug test points, each TPnn pin is iteratatively or successively connected via the 330Ω resistor to the LED anode.  As previously, the LED cathode is connected indirectly to pin 4 GND on the J4 header via the GND rail on the breadboard. Toggling the LED on and off is covered in the test procedure section further below. For example, to test test point TP39 (GPIO P7_2), the gpio_debug-pad_TP39_toggle.sh script is used to toggle the LED on and off 3 times at 1-second intervals.  For testing other GPIO signals on the TP39-TP66 debug Test Points, the jumper should be reconnected to the desired TPnn header pin, and the corresponding  [gpio_debug-pad_TP39_toggle.sh](https://github.com/MistySOM/HW-Bringup-Tests/tree/main/gpio/gpio_debug-pad_TP39_toggle.sh) script should be invoked from the command line.
 
-| ![MistyCarrier_Debug_Test_Pin_Schematic](files/img/MistyCarrier_Debug_Test_Pin_Schematic.png) |
+| ![MistyCarrier_Debug_Test_Pin_Schematic](../files/img/MistyCarrier_Debug_Test_Pin_Schematic.png) |
 | ------------------------------------------------------------ |
 | Fig. 6 - MistyCarrier Debug Pads TP39 to TP66 - Schematic excerpt |
 
-| ![MistyCarrier_DebugPads_TP39_to_TP66_PinMux_Mapping](files/img/MistyCarrier_DebugPads_TP39_to_TP66_PinMux_Mapping.png) |
+| ![MistyCarrier_DebugPads_TP39_to_TP66_PinMux_Mapping](../files/img/MistyCarrier_DebugPads_TP39_to_TP66_PinMux_Mapping.png) |
 | ------------------------------------------------------------ |
 | Fig. 7 - MistyCarrier Debug Pads TP39 to TP66 - GPIO PinMux Mapping for mux option func0 (GPIO) |
 
-| ![DebugPads](files/img/DebugPads.jpg)                        |
+| ![DebugPads](../files/img/DebugPads.jpg)                        |
 | ------------------------------------------------------------ |
 | Fig. 8 - Position of Test Point TP39-TP66 Debug Pads on MistyCarrier |
 
-| ![DebugPads_CloseUp](files/img/DebugPads_CloseUp.png)        |
+| ![DebugPads_CloseUp](../files/img/DebugPads_CloseUp.png)        |
 | ------------------------------------------------------------ |
 | Fig. 9 - Close-up Image of Test Point TP39-TP66 Debug Pads on MistyCarrier |
 
