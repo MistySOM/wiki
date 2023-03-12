@@ -53,11 +53,7 @@ script is used to toggle the LED on and off 3 times at 1-second intervals.  For 
 | ------------------------------------------------------------ |
 | Fig. 5 - Breadboard Circuit Image of J4 pin 40 (3v3 RZ/G2L GPIO pin P43_3) connected via resistor to LED anode. |
 
-<<<<<<< HEAD
 The schematic for the MistySOM GPIO signals on the Test Points TP39-TP66 debug pads in provided in Fig 6 below, and the mapping of the RZ/G2L Pin Mux functions to the TPnn test point pins is provided in Fig. 7 (or on [GPIO pins](GPIOPins.md)). Pictures of the Debug Pad Test Points on the MistyCarrier are shown in Fig 8 and Fig. 9. For testing the LED toggling of the debug test points, each TPnn pin is iteratatively or successively connected via the 330Ω resistor to the LED anode.  As previously, the LED cathode is connected indirectly to pin 4 GND on the J4 header via the GND rail on the breadboard. Toggling the LED on and off is covered in the test procedure section further below. For example, to test test point TP39 (GPIO P7_2), the gpio_debug-pad_TP39_toggle.sh script is used to toggle the LED on and off 3 times at 1-second intervals.  For testing other GPIO signals on the TP39-TP66 debug Test Points, the jumper should be reconnected to the desired TPnn header pin, and the corresponding  [gpio_debug-pad_TP39_toggle.sh](https://github.com/MistySOM/aux/tree/master/gpio/gpio_debug-pad_TP39_toggle.sh) script should be invoked from the command line.
-=======
-The schematic for the MistySOM GPIO signals on the Test Points TP39-TP66 debug pads in provided in Fig 6 below, and the mapping of the RZ/G2L Pin Mux functions to the TPnn test point pins is provided in Fig. 7 (or on [GPIO pins](GPIOPins.md)). Pictures of the Debug Pad Test Points on the MistyCarrier are shown in Fig 8 and Fig. 9. For testing the LED toggling of the debug test points, each TPnn pin is iteratatively or successively connected via the 330Ω resistor to the LED anode.  As previously, the LED cathode is connected indirectly to pin 4 GND on the J4 header via the GND rail on the breadboard. Toggling the LED on and off is covered in the test procedure section further below. For example, to test test point TP39 (GPIO P7_2), the gpio_debug-pad_TP39_toggle.sh script is used to toggle the LED on and off 3 times at 1-second intervals.  For testing other GPIO signals on the TP39-TP66 debug Test Points, the jumper should be reconnected to the desired TPnn header pin, and the corresponding  [gpio_debug-pad_TP39_toggle.sh](../files/gpio/gpio_debug-pad_TP39_toggle.sh) script should be invoked from the command line.
->>>>>>> origin/develop
 
 | ![MistyCarrier_Debug_Test_Pin_Schematic](../files/img/MistyCarrier_Debug_Test_Pin_Schematic.png) |
 | ------------------------------------------------------------ |
@@ -212,9 +208,5 @@ To make use of the GPIO LED toggle scripts, perform the following steps:
    For the TP39 to TP66 test points, use one of the pio_debug-pad_TPnn_toggle.sh scripts.  For example, we can toggle the LED using pin TP39 using the script command:
    `root@smarc-rzg2l:/#  ./gpio_debug-pad_TP39_toggle.sh`
    
-<<<<<<< HEAD
-   Toggle swcripts are in the [MistySOM/aux](https://github.com/MistySOM/aux/tree/master/gpio) repository.
-=======
    Toggle swcripts are in the [HW-BringUp-Tests](https://github.com/MistySOM/HW-Bringup-Tests/tree/main/gpio) repository.
->>>>>>> origin/develop
 
