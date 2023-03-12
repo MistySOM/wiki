@@ -208,5 +208,5 @@ To make use of the GPIO LED toggle scripts, perform the following steps:
    For the TP39 to TP66 test points, use one of the pio_debug-pad_TPnn_toggle.sh scripts.  For example, we can toggle the LED using pin TP39 using the script command:
    `root@smarc-rzg2l:/#  ./gpio_debug-pad_TP39_toggle.sh`
    
-   Toggle swcripts are in the [HW-BringUp-Tests](https://github.com/MistySOM/HW-Bringup-Tests/tree/main/gpio) repository.
+   Toggle swcripts are in the [MistySOM/aux](https://github.com/MistySOM/aux/tree/master/gpio) repository.
 
