@@ -19,7 +19,7 @@ wlan0     Link encap:Ethernet  HWaddr 18:A6:F7:0A:65:2D
           collisions:0 txqueuelen:1000
           RX bytes:0 (0.0 B)  TX bytes:0 (0.0 B)
 ```
-## Scan Access Points
+### Scan Access Points
 
 In case you want to scan for every Wifi access point in your environment, you can use the command below to list their SSIDs:
 
@@ -63,7 +63,7 @@ After the configuration file is ready, enable the two services below to automati
 
 You can enable the network online service with the command below:
 
-   systemctl enable systemd-networkd-wait-online.service
+    systemctl enable systemd-networkd-wait-online.service
    
 Then every service file with the parameter `After=network-online.target` will run after the WiFi is connected and an IP address is acquired.
     
