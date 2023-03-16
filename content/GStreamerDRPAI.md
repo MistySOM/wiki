@@ -9,13 +9,16 @@ the input image to the DRPAI hardware. After activating the hardware, it will us
 generate the output which can be read by the UDMA module. While DRPAI is running, the running thread will
 go to sleep. Of course the sleep time varies based on the size of the AI model.
 
-MistyWest team has prepared a GStreamer plugin for DRPAI which can receive any kind of video input, 
+MistyWest team has prepared a [GStreamer plugin for DRPAI](https://github.com/MistySOM/gstreamer1.0-drpai) which can receive any kind of video input,
 such as a file (filesrc), a network stream (udpsrc), or a camera device (v4l2src) and outputs a video 
 with bounding boxes on inferred objects using the DRPAI. Later, this video can be linked to any kind of 
 output, such as the display (autovideosink), a network stream (udpsink), or a file (filesink).
 
 ![GStreamer DRPAI Plugin Chart](../files/img/gst-drpai-chart.png)
 
+**Note:** At this moment, the plugin is hardcoded to YOLOV2l model. Therefore, you need to have a copy
+of the trained model ([link](https://github.com/MistySOM/gstreamer1.0-drpai/tree/master/models/yolov2))
+with the directory name of `yolov2` inside your working directory for the plugin to work.
 
 The plugin uses the following pad template capabilities for both **src** and **sink** which requires you
 to prepare before your DRPAI element (for example, using a `videoconvert` element):
