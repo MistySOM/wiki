@@ -16,9 +16,9 @@ The main reasons are two.
 1. AI model format supported by the DRP-AI translator is ONNX only.
 2. If non-supported AI model operators are included in AI models, the DRP-AI translator cannot convert it into an executable format.
 
-Renesas has asked users to handle such cases themselves, which has caused a burden on some users. We released DRP-AI TVM to solve the issues and to improve user experience.
+Renesas has asked users to handle such cases themselves, which has caused a burden on some users. Edgecortix[^2] released DRP-AI TVM to solve the issues and to improve user experience.
 
-DRP-AI TVM is the tool that added DRP-AI support on an open-source ML compiler [Apache TVM](https://tvm.apache.org/). Using DRP-AI TVM, AI model operators non-supported by DRP-AI translator can be automatically allocated to CPUs to implement more AI models into RZ/V products easily. DRP-AI TVM supports not only ONNX, and other AI frameworks such as Poarch and TensorFlow, etc.
+DRP-AI TVM is the tool that added DRP-AI support on an open-source ML compiler Apache TVM[^3]. Using DRP-AI TVM, AI model operators non-supported by DRP-AI translator can be automatically allocated to CPUs to implement more AI models into RZ/V products easily. DRP-AI TVM supports not only ONNX, and other AI frameworks such as Poarch and TensorFlow, etc.
 
 Furthermore, as with the conventional DRP-AI translator flow, DRP-AI can handle the pre-processing of AI inference, enabling total AI performance improvement, including pre-processing.
 <p align="center">
@@ -36,7 +36,9 @@ Furthermore, as with the conventional DRP-AI translator flow, DRP-AI can handle 
 
 DRP-AI TVM is public on GitHub for users to ease to access. Users can find sufficient information to use DRP-AI TVM on GitHub, such as the tutorial, sample code, and a variety of AI model performances. The tutorial includes steps from building the environment to AI inference on an evaluation board, and customers can use these steps to evaluate their AI models easily. Renesas will continue to strive for UX improvements to make it easier for customers to use Renesas products.
 
-[^1]: DRP-AI TVM is powered by Edgecortix MERATM Compiler Framework.<br/>
+[^1]: DRP-AI TVM is powered by Edgecortix MERATM Compiler Framework
+[^2]: EdgeCortix MERA
+[^3]: [Apache TVM](https://tvm.apache.org) <p>&nbsp;</p>
 [RZ/V series introduction](https://www.renesas.com/us/en/products/microcontrollers-microprocessors/rz-mpus/rzv-embedded-ai-mpus)<br/>
 [Renesas info wiki RZ/V series](https://renesas.info/wiki/RZ-V)<br/>
 [DRP-AI introduction](https://www.renesas.com/us/en/application/key-technology/artificial-intelligence/ai-accelerator-drp-ai)<br/>
