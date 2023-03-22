@@ -13,8 +13,9 @@ When users implement AI models into MPUs, they can use the DRP-AI translator to 
 
 The main reasons are two.
 
-AI model format supported by the DRP-AI translator is ONNX only.
-If non-supported AI model operators are included in AI models, the DRP-AI translator cannot convert it into an executable format.
+1. AI model format supported by the DRP-AI translator is ONNX only.
+2. If non-supported AI model operators are included in AI models, the DRP-AI translator cannot convert it into an executable format.
+
 Renesas has asked users to handle such cases themselves, which has caused a burden on some users. We released DRP-AI TVM to solve the issues and to improve user experience.
 
 DRP-AI TVM is the tool that added DRP-AI support on an open-source ML compiler [Apache TVM](https://tvm.apache.org/). Using DRP-AI TVM, AI model operators non-supported by DRP-AI translator can be automatically allocated to CPUs to implement more AI models into RZ/V products easily. DRP-AI TVM supports not only ONNX, and other AI frameworks such as Poarch and TensorFlow, etc.
