@@ -18,6 +18,9 @@
 * [GPIO Pins](content/GPIOPins.md)
 * [Video Inference with DRPAI and GStreamer](content/GStreamerDRPAI.md)
 
+### AI
+* [ Convert existing model to MistySOM](content/ConvertModelToMistySOM.md)
+
 ### Device Tree
 
 * [Access Device Tree information from User Space]( content/DeviceTreeFromUserSpace.md )
