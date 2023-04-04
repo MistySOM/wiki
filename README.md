@@ -17,6 +17,7 @@
 * [Streaming Video](content/StreamingVideo.md)
 * [GPIO Pins](content/GPIOPins.md)
 * [Video Inference with DRPAI and GStreamer](content/GStreamerDRPAI.md)
+* [Program eMMC Flash](content/program_emmc_flash.md)
 
 ### AI
 * [ Convert existing model to MistySOM](content/ConvertModelToMistySOM.md)
