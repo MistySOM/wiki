@@ -22,7 +22,7 @@
 * [ Convert existing model to MistySOM](content/ConvertModelToMistySOM.md)
 * [ Convert from Tensorflow](https://tvm.apache.org/docs/how_to/compile_models/from_tensorflow.html) (hosted on [tvm.apache.org](https://tvm.apache.org))
 
-### Device Tree
+### Add custom Device
 
 * [Access Device Tree information from User Space]( content/DeviceTreeFromUserSpace.md )
 * [How to add a custom device]( content/HowToAddACustomDevice.md)
