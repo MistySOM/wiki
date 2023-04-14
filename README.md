@@ -18,8 +18,13 @@
 * [GPIO Pins](content/GPIOPins.md)
 * [Video Inference with DRPAI and GStreamer](content/GStreamerDRPAI.md)
 
-### Device Tree
+### AI
+* [ Convert existing model to MistySOM](content/ConvertModelToMistySOM.md)
+* [ Convert from Tensorflow](https://tvm.apache.org/docs/how_to/compile_models/from_tensorflow.html) (hosted on [tvm.apache.org](https://tvm.apache.org))
 
+### Add custom Device
+
+* [Customize Device Tree](content/CustomizeDevicetree.md)
 * [Access Device Tree information from User Space]( content/DeviceTreeFromUserSpace.md )
 * [How to add a custom device]( content/HowToAddACustomDevice.md)
 * [Audio CODEC TLV320AIC23B]( content/AudioCodec.md)
