@@ -24,6 +24,7 @@
 
 ### Add custom Device
 
+* [Customize Device Tree](content/CustomizeDevicetree.md)
 * [Access Device Tree information from User Space]( content/DeviceTreeFromUserSpace.md )
 * [How to add a custom device]( content/HowToAddACustomDevice.md)
 * [Audio CODEC TLV320AIC23B]( content/AudioCodec.md)
