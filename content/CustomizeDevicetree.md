@@ -37,7 +37,11 @@ to:
 +++ b/arch/arm64/boot/dts/renesas/rzg2l-smarc-pinfunction.dtsi
 ```
 10. [Add a custom Yocto Layer](CreateCustomYoctoLayer.md) that applies the patch to the build
-11. Copy the patch to the custom layer (called meta-mistysom in this example)
+11. To copy the patch to the custom layer (called "meta-mistysom"), follow the following instructions:
+    * Open a fresh shell window (while leaving the current one open)
+    * In the new shell, cd to the directory where you cloned the build container repository (e.g. `cd /src/github/rzg2l_phy-enable/Build/`)
+    * type `docker ps` to find the name of the running container, under `NAMES` look for a name like: `<USER>-rzg2l_vlp_v<VERSION>` or `<USER>-rzv2l_vlp_v<VERSION>`
+    * copy the patch file you created from the container to the correct location in the meta-mistysom layer: `docker cp <USER>-rzg2l_vlp_v<VERSION>:/home/yocto/tmp/ 0001-mistysom-pin-updates.patch meta-mistysom/recipes-kernel/linux/smarc-rzg2l/` (replace `rzg2l` with `rzv2l` as required)
     * Reurn back into the build directory `$ cd ~/rzv_vlp_v3.0.0/`
     * source the environment (just in case `$ source poky/oe-init-build-env`)
     * leave the build/ directory `$ cd ..`
