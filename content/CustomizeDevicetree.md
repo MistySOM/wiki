@@ -15,10 +15,10 @@ it includes multiple "device tree include" files (`*.dtsi`):
 #include "rz-smarc-common.dtsi"
 #include "rzg2l-smarc.dtsi"
 ```
-To update the pin assignments, `rzg2l-smarc-pinfunction.dtsi` needs to be patched.
+Find the file that contains the device node that needs updating (or the place to add the changes to). To update the pin assignments, `rzg2l-smarc-pinfunction.dtsi` needs to be patched.
 
 1. Create a temporary work directory in with: `$ mkdir ~/tmp`
-2. Copy the device tree file that is going to be patched and copy it to `~/tmp`:<br>
+2. Copy the device tree file that is going to be patched and copy it to `$ ~/tmp`:<br>
 `$ cp ./build/tmp/work-shared/smarc-rzv2l/kernel-source/arch/arm64/boot/dts/renesas/rzg2l-smarc-pinfunction.dtsi ~/tmp/`
 3. Change to the directory `$ cd ~/tmp`
 4. Create a copy of the just copied device tree include file: `$ cp rzg2l-smarc-pinfunction.dtsi rzg2l-smarc-pinfunction.dtsi.orig`
@@ -36,13 +36,30 @@ to:
 --- a/arch/arm64/boot/dts/renesas/rzg2l-smarc-pinfunction.dtsi
 +++ b/arch/arm64/boot/dts/renesas/rzg2l-smarc-pinfunction.dtsi
 ```
-10. [Add a custom Yocto Layer](CreateCustomYoctoLayer.md) that applies the patch to the build
-11. To copy the patch to the custom layer (called "meta-mistysom"), follow the following instructions:
+10. To[Add a custom Yocto Layer](CreateCustomYoctoLayer.md) that applies the patch to the build,
+11. Copy the patch to the custom layer (called "meta-mistysom"), follow the following instructions:
     * Open a fresh shell window (while leaving the current one open)
-    * In the new shell, cd to the directory where you cloned the build container repository (e.g. `cd /src/github/rzg2l_phy-enable/Build/`)
+    * In the new shell, cd to the directory where you cloned the build container repository (e.g. `cd /src/github/rzg2l/Build/`)
     * type `docker ps` to find the name of the running container, under `NAMES` look for a name like: `<USER>-rzg2l_vlp_v<VERSION>` or `<USER>-rzv2l_vlp_v<VERSION>`
-    * copy the patch file you created from the container to the correct location in the meta-mistysom layer: `docker cp <USER>-rzg2l_vlp_v<VERSION>:/home/yocto/tmp/ 0001-mistysom-pin-updates.patch meta-mistysom/recipes-kernel/linux/smarc-rzg2l/` (replace `rzg2l` with `rzv2l` as required)
-    * Reurn back into the build directory `$ cd ~/rzv_vlp_v3.0.0/`
+    * copy the patch file you created from the container to the correct location in the meta-mistysom layer: `docker cp <USER>-rzg2l_vlp_v<VERSION>:/home/yocto/tmp/0001-mistysom-pin-updates.patch meta-mistysom/recipes-kernel/linux/smarc-rzg2l/` (replace `rzg2l` with `rzv2l` as required)
+    * exit from the build container (or close the window witch the original  shell)
+    * Verify that the contents in `meta-mistysom` have been updated: `$git status`:
+    ```
+    Changes not staged for commit:
+      (use "git add <file>..." to update what will be committed)
+      (use "git restore <file>..." to discard changes in working directory)
+      (commit or discard the untracked or modified content in submodules)
+            modified:   meta-mistysom (modified content)
+    ```
+    * Confirm that the patch you just created is enabled in `meta-mistysom/recipes-kernel/linux/linux-renesas_\%.bbappend`
+    * invoke a container rebuild and re-run the container: `$ ./build.sh; ./run.sh -c <YOUR CACHE DIR> -n`
+    * in the running container, follow the instructions provided to invoke a rebuild
+    ```
+    'cd ~/rzg_vlp_v3.0.0/'
+    'source poky/oe-init-build-env'
+    'bitbake mistysom-image'
+    ```
+    
     * source the environment (just in case `$ source poky/oe-init-build-env`)
     * leave the build/ directory `$ cd ..`
     * create a recipe dir `$ mkdir -p meta-mistysom`
