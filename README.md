@@ -39,7 +39,7 @@
 
 ### Interfaces
 
-* [Read val;ues from ADCs](content/ReadADCs.md)
+* [Read values from ADCs](content/readADCs.md)
 * [GPIO Pins](content/GPIOPins.md)
 * [Setup WiFi](content/SetupWifi.md)
 
