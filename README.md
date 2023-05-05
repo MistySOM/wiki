@@ -6,7 +6,7 @@
 
 ### General
 
-* [Getting Started ]( content/GettingStarted.md )
+* [Getting Started]( content/GettingStarted.md)
 * [Board Start Up Guide]( content/BoardStartUpGuide.md)
 * [Build Bootloaders]( content/BuildBootloaders.md)
 * [Helpful U-Boot Commands]( content/HelpfulUBootCmds.md)
@@ -14,7 +14,6 @@
 * [Starting SSH server]( content/StartingSSH.md)
 * [Preparing uSD card instructions](content/preparing_usd.md)
 * [Streaming Video](content/StreamingVideo.md)
-
 * [Video Inference with DRPAI and GStreamer](content/GStreamerDRPAI.md)
 * [Program eMMC Flash](content/program_emmc_flash.md)
 
