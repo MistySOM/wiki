@@ -13,9 +13,8 @@
 * [Connect In-Circuit Debugger]( content/ConnectInCircuitDebugger.md)
 * [Starting SSH server]( content/StartingSSH.md)
 * [Preparing uSD card instructions](content/preparing_usd.md)
-* [Setup WiFi](content/SetupWifi.md)
 * [Streaming Video](content/StreamingVideo.md)
-* [GPIO Pins](content/GPIOPins.md)
+
 * [Video Inference with DRPAI and GStreamer](content/GStreamerDRPAI.md)
 * [Program eMMC Flash](content/program_emmc_flash.md)
 
@@ -37,6 +36,12 @@
 * [How to add a desired application to the MistySOM build and flow chart for bitbake recipe creation](files/img/BitBakeRecipeCreationFlowChart.pdf)
 * [How To Create Bitbake recipe from a repository](content/HowToCreateBitbakeRecipeGitHub.md)
 * [How To Create Bitbake recipe from local sources](content/HowToCreateBitbakeRecipeLocSrc.md)
+
+### Interfaces
+
+* [Read val;ues from ADCs](content/ReadADCs.md)
+* [GPIO Pins](content/GPIOPins.md)
+* [Setup WiFi](content/SetupWifi.md)
 
 ### OtherResources
 
