@@ -6,7 +6,6 @@
 
 The 40 pin GPIO Header on MistyCarrier can be configured to expose a different MistySOM functionatlities including IIC, SPI or USART. The below table indicates the functionalities for each pin:
 
-
 The column **func0** indicates the default mux setting on the pin.
 
 |func5| func1|func0|desc|pin#|pin#|desc|func0|func1|
