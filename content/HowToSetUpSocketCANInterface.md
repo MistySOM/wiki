@@ -182,7 +182,7 @@ Usage: ip link set DEVICE type can
 ### Displaying SocketCAN status
 
 To get a detailed status of the SocketCAN link, use the following command line:
-
+```
 $ ip -details link show can0
 2: can0: <NOARP,ECHO> mtu 72 qdisc pfifo_fast state DOWN mode DEFAULT group default qlen 10
     link/can  promiscuity 0
@@ -194,7 +194,7 @@ $ ip -details link show can0
           dtq 19 dprop-seg 8 dphase-seg1 9 dphase-seg2 7 dsjw 1
           m_can: dtseg1 1..32 dtseg2 1..16 dsjw 1..16 dbrp 1..32 dbrp-inc 1
           clock 50800000numtxqueues 1 numrxqueues 1 gso_max_size 65536 gso_max_segs 65535
-
+```
 ## Enabling/disabling the SocketCAN interface
 
 Then enable the connection by bringing the SocketCAN interface up:
