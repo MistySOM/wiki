@@ -8,13 +8,13 @@ The purpose of this tutorial is to demonstrate using the MistySOM Carrier board 
 
 
 
-| ![MH11_CAN_test_setup.jpg](files/img/MH11_CAN_Test_Setup2.jpg) |
+| ![MH11_CAN_test_setup.jpg](../files/img/MH11_CAN_Test_Setup2.jpg) |
 | ------------------------------------------------------------ |
 | Fig. 1 - Test Setup for  for reading and writing to CanBus from MistySOM RZ/G2L |
 
 
 
-| ![MH11_CAN_test_setup1.jpg](files/img/MH11_CAN_Test_Setup1.jpg) |
+| ![MH11_CAN_test_setup1.jpg](../files/img/MH11_CAN_Test_Setup1.jpg) |
 | ------------------------------------------------------------ |
 | Fig. 2 - Test Setup for reading and writing to CanBus from MistySOM RZ/G2L |
 
@@ -30,7 +30,7 @@ The purpose of this tutorial is to demonstrate using the MistySOM Carrier board 
 
 **SparkFun Triple Axis Accelerometer Breakout module** part no SEN-09836  (https://www.sparkfun.com/products/9836). See close-up in Fig. 2 below.
 
-| ![ADXL345_Breakout_Hardware.jpg](files/img/ADXL345_Breakout_Hardware.jpg) |
+| ![ADXL345_Breakout_Hardware.jpg](../files/img/ADXL345_Breakout_Hardware.jpg) |
 | ------------------------------------------------------------ |
 | Fig. 2 - Close up of SparkFun Triple Axis Accelerometer Breakout module using Analog ADXL345 accelerometer |
 
@@ -47,7 +47,7 @@ The ADXL345 is well suited to measure the static acceleration of gravity in tilt
 
 **Standard +3.3V FTDI TTL-232R-3V3-2MM USB to UART serial cable** (https://ftdichip.com/products/ttl-232r-3v3/) connecting the 1x8-pin keyed J40 connector on the MistyCarrier to a USB 2.0 Type-A port on a host Linux or Windows PC.
 
-![TTL-232R-3V3](files/img/TTL-232R-3V3.jpg)
+![TTL-232R-3V3](../files/img/TTL-232R-3V3.jpg)
 
 **Terminal emulator software** running on host PC for a serial terminal console session  (e.g picocom, minicom on a Linux PC or puTTY, TeraTerm on a Windows PC).
 
@@ -65,15 +65,15 @@ For this application note, we will connect the MistyCarrier with a mezzanine RZ/
 Refer to Fig 2 below showing the connector soldered to the J4 dual-row 2x20-pin header at the top centre of the image. 
 The schematic for the MistySOM signals on this J4 connector is provided in Fig 3, and the mapping of the RZ/G2L Pin Mux functions to the pins is provided in Fig. 4. Finally Fig 5 shows an example of a Fritzing breadboard diagram of connecting the 3.3V J4 header pin 40 (3v3 RZ/G2L GPIO pin P43_3)  via the 330Ω resistor to the LED anode.  The LED cathode is connected indirectly to pin 4 GND on the J4 header via the GND rail on the breadboard. Toggling the LED on and off is covered in the test procedure section further below. For testing GPIO pin P43_3 on J4 pin 40, the corresponding gpio_J4_pin_40_toggle.sh script is used to toggle the LED on and off 3 times at 1-second intervals.  For testing other GPIO signals on the J4 header, the jumper should be reconnected to the desired GPIO header pin, and the corresponding gpio_J4_pin_NN_toggle.sh should be invoked from the command line. 
 
-| ![VO-REVAFRONT-20221104_merge_alt](files/img/VO-REVAFRONT-20221104_merge_alt.png) |
+| ![VO-REVAFRONT-20221104_merge_alt](../files/img/VO-REVAFRONT-20221104_merge_alt.png) |
 | ------------------------------------------------------------ |
 | Fig 2 - MistyCarrier with mezzanine MistySOM showing J4 2x20-pin header at top center |
 
-| ![MistyCarrier_J4_40-pin_header_schematic](files/img/MistyCarrier_J4_40-pin_header_schematic.png) |
+| ![MistyCarrier_J4_40-pin_header_schematic](../files/img/MistyCarrier_J4_40-pin_header_schematic.png) |
 | ------------------------------------------------------------ |
 | Fig. 3 - MistyCarrier J4 Connector schematic pinout for pins 1-40 |
 
-| ![MistyCarrier J4 40-pin Header Pinout Mapping to RZ/G2L Pin Mux Functions](files/img/MistyCarrier_J4_Pinout.png) |
+| ![MistyCarrier J4 40-pin Header Pinout Mapping to RZ/G2L Pin Mux Functions](../files/img/MistyCarrier_J4_Pinout.png) |
 | ------------------------------------------------------------ |
 | Fig. 4 - Mapping of MistyCarrier J4 Header pinout to Available RZ/G2L pin mux function selection |
 
@@ -96,7 +96,7 @@ The following is a table describing which pins on the Arduino should be connecte
 
 The breadboard circuit image in Fig 5 below shows the SparkFun ADXL345 breakout module connected to the MistyCarrier J4 connector using the RZ/G2L I2C RIIC1 port signals on J4 pins 7 and 9.
 
-| ![ADXL345_I2C_fritzing.jpg](files/img/ADXL345_I2C_fritzing.jpg) |
+| ![ADXL345_I2C_fritzing.jpg](../files/img/ADXL345_I2C_fritzing.jpg) |
 | ------------------------------------------------------------ |
 | Fig. 5 - Fritzing Breadboard Circuit Image of J4 pins 7 and 9 (RIIC1_SDA and RIIC!_SCL) connected to SparkFun ADXL345 accelerometer I2C interface |
 
