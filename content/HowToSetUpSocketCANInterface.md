@@ -1,104 +1,99 @@
 <img src="../files/img/2018_MistyWest_LogoCombo_FINAL_RGB.png" alt="MistyWest" width="400"/><div style="text-align: right">back to [index](../README.md)</div>
 
-# Reading from ADXL345 3-axis Accelerometer Using i2c Interface  on MistySOM and MistyCarrier 
+# Reading and writing to CANbus from MistySOM RZ/G2L
+
+
 
 # Introduction
 
-The purpose of this tutorial is to demonstrate using the MistySOM Carrier board with a mezzanine MistySOM module can be used to read data over the i2c bus on the RZ/G2L from an [ADXL345](https://www.sparkfun.com/products/9836) i2c accelerometer connected to the RIIC1 i2c port on the MistyCarrier J4 connector on pins 7 and 9.  The ADXL345 is a small, thin, low power, 3-axis MEMS accelerometer with high resolution (13-bit) measurement at up to +/-16 g. Digital output data is formatted as 16-bit two's complement and is accessible through either an SPI (3- or 4-wire) or I2C digital interface. 
-
-
-
-| ![MH11_CAN_test_setup.jpg](../files/img/MH11_CAN_Test_Setup2.jpg) |
-| ------------------------------------------------------------ |
-| Fig. 1 - Test Setup for  for reading and writing to CanBus from MistySOM RZ/G2L |
+The purpose of this tutorial is to demonstrate using the MistySOM Carrier board with a mezzanine MistySOM RZ/G2L module (shown in Fig. 1 below) to read and write data over CANbus  to  a Linux PC running a SocketCAN CANbus protocol analyzer such as SavvyCAN.
 
 
 
 | ![MH11_CAN_test_setup1.jpg](../files/img/MH11_CAN_Test_Setup1.jpg) |
 | ------------------------------------------------------------ |
-| Fig. 2 - Test Setup for reading and writing to CanBus from MistySOM RZ/G2L |
+| Fig. 1 - Test Setup for reading and writing to CanBus from MistySOM RZ/G2L |
 
 
-
-
-
-## 
 
 ## Materials:
 
-**MistyWest MistySOM EVK Kit** (based on  a MistySOM module using a Renesas RZ/G2L or RZ/V2L microcontroller  as mezzanine module mounted on MistyCarrier). Make sure the MistySOM board boots from a micro SD Card running the latest MistySOM-specific RZ/G2L or RZ/V2L V3.0.x  Linux image. A standard break-away 0.1" 2x20-pin dual male header should be soldered to the MistyCarrier J4 i/o pads if not populated. 
+- **MistyWest MistySOM EVK Kit** (based on  a MistySOM module using a Renesas RZ/G2L or RZ/V2L microcontroller  as mezzanine module mounted on MistyCarrier). Make sure the MistySOM board boots from a micro SD Card running the latest MistySOM-specific RZ/G2L or RZ/V2L V3.0.x  Linux image. A standard break-away 0.1" 2x20-pin dual male header should be soldered to the MistyCarrier J4 i/o pads if not populated. Refer to Fig 2 below.
 
-**SparkFun Triple Axis Accelerometer Breakout module** part no SEN-09836  (https://www.sparkfun.com/products/9836). See close-up in Fig. 2 below.
-
-| ![ADXL345_Breakout_Hardware.jpg](../files/img/ADXL345_Breakout_Hardware.jpg) |
+| ![VO-REVAFRONT-20221104_merge](../files/img/VO-REVAFRONT-20221104_merge.jpg) |
 | ------------------------------------------------------------ |
-| Fig. 2 - Close up of SparkFun Triple Axis Accelerometer Breakout module using Analog ADXL345 accelerometer |
+| Fig 2 - MistyWest EVK Kit with MistySOM mezzanine RZ/G2L module hosted on MistyCARRIER board. |
 
-The Analog Devices ADXL345 accelerometer as used on this SparkFun breakout module supports the following features:
+- **Standard +3.3V FTDI TTL-232R-3V3-2MM USB to UART serial cable** (https://ftdichip.com/products/ttl-232r-3v3/) connecting the 1x8-pin keyed J40 connector on the MistyCarrier to a USB 2.0 Type-A port on a host Linux or Windows PC. Refer to image in Fig 3 below.
 
-- Supply Voltage: 2.0 - 3.6 VDC
-- Ultra Low Power: As low as 23 uA in measurement mode, 0.1uA in standby mode at 2.5V
-- SPI or I2C Communication
-- Single Tap / Double Tap Detection
-- Activity / Inactivity Sensing
-- Free-Fall Detection
+| ![TTL-232R-3V3](../files/img/TTL-232R-3V3.jpg)     |
+| -------------------------------------------------- |
+| Fig 3 - FTDI TTL-232R-3V3 USB to UART serial cable |
 
-The ADXL345 is well suited to measure the static acceleration of gravity in tilt-sensing applications, as well as dynamic acceleration resulting from motion or shock. Its high resolution (4 mg/LSB) enables measurement of inclination changes less than 1.0°. Furthermore, low power modes enable intelligent motion-based power management with threshold sensing and active acceleration measurement at extremely low power dissipation.  The ADXL345 accelerometer supports both I2C and SPI bus interfaces.  For this application note, we will use the SparkFun ADXL345 breakout module with an i2c interface.
+- **Terminal emulator software** running on host PC for a serial terminal console session  (e.g picocom, minicom on a Linux PC or puTTY, TeraTerm on a Windows PC).
 
-**Standard +3.3V FTDI TTL-232R-3V3-2MM USB to UART serial cable** (https://ftdichip.com/products/ttl-232r-3v3/) connecting the 1x8-pin keyed J40 connector on the MistyCarrier to a USB 2.0 Type-A port on a host Linux or Windows PC.
+- **Molex Latch 3-pin Cable Socket to Wire Leads (p/n 2196791032) (one for each of CAN0 and CAN1 ports)** Molex 3-wire PigTail connections for each of Ports CAN0 and CAN1 on MistyCarrier board. Refer to Fig 4 below showing Molex pigtail as connected to PEAK PCAN-Adapter D-Sub connector screw terminals.
 
-![TTL-232R-3V3](../files/img/TTL-232R-3V3.jpg)
 
-**Terminal emulator software** running on host PC for a serial terminal console session  (e.g picocom, minicom on a Linux PC or puTTY, TeraTerm on a Windows PC).
 
-**Breadboard** - Standard 0.1" solderless electronic prototyping breadboard with 400 or 800 tie-points with bus strip rows for power and ground rails. 
-
-**Jumper Wires** - standard F/F jumper wires with female connectors on both ends. Use these to jumper from any male header on the MistyCarrier board to any other pin on the prototyping breadboard. The LED toggle procedure verifies one  GPIO pin at a time connected by a jumper to a single pin on header J4 (see Fig 3-4 below) or else a pin on from one of test points TP39-TP66 on the debug pads of the MistyCarrier (see Fig 6-9 below).
-
-**Jumper Pins** - assorted 0.1" breakaway rectangular jumper pins for connecting jumpers to breadboard
-
-### Circuit to read SparkFun ADXL345 breakout module from MistySOM / MistyCarrier using I2C
-
-With the ADXL345, either I2C or SPI digital communications are available. In both cases, the ADXL345 operates as a slave device.
-For this application note, we will connect the MistyCarrier with a mezzanine RZ/G2L-based MistySOM module to the ADXL345 breakout board using I2C communication.
-
-Refer to Fig 2 below showing the connector soldered to the J4 dual-row 2x20-pin header at the top centre of the image. 
-The schematic for the MistySOM signals on this J4 connector is provided in Fig 3, and the mapping of the RZ/G2L Pin Mux functions to the pins is provided in Fig. 4. Finally Fig 5 shows an example of a Fritzing breadboard diagram of connecting the 3.3V J4 header pin 40 (3v3 RZ/G2L GPIO pin P43_3)  via the 330Ω resistor to the LED anode.  The LED cathode is connected indirectly to pin 4 GND on the J4 header via the GND rail on the breadboard. Toggling the LED on and off is covered in the test procedure section further below. For testing GPIO pin P43_3 on J4 pin 40, the corresponding gpio_J4_pin_40_toggle.sh script is used to toggle the LED on and off 3 times at 1-second intervals.  For testing other GPIO signals on the J4 header, the jumper should be reconnected to the desired GPIO header pin, and the corresponding gpio_J4_pin_NN_toggle.sh should be invoked from the command line. 
-
-| ![VO-REVAFRONT-20221104_merge_alt](../files/img/VO-REVAFRONT-20221104_merge_alt.png) |
+| ![PCAN-Adapter-D-Sub-to-Screw-Terminals_to_Molex-3-pin_connector_cable](../files/img/PCAN-Adapter-D-Sub-to-Screw-Terminals_to_Molex-3-pin_connector_cable.jpg) |
 | ------------------------------------------------------------ |
-| Fig 2 - MistyCarrier with mezzanine MistySOM showing J4 2x20-pin header at top center |
+| Fig. 4 - Close-up of Molex Pigtail connector attached to PEAK PCAN-Adapter DB-9 D-Sub adapter |
 
-| ![MistyCarrier_J4_40-pin_header_schematic](../files/img/MistyCarrier_J4_40-pin_header_schematic.png) |
+- **Peak PCAN-Adapter D-Sub to Screw Terminals Pigtail connector (p/n IPEK-003025) (one for each set of Molex Latch 3-pin pigtail wire leads for CAN0 and CAN1 ports) ** - Refer to Fig 4 above showing Molex pigtail as connected to PEAK PCAN-Adapter D-Sub connector screw terminals. Optional 120 ohm termination jumpers are not installed since CAN termination is installed on MistyCARRIER board.
+
+- **Kvaser T-CANnector V2 (p/n 73-30130-00776-5)** - The T-CANnector V2 serves as a DB-9 CANbus hub with 3 female and 1 male DB-9 connectors. Refer to Fig 5 below. Each of the PEAK PCAN-Adapter terminals for the CAN0 and CAN1 ports from the MistyCarrier can connect to the T-CANnector hub. All peer devices connected to the CAN segment on the Kvaser T-CANnector V2 hub can communicate with each other.
+
+| ![](../files/img/Kvaser_T_Cannector_2.jpg)           |
+| ---------------------------------------------------- |
+| Fig 5 - Kvaser T-CANnector V2 (p/n 73-30130-00776-5) |
+
+
+
+- **Lawicel CANUSB CAN to USB Interface Converter**
+
+The Lawicel CANUSB interface (refer to Fig 6 below) is a relatively inexpensive CAN to USB dongle that plugs into any PC USB Port and gives SocketCAN connectivity to a host Linux PC. This means it can be treated by software as a standard COM Port (virtual serial RS232 port) with the FTDI USB drivers which eliminates the need for any extra drivers (DLL) or optionally by installing a direct driver DLL (D2XX) together with the CANUSB DLL for faster communications and higher CAN bus loads. The Lawicel CANUSB converter should be connected to the P4 DSUB-9 plug port on the Kvaser T-CANnector V2 (rather than the P1, P2 or P3 DSUB-9 socket connectors). Also, the switch for the 120 ohm termination resistor on the  Kvaser T-CANnector V2 hub should be enabled to establish termination for the Lawicel adapter at it's end of the CANbus segment.
+
+| ![Lawicel CANUSB_2D](../files/img/Lawicel CANUSB_2D.png) |
+| -------------------------------------------------------- |
+| ![](../files/img/Lawicel_CANUSB_image.jpg)               |
+| Fig. 6 - Lawicel CANUSB CAN to USB Adaptor Dongle        |
+
+
+
+- **SavvyCAN CAN analyzer software for Linux** - SavvyCAN (https://www.savvycan.com/) is a cross platform QT-based CAN bus capture and analysis software tool (supported on Linux) which is able to use any socketCAN compatible device. SavvyCAN can use any CAN interface supported by QT's SerialBus system (PeakCAN, Vector, SocketCAN, Lawicel CANUSB, J2534, etc). It can capture and send to multiple buses and CAN capture devices at once. SavvyCAN has many functions specifically meant for reverse engineering data found on the CAN bus:
+
+  \- Ability to capture even very highly loaded buses
+
+  \- Ability to connect to many dongles simultaneously
+
+  \- Scan captured traffic for data that looks coherent
+
+  \- Show ASCII of captured data to find things like VIN numbers and traffic to and from the radio
+
+  \- Graph data found on the bus
+
+  \- Load and Save many different file formats common to CAN capture tools (Vector captures, Microchip, CANDo, PCAN, and many more)
+
+  \- Load and Save DBC files. DBC files are used to store definitions for how data are formatted on the bus. You can turn the raw data into things like a RPM, odometer readings, and more.
+
+  \- UDS scanning and decoding
+
+  \- Scripting interface to be able to expand the scope of the software
+
+### MistyCarrier RZ/G2L interface for reading and writing to CANbus
+
+
+
+| ![MH11_CAN_test_setup.jpg](../files/img/MH11_CAN_Test_Setup2.jpg) |
 | ------------------------------------------------------------ |
-| Fig. 3 - MistyCarrier J4 Connector schematic pinout for pins 1-40 |
+| Fig. 7 - Test Setup for reading and writing to CanBus from MistySOM RZ/G2L |
 
-| ![MistyCarrier J4 40-pin Header Pinout Mapping to RZ/G2L Pin Mux Functions](../files/img/MistyCarrier_J4_Pinout.png) |
+
+
+| ![MistyCarrierCAN](../files/img/MistyCarrierCAN.jpg)         |
 | ------------------------------------------------------------ |
-| Fig. 4 - Mapping of MistyCarrier J4 Header pinout to Available RZ/G2L pin mux function selection |
-
-I2C mode is enabled if the CS pin is tied to high. There is no default mode if the CS pin is left unconnected, so it should always be tied high or driven by an external controller.
-
-Note: If other devices are connected to the same I2C bus, the nominal operating voltage level of those other devices cannot exceed VDD I/O by more than 0.3 V. External pull-up resistors are necessary for proper I2C operation. Used in this connection diagram are two 4.7 kΩ resistors. Please refer to page 18 of the [ADXL345 Datasheet](https://www.sparkfun.com/datasheets/Sensors/Accelerometer/ADXL345.pdf) for additional information.
-
-The following is a table describing which pins on the Arduino should be connected to the pins on the accelerometer for I2C communication.
-
-| RZ/G2L <br />Signal | MistyCarrier<br />J4 Pin # | **ADXL345 Pin** | Description                                          |
-| :------------------ | -------------------------- | --------------- | ---------------------------------------------------- |
-| GND                 | 4                          | GND             | This pin must be connected to ground                 |
-| 3V3                 | 2                          | VCC             | 3.3V Supply Voltage                                  |
-| 3V3                 | 2                          | CS              | Chip Select                                          |
-| GND                 | 4                          | SDO             | Serial Data Output (SPI 4-Wire) / I2C Address Select |
-| RIIC1_SDA           | 7                          | SDA             | Serial Data I2C / Serial Data Input (SPI 4-WIRE)     |
-| RIIC1_SCK           | 9                          | SCL             | Serial Communications Clock                          |
-
-
-
-The breadboard circuit image in Fig 5 below shows the SparkFun ADXL345 breakout module connected to the MistyCarrier J4 connector using the RZ/G2L I2C RIIC1 port signals on J4 pins 7 and 9.
-
-| ![ADXL345_I2C_fritzing.jpg](../files/img/ADXL345_I2C_fritzing.jpg) |
-| ------------------------------------------------------------ |
-| Fig. 5 - Fritzing Breadboard Circuit Image of J4 pins 7 and 9 (RIIC1_SDA and RIIC!_SCL) connected to SparkFun ADXL345 accelerometer I2C interface |
+| Fig 8 - MistyCarrier schematic showing CAN0 and CAN2 Molex 1x3 Headers at right.<br />NOTE: Jumpers J16 and J17 (for CAN0 termination) or J19 and J20 (for CAN1 termination) should be installed if the corresponding MistyCAN canbus port is the end of the CAN cable segment. |
 
 
 
@@ -108,9 +103,11 @@ The breadboard circuit image in Fig 5 below shows the SparkFun ADXL345 breakout 
 
 ## Purpose
 
-This article describes how to set up a SocketCAN interface using the iproute2[1] suite of tools.
+This article describes how to set up a SocketCAN interface using the iproute2 suite of tools and is included in the RZ/G2L and RZ/V2L SDK.
 
-iproute2 is a set of utilities for Linux® networking, integrated in the SDK for the STM32 microprocessors.
+iproute2 is a set of utilities for Linux networking, including support for SocketCAN interfaces.
+
+
 
 ## Configuring the SocketCAN interface
 
@@ -182,7 +179,7 @@ Usage: ip link set DEVICE type can
 ### Displaying SocketCAN status
 
 To get a detailed status of the SocketCAN link, use the following command line:
-```
+
 $ ip -details link show can0
 2: can0: <NOARP,ECHO> mtu 72 qdisc pfifo_fast state DOWN mode DEFAULT group default qlen 10
     link/can  promiscuity 0
@@ -194,7 +191,7 @@ $ ip -details link show can0
           dtq 19 dprop-seg 8 dphase-seg1 9 dphase-seg2 7 dsjw 1
           m_can: dtseg1 1..32 dtseg2 1..16 dsjw 1..16 dbrp 1..32 dbrp-inc 1
           clock 50800000numtxqueues 1 numrxqueues 1 gso_max_size 65536 gso_max_segs 65535
-```
+
 ## Enabling/disabling the SocketCAN interface
 
 Then enable the connection by bringing the SocketCAN interface up:
@@ -219,8 +216,7 @@ You can disable the connection by bringing the SocketCAN interface down. This co
 
 ```
  $ ip link set can0 down
-
-## 
+ 
 ```
 
 ## Loopback test mode
@@ -337,11 +333,5 @@ root@smarc-rzg2l:~# history
    78  history
 
 
-## 
-
-
 ```
 
-## References
-
-IPROUTE2 information, by The Linux Foundation
