@@ -42,7 +42,7 @@
 * [Read values from ADCs](content/readADCs.md)
 * [GPIO Pins](content/GPIOPins.md)
 * [Setup WiFi](content/SetupWifi.md)
-* [CAN interface](content/HowToSetUpSocketCANInterface.md)
+* [How To Set Up Socket CAN](content/HowToSetUpSocketCANInterface.md)
 
 ### OtherResources
 
