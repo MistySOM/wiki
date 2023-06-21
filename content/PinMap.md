@@ -1,4 +1,5 @@
-# Pin map
+layout: page
+title: "Pin Map"
 
 The below tables contain detailed pin mapping of the Samtec Board to Board & Mezzanine Connectors (J1 & J2) on MistySOM.
 
