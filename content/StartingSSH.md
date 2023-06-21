@@ -1,4 +1,5 @@
-<img src="img/2018_MistyWest_LogoCombo_FINAL_RGB.png" alt="MistyWest" width="400"/><div style="text-align: right">back to [index](../README.md)</div>
+layout: page
+title: "Starting SSH"
 
 # SSH Server
 ### Revision History

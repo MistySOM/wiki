@@ -1,4 +1,5 @@
-# Create custom Yocto layer
+layout: page
+title: "Create custom Yocto layer"
 
 *Note:The following instructions describes device tree modification for the MistySOM CARRIER and needs to be customized to fit a different hardware platform.*
 
