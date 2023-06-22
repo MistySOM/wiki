@@ -1,5 +1,6 @@
-layout: page
+---
 title: "Connect In-Circuit Debugger"
+---
 
 ### Revision History
 
