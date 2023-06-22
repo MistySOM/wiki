@@ -1,5 +1,7 @@
+---
 layout: page
 title: "Device Tree Hierarchy"
+---
 
 # Device Tree Hierarchy for MistySOMG2L and MisdtySOMV2L
 

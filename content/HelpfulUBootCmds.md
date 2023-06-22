@@ -1,5 +1,7 @@
+---
 layout: page
 title: "Helpful U-Boot Commands"
+---
 
 ### Revision History
 

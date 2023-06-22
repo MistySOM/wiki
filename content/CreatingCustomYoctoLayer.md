@@ -1,5 +1,7 @@
+---
 layout: page
 title: "Creating a custom Yocto Layer and Image"
+---
 
 ## Introduction
 This tutorial explains how a custom Yocto layer and a custom bitbake image can be created. It's only for display purposes and should not be used & deployed as is as setting the root password as shown below, is insecure.

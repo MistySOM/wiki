@@ -1,5 +1,7 @@
+---
 layout: page
 title: "Starting SSH"
+---
 
 # SSH Server
 ### Revision History
