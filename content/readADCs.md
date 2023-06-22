@@ -1,5 +1,7 @@
+---
 layout: page
 title: "Read ADCs"
+---
 
 In order to read raw values from the ADCs, use
 

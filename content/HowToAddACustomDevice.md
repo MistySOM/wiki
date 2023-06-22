@@ -1,5 +1,7 @@
+---
 layout: page
 title: "How to Add Device a Custom Device"
+---
 
 ### Revision History
 

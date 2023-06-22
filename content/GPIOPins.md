@@ -1,5 +1,7 @@
+---
 layout: page
 title: "GPIO Pins"
+---
 
 ## GPIO Header
 

@@ -1,5 +1,7 @@
+---
 layout: page
 title: "Design Files"
+---
 
 ## MistySOM
 * [Schematic (.pdf)](https://remote.mistywest.io/download/mh11/designfiles/2022-12-23_SOM_001_B_SchPrints.PDF)

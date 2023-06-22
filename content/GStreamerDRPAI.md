@@ -1,5 +1,7 @@
+---
 layout: page
 title: "Video Inference with DRPAI and GStreamer"
+---
 
 MistySOM RZV2L contains the DRPAI hardware module which is able to run artificial Neural Networks 
 with the focus on low power consumption. To check if this hardware module is present on your device,

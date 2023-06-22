@@ -1,5 +1,7 @@
+---
 layout: page
 title: "Custom Recipes from a Local Source"
+---
 
 # How to create a custom bitbake recipe from local sources
 

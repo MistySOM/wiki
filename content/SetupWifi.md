@@ -1,5 +1,7 @@
+---
 layout: page
 title: "Setup WiFi"
+---
 
 # Setup WiFi
 
