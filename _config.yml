@@ -33,7 +33,7 @@ defaults:
   - scope:
       path: "/content"
     values:
-      layout: default
+      layout: content
 
 # Build settings
 remote_theme: pages-themes/minimal@v0.2.0
