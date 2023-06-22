@@ -1,5 +1,6 @@
-layout: page
+---
 title: "Board Start-Up Guide MistySOM"
+---
 
 ### Revision History
 
