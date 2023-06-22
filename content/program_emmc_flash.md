@@ -1,6 +1,5 @@
-<img src="../files/img/2018_MistyWest_LogoCombo_FINAL_RGB.png" alt="MistyWest" width="400"/><div style="text-align: right">back to [index](../README.md)</div>
-
-# Program eMMC flash
+layout: page
+title: "Program eMMC flash"
 
 * To program the eMMC Flash device on MistySOM, the below instructions can be followed.
 * You will need to boot with SD card first and partition eMMC Flash device. Then you can load the files from SD card to eMMC Flash.

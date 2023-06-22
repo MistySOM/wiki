@@ -1,3 +1,6 @@
+layout: page
+title: "References"
+
 ## RZG2L_PORT_PINMUX
 
 ```

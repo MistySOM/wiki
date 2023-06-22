@@ -1,6 +1,5 @@
-<img src="../files/img/2018_MistyWest_LogoCombo_FINAL_RGB.png" alt="MistyWest" width="400"/><div style="text-align: right">back to [index](../README.md)</div>
-
-# Getting Started with MistySOM
+layout: page
+title: "Getting Started with MistySOM"
 
 ### MistySOM
 
