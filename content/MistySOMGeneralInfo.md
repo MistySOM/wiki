@@ -1,5 +1,4 @@
 ---
-layout: page
 title: "MistySOM General information"
 ---
 

@@ -1,5 +1,4 @@
 ---
-layout: page
 title: "Convert existing model to MistySOM V2L"
 ---
 

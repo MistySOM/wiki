@@ -1,5 +1,4 @@
 ---
-layout: page
 title: "Create custom Yocto layer"
 ---
 

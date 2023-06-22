@@ -1,5 +1,4 @@
 ---
-layout: page
 title: "Preparing uSD Card Instructions"
 ---
 
