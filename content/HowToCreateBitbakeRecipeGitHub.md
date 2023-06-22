@@ -1,5 +1,4 @@
 ---
-layout: page
 title: "Custom Recipe from a Public Repo"
 ---
 

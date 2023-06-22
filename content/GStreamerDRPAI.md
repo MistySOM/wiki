@@ -1,5 +1,4 @@
 ---
-layout: page
 title: "Video Inference with DRPAI and GStreamer"
 ---
 

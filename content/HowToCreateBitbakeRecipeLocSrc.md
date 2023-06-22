@@ -1,5 +1,4 @@
 ---
-layout: page
 title: "Custom Recipes from a Local Source"
 ---
 
