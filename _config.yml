@@ -32,7 +32,7 @@ github_username: MistySOM
 
 defaults:
   - scope:
-      path: "/content"
+      path: "content"
     values:
       layout: "content"
 
