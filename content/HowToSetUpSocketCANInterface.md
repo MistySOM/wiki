@@ -237,8 +237,18 @@ You can check that loopback option is on by printing the netlink status:
           bitrate 996078 sample-point 0.745
 
 ```
+## CAN Test
+Connect Saleae to `CANL` and bring the device up with the following two instructions:
+```
+$ ip link set can0 type can bitrate 1000000 dbitrate 2000000 fd on
+$ ip link set can0 up
+```
+then invoke [cangen](https://manpages.debian.org/stretch-backports/can-utils/cangen.1.en.html) to create example traffic with:
+```
+$ cangen can0 -D 11223344DEADBEEF -L 8
+```
+While [candump](https://manpages.debian.org/testing/can-utils/candump.1.en.html) can be used to monitor incoming traffic
 
-...
 
 ## Example of SocketCAN interface setup
 
@@ -334,4 +344,19 @@ root@smarc-rzg2l:~# history
 
 
 ```
+
+## Troubleshooting & FAQ
+
+error experienced:
+```
+ifconfig can0 txqueuelen 1000
+```
+can be resolved with:
+```
+# ifconfig can0 txqueuelen 1000
+```
+This will increase the number of frames allowed per kernel transmission queue for the queuing discipline. More info [here](https://community.carloop.io/t/socketcan-canplayer-error-sendto-no-buffer-space-available/298)
+
+
+
 
