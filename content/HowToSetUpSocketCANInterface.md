@@ -247,8 +247,15 @@ then invoke [cangen](https://manpages.debian.org/stretch-backports/can-utils/can
 ```
 $ cangen can0 -D 11223344DEADBEEF -L 8
 ```
-While [candump](https://manpages.debian.org/testing/can-utils/candump.1.en.html) can be used to monitor incoming traffic
-
+While [cansniffer]([https://manpages.debian.org/testing/can-utils/candump.1.en.htmhttps://manpages.debian.org/testing/can-utils/cansniffer.1.en.htmll](https://manpages.debian.org/testing/can-utils/cansniffer.1.en.html)) can be used to monitor incoming traffic:
+* for example with a loopback cable to the `can1` interface:
+```
+cansniffer can1
+```
+or with a connection to `can0` on a secondboard:
+```
+cansniffer can0
+```
 
 ## Example of SocketCAN interface setup
 
