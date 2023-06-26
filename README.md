@@ -41,6 +41,7 @@
 
 * [Read values from ADCs](content/readADCs.md)
 * [GPIO Pins](content/GPIOPins.md)
+* [How to set pin mux](content/pinmux.md)
 * [Setup WiFi](content/SetupWifi.md)
 * [How To Set Up Socket CAN](content/HowToSetUpSocketCANInterface.md)
 
