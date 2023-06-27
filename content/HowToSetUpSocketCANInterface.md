@@ -1,7 +1,7 @@
 ---
-title: "How To Set Up Socket CAN Interface"
+title: "CAN setup"
 ---
-
+# How To Set Up Socket CAN Interface
 
 
 # Introduction
