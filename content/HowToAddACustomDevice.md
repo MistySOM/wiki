@@ -1,6 +1,7 @@
-<img src="../files/img/2018_MistyWest_LogoCombo_FINAL_RGB.png" alt="MistyWest" width="400"/><div style="text-align: right">back to [index](../README.md)</div>
+---
+title: "How to Add Device a Custom Device"
+---
 
-# How to Add Device a Custom Device
 ### Revision History
 
 <table>

@@ -1,6 +1,6 @@
-<img src="../files/img/2018_MistyWest_LogoCombo_FINAL_RGB.png" alt="MistyWest" width="400"/><div style="text-align: right">back to [index](../README.md)</div>
-
-# Customize device tree
+---
+title: "Customize device tree"
+---
 
 *Note:The following instructions describes device tree modification for the MistySOM CARRIER and needs to be customized to fit a different hardware platform.*
 

@@ -1,5 +1,6 @@
-<img src="../files/img/2018_MistyWest_LogoCombo_FINAL_RGB.png" alt="MistyWest" width="400"/><div style="text-align: right">back to [index](../README.md)</div>
-# Video Inference with DRPAI and GStreamer
+---
+title: "Video Inference with DRPAI and GStreamer"
+---
 
 MistySOM RZV2L contains the DRPAI hardware module which is able to run artificial Neural Networks 
 with the focus on low power consumption. To check if this hardware module is present on your device,
@@ -78,5 +79,5 @@ gst-launch-1.0 v4l2src device=/dev/video0 ! video/x-raw, width=640, height=480, 
     ! vspmfilter dmabuf-use=true ! video/x-raw, format=NV12 \
     ! omxh264enc control-rate=2 target-bitrate=10485760 interval_intraframes=14 periodicty-idr=2 \
     ! video/x-h264,profile=\(string\)high,level=\(string\)4.2 \
-    ! rtph264pay ! udpsink host=$1 port=51372
+    ! rtph264pay config-interval=-1 ! udpsink host=$1 port=51372
 ````

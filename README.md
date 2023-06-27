@@ -1,17 +1,14 @@
-<img src="files/img/2018_MistyWest_LogoCombo_FINAL_RGB.png" alt="MistyWest" width="400"/>
-
-# MistySOM wiki
 
 ## Articles
 
 ### General
 
-* [Getting Started]( content/GettingStarted.md)
-* [Board Start Up Guide]( content/BoardStartUpGuide.md)
-* [Build Bootloaders]( content/BuildBootloaders.md)
-* [Helpful U-Boot Commands]( content/HelpfulUBootCmds.md)
-* [Connect In-Circuit Debugger]( content/ConnectInCircuitDebugger.md)
-* [Starting SSH server]( content/StartingSSH.md)
+* [Getting Started](content/GettingStarted.md)
+* [Board Start Up Guide](content/BoardStartUpGuide.md)
+* [Build Bootloaders](content/BuildBootloaders.md)
+* [Helpful U-Boot Commands](content/HelpfulUBootCmds.md)
+* [Connect In-Circuit Debugger](content/ConnectInCircuitDebugger.md)
+* [Starting SSH server](content/StartingSSH.md)
 * [Preparing uSD card instructions](content/preparing_usd.md)
 * [Streaming Video](content/StreamingVideo.md)
 * [Video Inference with DRPAI and GStreamer](content/GStreamerDRPAI.md)

@@ -1,6 +1,7 @@
-<img src="../files/img/2018_MistyWest_LogoCombo_FINAL_RGB.png" alt="MistyWest" width="400"/><div style="text-align: right">back to [index](../README.md)</div>
+---
+title: "Board Start-Up Guide MistySOM"
+---
 
-# Board Start-Up Guide MistySOM
 ### Revision History
 
 <table>
@@ -63,10 +64,10 @@
       please send !  
       ```  
 7. Download and save the file `Flash_Writer_SCIF__.mot`([MistySOM-G2L](../files/bootloader/rzg2l/Flash_Writer_SCIF_RZG2L.mot) or [MistySOM-V2L](../files/bootloader/rzv2l/Flash_Writer_SCIF_RZV2L.mot)) by clicking on **Raw** button and then using **Save as** over the opened content.
-8. **On Windows:** Select `File -> Send File...` and select the file `Flash_Writer_SCIF__.mot`. A transfer dialog will appear displaying the progress of the file transfer over the serial connection. <br/>
+8. **In TeraTerm** (on Windows): Select `File -> Send File...` and select the file `Flash_Writer_SCIF__.mot`. A transfer dialog will appear displaying the progress of the file transfer over the serial connection. <br/>
    **On Linux:** Open another terminal window and run the command: `pv Flash_Writer_SCIF__.mot | sudo dd of=/dev/ttyUSB0`
    
-After successful downloading of the vbinary, Flash Writer starts automatically and shows a message like the one shown below on the terminal
+After successful downloading of the binary, Flash Writer starts automatically and shows a message like the one shown below on the terminal
 ```
 Flash writer for RZ/V2 Series V1.02 Nov.15,2021
  Product Code : RZ/V2L

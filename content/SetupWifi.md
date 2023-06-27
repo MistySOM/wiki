@@ -1,3 +1,6 @@
+---
+title: "Setup WiFi"
+---
 
 # Setup WiFi
 
@@ -60,12 +63,8 @@ After the configuration file is ready, enable the two services below to automati
     systemctl enable --now dhcpcd@wlan0
     
 ### Need Other Services to Run After WiFi is Connected?
-
-You can enable the network online service with the command below:
-
-    systemctl enable systemd-networkd-wait-online.service
    
-Then every service file with the parameter `After=network-online.target` will run after the WiFi is connected and an IP address is acquired.
+Every service file with the parameter `After=network-online.target` will run after the WiFi is connected and an IP address is acquired.
     
 ### Need a Static IP?
 You will most likely be using a dynamic IP address and the DHCP client service would obtain the IP per each connection. In case you want to use a static IP, create or edit the `/etc/dhcpcd.conf` file. For example:

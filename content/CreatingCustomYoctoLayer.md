@@ -1,6 +1,6 @@
-<img src="../files/img/2018_MistyWest_LogoCombo_FINAL_RGB.png" alt="MistyWest" width="400"/><div style="text-align: right">back to [index](../README.md)</div>
-
-# Creating a custom Yocto Layer and Image
+---
+title: "Creating a custom Yocto Layer and Image"
+---
 
 ## Introduction
 This tutorial explains how a custom Yocto layer and a custom bitbake image can be created. It's only for display purposes and should not be used & deployed as is as setting the root password as shown below, is insecure.
