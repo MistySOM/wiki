@@ -12,3 +12,9 @@ section {
     float: unset;
     margin-left: 350px;
 }
+
+@media print, screen and (max-width: 960px) {
+    section {
+        margin: 0;
+    }
+}
