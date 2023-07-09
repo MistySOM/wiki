@@ -1,6 +1,6 @@
 # Audio Codec
 
-# Device Tree implementation for the Audio CODEC TLV320AIC23B
+## Device Tree implementation for the Audio CODEC TLV320AIC23B
 ### Revision History
 
 <table>

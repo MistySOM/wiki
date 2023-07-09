@@ -1,5 +1,3 @@
-# Using GPIOs
-
 # Using GPIO on MistySOM and MistyCarrier to Test Toggling a LED With Libgpiod Utilities
 
 ## Introduction

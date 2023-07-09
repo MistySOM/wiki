@@ -1,4 +1,3 @@
-# CAN setup
 # How To Set Up Socket CAN Interface
 
 

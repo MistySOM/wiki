@@ -1,5 +1,3 @@
-# Device Tree Hierarchy
-
 # Device Tree Hierarchy for MistySOMG2L and MisdtySOMV2L
 
 The below diagrams give an overview of how the device trees are separated:

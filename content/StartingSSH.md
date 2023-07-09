@@ -1,6 +1,4 @@
 # Starting SSH
-
-# SSH Server
 ### Revision History
 
 <table>
