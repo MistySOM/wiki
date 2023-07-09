@@ -1,6 +1,4 @@
----
-title: "Connect In-Circuit Debugger"
----
+# Connect In-Circuit Debugger
 
 ### Revision History
 

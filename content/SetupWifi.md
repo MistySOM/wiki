@@ -1,6 +1,4 @@
----
-title: "Setup WiFi"
----
+# Setup WiFi
 
 # Setup WiFi
 

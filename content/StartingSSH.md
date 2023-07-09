@@ -1,6 +1,4 @@
----
-title: "Starting SSH"
----
+# Starting SSH
 
 # SSH Server
 ### Revision History

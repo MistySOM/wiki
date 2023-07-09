@@ -1,6 +1,4 @@
----
-title: "Custom Recipe from a Public Repo"
----
+# Custom Recipe from a Public Repo
 
 # How to create a custom bitbake recipe from a public repository
 

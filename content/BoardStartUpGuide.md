@@ -1,6 +1,4 @@
----
-title: "Board Start-Up Guide MistySOM"
----
+# Board Start-Up Guide MistySOM
 
 ### Revision History
 
@@ -49,6 +47,7 @@ title: "Board Start-Up Guide MistySOM"
 
 ### Booting Flash Writer
 1. Set the boot mode to SCIF. On the MistySOM Carrier board, on SW2, set BOOT1 OFF and BOOT2 to ON.
+
    ![BootOption_SPIF](../files/img/BootOptions_SPIF.JPG)
 3. Connect the `FTDI cable` to `J40` on the MistyCarrier board and a USB port on the computer
 4. **On Windows:**

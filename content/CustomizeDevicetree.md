@@ -1,6 +1,4 @@
----
-title: "Customize device tree"
----
+# Customize device tree
 
 *Note:The following instructions describes device tree modification for the MistySOM CARRIER and needs to be customized to fit a different hardware platform.*
 

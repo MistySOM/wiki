@@ -1,6 +1,4 @@
----
-title: "Getting Started with MistySOM"
----
+# Getting Started with MistySOM
 
 ### MistySOM
 
