@@ -16,5 +16,5 @@ jobs:
             - uses: actions/checkout@v3
 
             - name: Build mdbook
-              run: mdbook build -d "C:\actions-runner\wiki.mistysom.com"
+              run: C:\actions-runner\mdbook.exe build -d "C:\actions-runner\wiki.mistysom.com"
 
