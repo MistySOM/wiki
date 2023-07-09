@@ -1,7 +1,3 @@
----
-title: "Custom Recipes from a Local Source"
----
-
 # How to create a custom bitbake recipe from local sources
 
 Here is an example recipe that you can use:

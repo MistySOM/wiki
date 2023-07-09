@@ -1,6 +1,4 @@
----
-title: "MistySOM General information"
----
+# MistySOM General information
 
 ## Device Tree
 dts & dtsi files location in `work-shared/`:

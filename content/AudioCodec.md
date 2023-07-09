@@ -1,8 +1,6 @@
----
-title: "Audio Codec"
----
+# Audio Codec
 
-# Device Tree implementation for the Audio CODEC TLV320AIC23B
+## Device Tree implementation for the Audio CODEC TLV320AIC23B
 ### Revision History
 
 <table>
@@ -34,6 +32,7 @@ title: "Audio Codec"
    </td>
   </tr>
 </table>
+
 ### Introduction
 
 The Audio CODEC is connected on the MistyCarrier as follows:

@@ -1,7 +1,3 @@
----
-title: "Custom Recipe from a Public Repo"
----
-
 # How to create a custom bitbake recipe from a public repository
 
 1. Open a terminal and navigate to the directory where you want to store the recipe. We assume that the application to add is called **DesiredApp**(adjust the name accordingly).

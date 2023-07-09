@@ -1,6 +1,4 @@
----
-title: "Helpful U-Boot Commands"
----
+# Helpful U-Boot Commands
 
 ### Revision History
 

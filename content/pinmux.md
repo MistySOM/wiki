@@ -1,5 +1,3 @@
-<img src="../files/img/2018_MistyWest_LogoCombo_FINAL_RGB.png" alt="MistyWest" width="400"/><div style="text-align: right">back to [index](../README.md)</div>
-
 # How to set the pin mux
 
 1. Find out Mux position for the respective pin from the datasheet at: [RZ Family / RZ/G, RZ/V Series](../files/datasheets/r01uh0964ej0110-rzg2l-RTK9744L23C01000BE.pdf) and find the corresponding mux position for the desired functionality with the [RZG2L_pinfunction_List](../files/datasheets/RZG2L_pinfunction_List_r1.1.xlsx) spreadsheet.
