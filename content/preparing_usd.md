@@ -1,6 +1,4 @@
----
-title: "Preparing uSD Card Instructions"
----
+# Preparing uSD Card Instructions
 
 ### Partition and Format the uSD
 The uSD card should be formatted with two partitions, FAT32 and EXT4. Parted provides a terminal utility to do this, alternatively `gparted` or another graphical partition editor can be used from the GUI.

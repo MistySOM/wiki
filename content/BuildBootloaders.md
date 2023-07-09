@@ -1,6 +1,4 @@
----
-title: "Build Bootloaders"
----
+# Build Bootloaders
 
 ### Revision History
 

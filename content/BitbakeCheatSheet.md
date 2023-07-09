@@ -1,6 +1,4 @@
----
-title: "Bitbake CheatSheet"
----
+# Bitbake CheatSheet
 
 ### Revision History
 

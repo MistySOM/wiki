@@ -1,6 +1,4 @@
----
-title: "Access device tree information from User Space"
----
+# Access device tree information from User Space
 
 ### Revision History
 

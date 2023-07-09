@@ -1,6 +1,4 @@
----
-title: "References"
----
+# References
 
 ## RZG2L_PORT_PINMUX
 

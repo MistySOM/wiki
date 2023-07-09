@@ -1,6 +1,4 @@
----
-title: "GPIO Pins"
----
+# GPIO Pins
 
 ## GPIO Header
 

@@ -1,6 +1,4 @@
----
-title: "Streaming Video"
----
+# Streaming Video
 
 For streaming a live video feed from the camera, you need to be connected to be connected to a network using Ethernet or WiFi (see [here](SetupWifi.md)) and know the IP address of the destination computer.
 
