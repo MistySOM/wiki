@@ -30,7 +30,7 @@ Furthermore, as with the conventional DRP-AI translator flow, DRP-AI can handle 
 </p>
 <p align="center">
   <strong>Auto AI model operators’ allocation by DRP-AI TVM</strong><br/><br/><br/>
-</p
+</p>
 
 DRP-AI TVM is public on GitHub for users to ease to access. Users can find sufficient information to use DRP-AI TVM on GitHub, such as the tutorial, sample code, and a variety of AI model performances. The tutorial includes steps from building the environment to AI inference on an evaluation board, and customers can use these steps to evaluate their AI models easily. Renesas will continue to strive for UX improvements to make it easier for customers to use Renesas products.
 
