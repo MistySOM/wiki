@@ -149,7 +149,7 @@ After writing two loader files normally, turn off the power of the board and set
 
 
 ### Configure U-Boot
-
+Reapply power and turn on the SOM.
 Upon power cycling the board, the following should be seen:
 ```
 þÿNOTICE:  BL2: v2.5(release):v2.5/rzg2l-1.00-49-g7b68034f7
