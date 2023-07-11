@@ -56,7 +56,7 @@
 
    **On Linux:** Open a terminal and run the command: `sudo screen /dev/ttyUSB0 115200`
 6. Power on the MistySOM board.
-7. Upon application of power, you should see the following on your terminal window:   
+7. Upon application of power and turning  the unit on with the `PWR_ON` switch, you should see the following on your terminal window:   
       ```SCIF Download mode
         (C) Renesas Electronics Corp.
       -- Load Program to SystemRAM ---------------
