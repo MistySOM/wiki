@@ -56,7 +56,7 @@
 
    **On Linux:** Open a terminal and run the command: `sudo screen /dev/ttyUSB0 115200`
 6. Power on the MistySOM board.
-7. Upon application of power, you should see the following on your terminal window:   
+7. Upon application of power and turning  the unit on with the `PWR_ON` switch, you should see the following on your terminal window:   
       ```SCIF Download mode
         (C) Renesas Electronics Corp.
       -- Load Program to SystemRAM ---------------
@@ -150,7 +150,8 @@ After writing two loader files normally, turn off the power of the board and set
 
 ### Configure U-Boot
 
-Upon power cycling the board, the following should be seen:
+Reapply power to the board and turn it on with the `PWR_ON` switch.<br/>
+The following will appear on the terminal::
 ```
 þÿNOTICE:  BL2: v2.5(release):v2.5/rzg2l-1.00-49-g7b68034f7
 NOTICE:  BL2: Built : 18:44:43, Dec  7 2022
