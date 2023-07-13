@@ -6,6 +6,7 @@
 * [Getting Started](content/GettingStarted.md)
 * [Board Start Up Guide](content/BoardStartUpGuide.md)
 * [Build Bootloaders](content/BuildBootloaders.md)
+* [Getting Started Demo](content/GettingStartedDemo.md)
 * [Helpful U-Boot Commands](content/HelpfulUBootCmds.md)
 * [Connect In-Circuit Debugger](content/ConnectInCircuitDebugger.md)
 * [Starting SSH server](content/StartingSSH.md)
