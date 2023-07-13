@@ -197,8 +197,14 @@ Saving Environment to MMC... Writing to MMC(0)....OK
 to reset the values to a defined default state, ready for custom configuration.
 
 After the SDcard has been prepared and inserted, set the boot variables on U-boot prompt with:
+#### For MistySOM-G2L:
 ```
-=> setenv bootcmd 'mmc dev 1;fatload mmc 1:1 0x48080000 Image;fatload mmc 1:1 0x48000000 r9a07g044l2-smarc.dtb; booti 0x48080000 - 0x48000000'
+=> setenv bootcmd 'mmc dev 1;fatload mmc 1:1 0x48080000 Image-smarc-rzg2l.bin;fatload mmc 1:1 0x48000000 r9a07g044l2-smarc.dtb; booti 0x48080000 - 0x48000000'
+=> setenv bootargs 'root=/dev/mmcblk1p2 rootwait'
+```
+#### For MistySOM_V2L:
+```
+=> setenv bootcmd 'mmc dev 1;fatload mmc 1:1 0x48080000 Image-smarc-rzv2l.bin;fatload mmc 1:1 0x48000000 r9a07g044l2-smarc.dtb; booti 0x48080000 - 0x48000000'
 => setenv bootargs 'root=/dev/mmcblk1p2 rootwait'
 ```
 Confirm with 
