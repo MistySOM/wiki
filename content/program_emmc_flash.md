@@ -55,9 +55,17 @@ root@smarc-rzg2l:~# sync
 root@smarc-rzg2l:~# umount /mnt
 ```
 8. Reboot and change the boot parameter in u-boot to boot from eMMC
+   ### RZG2L
 ```
 => setenv bootargs 'rw rootwait earlycon root=/dev/mmcblk0p1'
-=> setenv bootcmd 'ext4load mmc 0:1 0x48080000 boot/Image; ext4load mmc 0:1 0x48000000 boot/r9a07g044l2-smarc.dtb; booti 0x48080000 - 0x48000000'
+=> setenv bootcmd 'ext4load mmc 0:1 0x48080000 boot/Image-smarc-rzg2l.bin; ext4load mmc 0:1 0x48000000 r9a07g044l2-smarc.dtb; booti 0x48080000 - 0x48000000'
+=> saveenv
+=> boot
+```
+   ### RZV2L
+```
+=> setenv bootargs 'rw rootwait earlycon root=/dev/mmcblk0p1'
+=> setenv bootcmd 'ext4load mmc 0:1 0x48080000 boot/Image-smarc-rzv2l.bin; ext4load mmc 0:1 0x48000000 r9a07g044l2-smarc.dtb; booti 0x48080000 - 0x48000000'
 => saveenv
 => boot
 ```
