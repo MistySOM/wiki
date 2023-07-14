@@ -2,11 +2,11 @@
 
 * To program the eMMC Flash device on MistySOM, the below instructions can be followed.
 * You will need to boot with SD card first and partition eMMC Flash device. Then you can load the files from SD card to eMMC Flash.
-1. Copy listed files to “/home/root” of the SD Card that you use to boot the system.
+1. Copy listed files to “/home/root/” of the SD Card that you use to boot the system.
 
-MistySOMG2L : **core-image-weston-smarc-rzg2l.tar.gz, Image** and **r9a07g044l2-smarc.dtb**
+MistySOMG2L : **/mistysom-image-smarc-rzg2l.tar.gz, Image** and **r9a07g044l2-smarc.dtb**
 
-MistySOMV2L : **core-image-weston-smarc-rzv2l.tar.gz, Image** and **r9a07g054l2-smarc.dtb**
+MistySOMV2L : **/mistysom-image-smarc-rzv2l.tar.gz, Image** and **r9a07g054l2-smarc.dtb**
 
 2. Boot the board with the SD card and log into Linux.
 
@@ -37,7 +37,7 @@ root@smarc-rzg2l:~# mount /dev/mmcblk0p1 /mnt
 ### MistySOMG2L
 ```
 root@smarc-rzg2l:~# cd /home/root
-root@smarc-rzg2l:~# tar -zxvf core-image-weston-smarc-rzg2l.tar.gz -C /mnt
+root@smarc-rzg2l:~# tar -xvf /mistysom-image-smarc-rzg2l.tar.gz -C /mnt
 root@smarc-rzg2l:~# cp Image /mnt/boot
 root@smarc-rzg2l:~# cp r9a07g044l2-smarc.dtb /mnt/boot
 root@smarc-rzg2l:~# sync
@@ -45,7 +45,7 @@ root@smarc-rzg2l:~# sync
 ### MistySOMV2L
 ```
 root@smarc-rzg2l:~# cd /home/root
-root@smarc-rzg2l:~# tar -zxvf core-image-weston-smarc-rzv2l.tar.gz -C /mnt
+root@smarc-rzg2l:~# tar -xvf /mistysom-image-smarc-rzv2l.tar.gz -C /mnt
 root@smarc-rzg2l:~# cp Image /mnt/boot
 root@smarc-rzg2l:~# cp r9a07g054l2-smarc.dtb /mnt/boot
 root@smarc-rzg2l:~# sync
