@@ -56,7 +56,7 @@
 
    **On Linux:** Open a terminal and run the command: `sudo screen /dev/ttyUSB0 115200`
 6. Power on the MistySOM board.
-7. Upon application of power, you should see the following on your terminal window:   
+7. Upon application of power and turning  the unit on with the `PWR_ON` switch, you should see the following on your terminal window:   
       ```SCIF Download mode
         (C) Renesas Electronics Corp.
       -- Load Program to SystemRAM ---------------
@@ -141,7 +141,7 @@ SPI Data Clear(H'FF) Check : H'00000000-0000FFFF,Clear OK?(y/n)
 In case a message to prompt to clear data like above appears, please enter “y”.
 
 
-After writing two loader files normally, turn off the power of the board and set SW2 into QSPI boot mode:
+After writing two loader files normally, pull the power cable to the board and set SW2 into QSPI boot mode:
 * BOOT1 ON
 * BOOT2 OFF
   
@@ -150,7 +150,8 @@ After writing two loader files normally, turn off the power of the board and set
 
 ### Configure U-Boot
 
-Upon power cycling the board, the following should be seen:
+Reapply power to the board and turn it on with the `PWR_ON` switch.<br/>
+The following will appear on the terminal::
 ```
 þÿNOTICE:  BL2: v2.5(release):v2.5/rzg2l-1.00-49-g7b68034f7
 NOTICE:  BL2: Built : 18:44:43, Dec  7 2022
@@ -197,8 +198,14 @@ Saving Environment to MMC... Writing to MMC(0)....OK
 to reset the values to a defined default state, ready for custom configuration.
 
 After the SDcard has been prepared and inserted, set the boot variables on U-boot prompt with:
+#### For MistySOM-G2L:
 ```
-=> setenv bootcmd 'mmc dev 1;fatload mmc 1:1 0x48080000 Image;fatload mmc 1:1 0x48000000 r9a07g044l2-smarc.dtb; booti 0x48080000 - 0x48000000'
+=> setenv bootcmd 'mmc dev 1;fatload mmc 1:1 0x48080000 Image-smarc-rzg2l.bin;fatload mmc 1:1 0x48000000 r9a07g044l2-smarc.dtb; booti 0x48080000 - 0x48000000'
+=> setenv bootargs 'root=/dev/mmcblk1p2 rootwait'
+```
+#### For MistySOM_V2L:
+```
+=> setenv bootcmd 'mmc dev 1;fatload mmc 1:1 0x48080000 Image-smarc-rzv2l.bin;fatload mmc 1:1 0x48000000 r9a07g054l2-smarc.dtb; booti 0x48080000 - 0x48000000'
 => setenv bootargs 'root=/dev/mmcblk1p2 rootwait'
 ```
 Confirm with 
