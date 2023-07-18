@@ -298,6 +298,12 @@ The files in the above `images/` directory include:
    </td>
   </tr>
   <tr>
+   <td>Partitioned image
+   </td>
+   <td><code>&lt;image-name>-smarc-rzv2l.wic.bz2</code>
+   </td>
+  </tr>
+  <tr>
    <td>Boot Loader
    </td>
    <td><code>bl2_bp-smarc-rzv2l_pmic.srec & fip-smarc-rzv2l_pmic.srec</code>
@@ -320,28 +326,7 @@ The files in the above `images/` directory include:
 
 and the resources can simply be copied to the host with `docker cp  NAME:SRC DST` where `NAME` is the name of the running container that can be retrieved by running `docker ps` on the host.
 
-#### Load files to uSD card
-In order to test the newly built BSP, files need to be loaded to a uSD card that MistySOM will boot from. Before the files can be copied, the card has to be prepared accordingly, please follow the instructions on the [Preparing uSD card instructions](preparing_usd.md) page accordingly.
-After the uSD card has been prepared, mount the two partitions and copy the following files:
-* Linux kernel to the first partition (FAT32):
-```
-sudo cp /path/to/output/imges/smarc-rzg2l/Image-smarc-rzv2l.bin /path/to/mountpart1/Image
-```
-* Device tree blob to the first partition (FAT32)
-```
-sudo cp /path/to/output/imges/smarc-rzg2l/r9a07g044l2-smarc.dtb /path/to/mountpart1/
-```
-* Root filesystem to the second partition (ext4) 
-```
-sudo cp /path/to/output/imges/smarc-rzg2l/<image-name>-smarc-rzv2l.tar.bz2 /path/to/mountpart2/
-cd /path/to/mountpart2/
-tar -xvf <image-name>-smarc-rzv2l.tar.bz2
-```
-After this, your uSD card is ready to be inserted into the MistyCarrier uSD slot.
-
-#### Note to WSL users:
-
-Make sure to work with files on Linux mounts (avoid use of mounted Windows partitions)
+In order to test the newly built BSP, files need to be loaded to a uSD card that MistySOM will boot from. Please follow the instructions on the [Preparing uSD card](preparing_usd.md) page accordingly.
 
 
 #### Run time information
