@@ -18,9 +18,10 @@
 * [ Convert from Tensorflow](https://tvm.apache.org/docs/how_to/compile_models/from_tensorflow.html) (hosted on [tvm.apache.org](https://tvm.apache.org))
 
 ### Demos
-#### MistySOM-V2L
+**MistySOM-V2L**
 * [Video Inference with DRPAI and GStreamer](content/GStreamerDRPAI.md)
-#### MistySOM-G2L
+
+**MistySOM-G2L**
 * Shopping Basket Demo _In Progress_
 
 ### Add custom Device
