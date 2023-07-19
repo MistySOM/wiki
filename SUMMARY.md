@@ -7,6 +7,7 @@
     * [Preparing uSD card instructions](content/preparing_usd.md)
     * [Program eMMC Flash](content/program_emmc_flash.md)
 * [Board Start Up Guide](content/BoardStartUpGuide.md)
+    * [Camera Selection](content/CameraSelection.md)
 * [Build Bootloaders](content/BuildBootloaders.md)
 * [Helpful U-Boot Commands](content/HelpfulUBootCmds.md)
 * [Connect In-Circuit Debugger](content/ConnectInCircuitDebugger.md)
