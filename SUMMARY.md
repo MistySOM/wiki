@@ -5,6 +5,7 @@
 
 * [Getting Started](content/GettingStarted.md)
 * [Board Start Up Guide](content/BoardStartUpGuide.md)
+    * [Camera Selection](content/CameraSelection.md)
 * [Build Bootloaders](content/BuildBootloaders.md)
 * [Helpful U-Boot Commands](content/HelpfulUBootCmds.md)
 * [Connect In-Circuit Debugger](content/ConnectInCircuitDebugger.md)
