@@ -16,9 +16,17 @@
 ---
 # AI
 
-* [Video Inference with DRPAI and GStreamer](content/GStreamerDRPAI.md)
 * [Convert existing model to MistySOM](content/ConvertModelToMistySOM.md)
 * [Convert from Tensorflow](content/ConvertFromTensorflow.md)
+
+---
+# Demos
+
+**MistySOM-V2L**
+* [Video Inference with DRPAI and GStreamer](content/GStreamerDRPAI.md)
+
+**MistySOM-G2L**
+* Shopping Basket Demo _In Progress_
 
 ---
 # Add custom Device
