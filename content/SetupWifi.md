@@ -56,7 +56,6 @@ In case you are using WPA-Enterprise or other advanced configuration, see the [w
 After the configuration file is ready, enable the two services below to automatically connect to the SSID on each boot:
     
     systemctl enable --now wpa_supplicant@wlan0
-    systemctl enable --now dhcpcd@wlan0
     
 ### Need Other Services to Run After WiFi is Connected?
    
@@ -76,7 +75,22 @@ A restart will be required for the new configuration to work.
     
 # Check Connection
 
-To check if you are on a working connection, you can check the output of `ip a` command and make sure your wlan0 device obtained a correct IP:
+To check if you are on a working connection, you can check the output of `iw wlan0 link` command:
+
+    Connected to 62:22:32:28:53:7e (on wlan0)
+            SSID: MW (Limited MAC)
+            freq: 5200
+            RX: 1028880 bytes (6289 packets)
+            TX: 495655879 bytes (355731 packets)
+            signal: -82 dBm
+            rx bitrate: 6.0 MBit/s
+            tx bitrate: 27.0 MBit/s
+
+            bss flags:
+            dtim period:    3
+            beacon int:     100
+
+To make sure your wlan0 device obtained a correct IP, you can check the output of `ip a` command:
 
     1: lo: <LOOPBACK,UP,LOWER_UP> mtu 65536 qdisc noqueue qlen 1000
         link/loopback 00:00:00:00:00:00 brd 00:00:00:00:00:00
@@ -102,7 +116,38 @@ Additionally, the `ping mistywest.com` command should show you that the domain n
     64 bytes from 172.67.213.204: seq=1 ttl=59 time=20.089 ms
     64 bytes from 172.67.213.204: seq=2 ttl=59 time=17.214 ms
     64 bytes from 172.67.213.204: seq=3 ttl=59 time=22.551 ms
-    
+
+# Power Saving
+
+By default, the Laird Wifi module uses an active power saving configuration. To check the status of this configuration you can use the command below:
+
+    iw wlan0 get power_save
+
+To disable the power saving temporarily, you can run the command below:
+
+    iw wlan0 set power_save off
+
+If you want to make this setting permanent, you can create a service in `/lib/systemd/system/wifi_powersave@.service` with the content:
+
+    [Unit]
+    Description=Set WiFi power save %i
+    After=sys-subsystem-net-devices-wlan0.device
+
+    [Service]
+    Type=oneshot
+    RemainAfterExit=yes
+    ExecStart=/usr/sbin/iw dev wlan0 set power_save %i
+
+    [Install]
+    WantedBy=sys-subsystem-net-devices-wlan0.device
+
+Then you can enable the service with `systemctl enable wifi_powersave@off.service`
+
+
 # Troubleshooting
 
-TBD
+- The Wifi connection is unstable or slow compared to your other devices?
+
+    - Check if you are using a different frequency with `iw wlan0 link`. Different frequencies cover different ranges. For example, maybe other devices are using 2.4GHz frequency while your device is using 5GHz frequency which is faster but less stable in further distances.
+
+    - It might be because of the power saving. See the section below to turn it off and see if it improves your connection.
