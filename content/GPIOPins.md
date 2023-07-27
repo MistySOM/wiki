@@ -2,7 +2,7 @@
 
 ## GPIO Header
 
-The 40 pin GPIO Header on MistyCarrier can be configured to expose a different MistySOM functionatlities including IIC, SPI or USART. The below table indicates the functionalities for each pin:
+The 40-pin GPIO Header on MistyCarrier can be configured to expose different MistySOM functionalities including IIC, SPI or USART. The below table indicates the functionalities of each pin:
 
 The column **func0** indicates the default mux setting on the pin.
 
@@ -31,7 +31,7 @@ The column **func0** indicates the default mux setting on the pin.
 
 ## GPIO Pads
 
-Further GPIOs on MistyCarrier are available and accessible via through hole pads between the RTC battery holder `BT1` and the MistySOM connector `J38` as show in the picture below:
+Further GPIOs on MistyCarrier are available and accessible via through-hole pads between the RTC battery holder `BT1` and the MistySOM connector `J38` as shown in the picture below:
 
 <img src="../files/img/DebugPads.jpg" alt="MistyCarrier DebugPads"/>
 
@@ -69,4 +69,4 @@ The column **func0** indicates the default mux setting on the pin.
 |TP56|DISP_VSYNC|P7_0|DISP_VSYNC|||
 
 
-documentation about GPIO usage can be found [here](Using_GPIOs.md)
+documentation about GPIO usage can be found [here](/content/Using_GPIOs.md)
