@@ -6,7 +6,7 @@ you can look for both `/dev/drpai0` and `/dev/udmabuf0` devices on your Linux sh
 The Userland Direct Memory Access (UDMA) kernel module is required to provide the trained AI model and 
 the input image to the DRPAI hardware. After activating the hardware, it will use the trained model to
 generate the output which can be read by the UDMA module. While DRPAI is running, the running thread will
-go to sleep. Of course, the sleep time varies based on the size of the AI model.
+go to sleep. Of course, sleep time varies based on the size of the AI model.
 
 MistyWest team has prepared a [GStreamer plugin for DRPAI](https://github.com/MistySOM/gstreamer1.0-drpai) which can receive any kind of video input,
 such as a file (filesrc), a network stream (udpsrc), or a camera device (v4l2src) and outputs a video 
@@ -97,7 +97,7 @@ gst-launch-1.0 v4l2src device=/dev/video0 ! video/x-raw, width=640, height=480, 
 ```
 ### Read Camera and Stream on Network
 
-In case you already have the streaming working based on [here](StreamingVideo.md), you can 
+In case you already have the streaming working based on [here](/content/StreamingVideo.md), you can 
 add the drpai element to the `stream.sh` file like this:
 
 ````
