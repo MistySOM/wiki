@@ -5,7 +5,7 @@
   - TerasTerm (link to download)
 - **For Linux:**
   - root permissions (sudo)
-  - (use your distributuion's package manager to install the following utilities):
+  - (use your distribution's package manager to install the following utilities):
     - screen
     - dd
     - pv
@@ -60,7 +60,7 @@ please send ! ('.' & CR stop load)
 ```
 Send the data of “`bl2_bp-MistySOMG2L.srec`” (download for [MistySOM-G2L](../files/bootloader/rzg2l/bl2_bp-MistySOMG2L.srec) or [MistySOM-V2L](../files/bootloader/rzv2l/bl2_bp-MistySOMV2L.srec)) from terminal software after the message “please send !” is shown.
 
-After successful download of the binary, messages like below are shown on the terminal.
+After the successful download of the binary, messages like below are shown on the terminal.
 ```
 SPI Data Clear(H'FF) Check :H'00000000-0000FFFF Erasing..Erase Completed
 SAVE SPI-FLASH.......
@@ -71,10 +71,10 @@ SpiFlashMemory End Address : H'00009A80
 
 SPI Data Clear(H'FF) Check : H'00000000-0000FFFF,Clear OK?(y/n)
 ```
-In case a message prompt to clear data like above appears, please enter “y”.
+In case a message prompt to clear data like the above appears, please enter “y”.
 
 
-Next, write another loader file by using `XLS2` command again.<br>
+Next, write another loader file by using the `XLS2` command again.<br>
 With top address `00000`<br> 
 and Qspi address `1D200`:
 ```
@@ -93,7 +93,7 @@ please send ! ('.' & CR stop load)
 ```
 Send the data of “`fip-MistySOMG2L.srec`”(download for [MistySOM-G2L](../files/bootloader/rzg2l/fip-MistySOMG2L.srec) or [MistySOM-V2L](../files/bootloader/rzv2l/fip-MistySOMV2L.srec)) from terminal software after the message “please send !” is shown.
 
-After successful download of the binary, messages like below are shown on the terminal.
+After the successful download of the binary, messages like below are shown on the terminal.
 ```
 SPI Data Clear(H'FF) Check :H'00000000-0000FFFF Erasing..Erase Completed
 SAVE SPI-FLASH.......
@@ -103,7 +103,7 @@ SpiFlashMemory End Address : H'000CC73F
 
 SPI Data Clear(H'FF) Check : H'00000000-0000FFFF,Clear OK?(y/n)
 ```
-In case a message to prompt to clear data like above appears, please enter “y”.
+In case a message to prompt to clear data like the above appears, please enter “y”.
 
 
 After writing two loader files normally, pull the power cable to the board and set SW2 into QSPI boot mode:
@@ -162,7 +162,7 @@ Saving Environment to MMC... Writing to MMC(0)....OK
 ```
 to reset the values to a defined default state, ready for custom configuration.
 
-After the SDcard has been prepared and inserted, set the boot variables on U-boot prompt with:
+After the SDcard has been prepared and inserted, set the boot variables on the U-boot prompt with:
 #### For MistySOM-G2L:
 ```
 => setenv bootcmd 'mmc dev 1;fatload mmc 1:1 0x48080000 Image-smarc-rzg2l.bin;fatload mmc 1:1 0x48000000 r9a07g044l2-smarc.dtb; booti 0x48080000 - 0x48000000'
@@ -177,7 +177,7 @@ Confirm with
 ```
 => saveenv
 ```
-power cycle the board and it should now boot up to a Linux prompt where you an login with root
+power cycle the board and it should now boot up to a Linux prompt where you can log in with root
 ```
 Poky (Yocto Project Reference Distro) 3.1.14 smarc-rzg2l ttySC0
 
