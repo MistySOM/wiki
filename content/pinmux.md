@@ -4,8 +4,8 @@
 2. Then preparepinmux function call according to `RZG2L_PORT_PINMUX(A, B, C)` where:
 3. * `A` = portnumber (e.g. for `P40_1` it would be `40`)
    * `B` = pin number (e.g. for `P40_0` it would be `0`)
-   * `C` = mux position according to hte  abolve linked pinfunction spreadsheet
-4. Prepare a `.dts` file to override any previous/existing pin mux settting. Prepare a file with the following example contents:
+   * `C` = mux position according to the above linked pinfunction spreadsheet
+4. Prepare a `.dts` file to override any previous/existing pin mux setting. Prepare a file with the following example contents:
 5.
 ```
    &pinctrl {
@@ -26,5 +26,5 @@
 SRC_URI += "file://add-vsc8531-ethernet.dts"
 ```
 to `meta-mistysom/recipes-kernel/linux/linux-renesas_%.bbappend`
-7. Build amnd use the pins as configured
+7. Build and use the pins as configured
 From: https://codebrowser.dev/linux/linux/include/dt-bindings/pinctrl/rzg2l-pinctrl.h.html
