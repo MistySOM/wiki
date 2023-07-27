@@ -1,4 +1,4 @@
-# Convert existing model to MistySOM V2L
+# Convert an existing model to MistySOM V2L
 
 ## DRP-AI TVM Makes It Easy to Port AI Model into RZ/V Devices
 
@@ -32,7 +32,7 @@ Furthermore, as with the conventional DRP-AI translator flow, DRP-AI can handle 
   <strong>Auto AI model operators’ allocation by DRP-AI TVM</strong><br/><br/><br/>
 </p>
 
-DRP-AI TVM is public on GitHub for users to ease to access. Users can find sufficient information to use DRP-AI TVM on GitHub, such as the tutorial, sample code, and a variety of AI model performances. The tutorial includes steps from building the environment to AI inference on an evaluation board, and customers can use these steps to evaluate their AI models easily. Renesas will continue to strive for UX improvements to make it easier for customers to use Renesas products.
+DRP-AI TVM is public on GitHub for users to ease access. Users can find sufficient information to use DRP-AI TVM on GitHub, such as the tutorial, sample code, and a variety of AI model performances. The tutorial includes steps from building the environment to AI inference on an evaluation board, and customers can use these steps to evaluate their AI models easily. Renesas will continue to strive for UX improvements to make it easier for customers to use Renesas products.
 
 [^1]: DRP-AI TVM is powered by Edgecortix MERATM Compiler Framework
 [^2]: EdgeCortix MERA

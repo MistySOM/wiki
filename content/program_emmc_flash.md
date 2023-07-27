@@ -1,7 +1,7 @@
 # Program eMMC flash
 
 * To program the eMMC Flash device on MistySOM, the below instructions can be followed.
-* You will need to boot with SD card first and partition eMMC Flash device. Then you can load the files from SD card to eMMC Flash.
+* You will need to boot with an SD card first and partition the eMMC Flash device. Then you can load the files from the SD card to eMMC Flash.
 
 1. Boot the board with the SD card and log into Linux.
 

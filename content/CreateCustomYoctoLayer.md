@@ -1,6 +1,6 @@
-# Create custom Yocto layer
+# Create a custom Yocto layer
 
-*Note:The following instructions describes device tree modification for the MistySOM CARRIER and needs to be customized to fit a different hardware platform.*
+*Note: The following instructions describe device tree modification for the MistySOM CARRIER and need to be customized to fit a different hardware platform.*
 
 ## Steps to follow
 
@@ -14,5 +14,5 @@ To create a custom layer, follow the below steps:
 7. Create a dir for the custom recipes `$ mkdir -p recipes-core/images`
 8. Copy the core-image-weston recipe `$ cp ../poky/meta/recipes-graphics/images/core-image-weston.bb recipes-core/images/mistysom.bb`
 9. Gio back to the build directory `$ cd ../build`
-10. Add new layer to configuration file `$ vim conf/bblayers.conf`
+10. Add a new layer to the configuration file `$ vim conf/bblayers.conf`
 11. Add `${TOPDIR}/../meta-mistysom \` after the last line, just before the `"`

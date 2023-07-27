@@ -4,7 +4,7 @@
 
 The following instructions are destructive and will clear the previously written data. So please ensure the device name you are using.
 
-Identify the block device name for the SD Card with the command below. It is usually in a format of "/dev/sdX"
+Identify the block device name for the SD Card with the command below. It is usually in the format of "/dev/sdX"
 ```
 sudo fdisk -l
 ```
@@ -33,7 +33,7 @@ If you are planning to use the eMMC storage, it is recommended to resize the par
 ### Partition and Format the uSD
 The uSD card should be formatted with two partitions, FAT32 and EXT4. Parted provides a terminal utility to do this, alternatively `gparted` or another graphical partition editor can be used from the GUI.
 
-1. Install the tool (example below applies to Ubuntu or Debian based systems, use the package manager of your distribution accordingly)
+1. Install the tool (the example below applies to Ubuntu or Debian-based systems, use the package manager of your distribution accordingly)
 ```
 sudo apt update
 sudo apt install parted
@@ -70,7 +70,7 @@ Number  Start   End     Size    File system  Name     Flags
  2      31.5MB  32.0GB  32.0GB  ext4         primary
 ```
 
-### Load files to uSD card
+### Load files to the uSD card
 
 After the uSD card has been prepared, mount the two partitions and copy the following files:
 * Linux kernel to the first partition (FAT32):
@@ -91,4 +91,4 @@ After this, your uSD card is ready to be inserted into the MistyCarrier uSD slot
 
 #### Note to WSL users:
 
-Make sure to work with files on Linux mounts (avoid use of mounted Windows partitions)
+Make sure to work with files on Linux mounts (avoid the use of mounted Windows partitions)

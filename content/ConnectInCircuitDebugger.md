@@ -39,7 +39,7 @@
 
 #### GDB
 
-You need to have built the SDK by following the [Getting Started](GettingStarted.md#building-the-sdk-1) Guide. If you installed the SDK at the default location in `/opt/poky`, we need the `gdb` binary from:<br/>
+You need to have built the SDK by following the [Getting Started](/content/GettingStarted.md#building-the-sdk-1) Guide. If you installed the SDK at the default location in `/opt/poky`, we need the `gdb` binary from:<br/>
 `/opt/poky/3.1.14/sysroots/x86_64-pokysdk-linux/usr/bin/arm-poky-linux/arm-poky-linux-gdb`
 
 #### OpenOCD
@@ -78,7 +78,7 @@ In the new window launch `gdb` from the installed SDK:
 ```
 $ /opt/poky/3.1.14/sysroots/x86_64-pokysdk-linux/usr/bin/aarch64-poky-linux/aarch64-poky-linux-gdb Flash_Writer_SCIF_RZV2L_SMARC_PMIC_DDR4_2GB_1PCS.mot
 ```
-with the `Flash_Writer` binary that was compiled following the instructions about [building the bootloaders](BuildBootloaders.md).
+with the `Flash_Writer` binary that was compiled following the instructions about [building the bootloaders](/content/BuildBootloaders.md).
 Upon execution of the above command, a screen similar to the below is expected:
 ```
 GNU gdb (GDB) 9.1
@@ -99,7 +99,7 @@ Type "apropos word" to search for commands related to "word"...
 Reading symbols from Flash_Writer_SCIF_RZV2L_SMARC_PMIC_DDR4_2GB_1PCS.mot...
 (No debugging symbols found in Flash_Writer_SCIF_RZV2L_SMARC_PMIC_DDR4_2GB_1PCS.mot)
 ```
-upon which a connection to the remote target can be established with by entering:
+upon which a connection to the remote target can be established by entering:
 ```
 (gdb) target remote localhost:3333
 ```

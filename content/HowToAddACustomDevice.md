@@ -34,9 +34,9 @@
 
 ### Introduction
 
-The Prerequisite for the below steps are, that the new device already is supported by the Linux kernel version we are about to modify. To confirm driver support for a specific kernel version, search the [kernelconfig](https://www.kernelconfig.io/) website.
+The Prerequisite for the below steps is that the new device already is supported by the Linux kernel version we are about to modify. To confirm driver support for a specific kernel version, search the [kernelconfig](https://www.kernelconfig.io/) website.
  
-To add a custom device to the MistySOM distrution, multiple steps are required. They can be separated as follows:
+To add a custom device to the MistySOM distribution, multiple steps are required. They can be separated as follows:
  
 1. [Update Linux kernel configuration to compile the driver for the new device](#1-update-linux-kernel-configuration-to-compile-the-driver-for-the-new-device)
 2. [Patch the device tree to configure the driver for the new device.](#2-patch-the-device-tree-to-configure-the-driver-for-the-new-device)
@@ -46,8 +46,8 @@ To add a custom device to the MistySOM distrution, multiple steps are required. 
 
 ### 1. Update Linux kernel configuration to compile the driver for the new device 
 
-The prerequisite for this step is, that the build container from the repository has been cloned and started with the dev shell argument. To find out more about it, please see [Description of advanced container options](https://github.com/MistySOM/wiki/blob/master/content/GettingStarted.md#description-of-advanced-container-options) in the [Getting Started Guide](https://github.com/MistySOM/wiki/blob/master/content/GettingStarted.md) and start the container with the `-n` argument.
-When the container is started, the direcory changed and the build environment sourced, the present directory should be `build/`. From here, 
+The prerequisite for this step is, that the build container from the repository has been cloned and started with the dev shell argument. To find out more about it, please see [Description of advanced container options](/content/GettingStarted.md#description-of-advanced-container-options) in the [Getting Started Guide](/content/GettingStarted.md) and start the container with the `-n` argument.
+When the container is started, the directory is changed and the build-environment is sourced, the present directory should be `build/`. From here, 
 ```
 bitbake linux-renesas -c menuconfig
 ```
@@ -79,7 +79,7 @@ will now build the kernel with the newly added device driver included.
 ### 2. Patch the device tree to configure the driver for the new device.
 
 An excellent tutorial that relates to editing the device tree, can be found here: [Intro to Embedded Linux Part 5 - How to Enable I2C in the Yocto Project](https://www.digikey.com/en/maker/projects/intro-to-embedded-linux-part-5-how-to-enable-i2c-in-the-yocto-project/6843bbf9a83c4c96888fccada1e7aedf). <br/>
-Also see this article: [Customize Device tree](CustomizeDevicetree.md)
+Also see this article: [Customize Device tree](/content/CustomizeDevicetree.md)
 
 
 
@@ -95,7 +95,7 @@ to re-compile the kernel and the device tree
 
 ### 4. Load & boot the rebuilt files for testing
 
-Prepare a uSD card according to instructions [here](preparing_usd.md), copy the Linux kernel and the device tree blob (.dtb) files to the first partition (see [here](https://github.com/MistySOM/wiki/blob/master/content/GettingStarted.md#output) for details about the output files) and extract the root filesystem to the second partition.
+Prepare a uSD card according to instructions [here](/content/preparing_usd.md), copy the Linux kernel and the device tree blob (.dtb) files to the first partition (see [here](/content/GettingStarted.md#output) for details about the output files) and extract the root filesystem to the second partition.
 
 
   
