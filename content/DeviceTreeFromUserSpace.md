@@ -66,7 +66,7 @@ dummy-panel     l2-cache0               timer-cl0-cpu0
   clock-frequency  compatible   interrupts  pinctrl-0  reg
   ```
 
-- The value of a device tree entry can be checked using the `cat` command if it is a string. If the value is an integer or some numeric data however, the `xxd` command will have to be used instead of `cat`, to get output in a readable format. Following is an example demonstrating the use:
+- The value of a device tree entry can be checked using the `cat` command if it is a string. If the value is an integer or some numeric data, however, the `xxd` command will have to be used instead of `cat`, to get output in a readable format. Following is an example demonstrating the use:
 
   ```
   # Example for a string value
@@ -77,12 +77,12 @@ dummy-panel     l2-cache0               timer-cl0-cpu0
   root@j7-evm:~# xxd -g4 /proc/device-tree/interconnect@100000/i2c@2000000/clock-frequency
   00000000: 00061a80                             ....
   
-  # The above value is in hexadecimal. You can calculate it's value in decimal by using following command
+  # The above value is in hexadecimal. You can calculate its value in decimal by using the following command
   root@j7-evm:~# echo $((0x00061a80))
   400000
   ```
 
-- One common scenario of a device tree change is tweaking the memory for remoteproc processors like R5F. You can check if it got updated correctly, by running a command similar to following for the specific processor core.
+- One common scenario of a device tree change is tweaking the memory for remoteproc processors like R5F. You can check if it got updated correctly, by running a command similar to the following for the specific processor core.
 
   ```
   # Finding symbols for R5Fs
@@ -93,7 +93,7 @@ dummy-panel     l2-cache0               timer-cl0-cpu0
   /proc/device-tree/__symbols__/main_r5fss0_core0_memory_region      /proc/device-tree/__symbols__/main_r5fss1_core0                    /proc/device-tree/__symbols__/main_r5fss1_core1_memory_region
   /proc/device-tree/__symbols__/main_r5fss0_core1                    /proc/device-tree/__symbols__/main_r5fss1_core0_dma_memory_region
   
-  # Finding location from the symbols
+  # Finding the location from the symbols
   root@j7-evm:~# cat /proc/device-tree/__symbols__/main_r5fss0_core0_memory_region
   /reserved-memory/r5f-memory@a2100000
   
