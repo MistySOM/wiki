@@ -33,7 +33,7 @@
 
 ### Start SSH Server
 
-To enable the ssh daemon, login with the serial terminal and enter:
+To enable the ssh daemon, log in with the serial terminal and enter:
 ```
 # systemctl start sshd
 ```
@@ -48,7 +48,7 @@ To start the ssh server automatically after subsequent reboots, enter:
 #### Allow Clients to Connect Using RSA
 
 
-Some ssh clients neeed top be configured explicitly allow to connect with rsa encryption. To do do so, create a file `~/.ssh/config` and add the following contents:
+Some ssh clients need to be configured explicitly to allow to connect with rsa encryption. To do so, create a file `~/.ssh/config` and add the following contents:
 
 ```
 Host 192.168.1.15
