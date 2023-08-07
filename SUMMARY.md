@@ -26,9 +26,6 @@
 **MistySOM-V2L**
 * [Video Inference with DRPAI and GStreamer](content/GStreamerDRPAI.md)
 
-**MistySOM-G2L**
-* Shopping Basket Demo _In Progress_
-
 ---
 # Add custom Device
 
