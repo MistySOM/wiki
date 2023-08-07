@@ -1,12 +1,12 @@
 # Streaming Video
 
-For streaming a live video feed from the camera, you need to be connected to be connected to a network using Ethernet or WiFi (see [here](SetupWifi.md)) and know the IP address of the destination computer.
+For streaming a live video feed from the camera, you need to be connected to a network using Ethernet or WiFi (see [here](/content/SetupWifi.md)) and know the IP address of the destination computer.
 
 # Stream Listener
 
-The destination computer should be listening to incoming video on a port (in this example port 51372)
+The destination computer should be listening to an incoming video on a port (in this example port 51372)
 
-To setup the listening, you have different options:
+To set up the listening, you have different options:
 
 ## GStreamer
 
@@ -36,7 +36,7 @@ t=0 0
 m=video 51372 RTP/AVP 96
 a=rtpmap:96 H264/90000
 ````
-Then you open this file by double clicking or command lines below:
+Then you open this file by double-clicking or command lines below:
 ````
 $ vlc stream.sdp
 $ ffplay -protocol_whitelist file,crypt,udp,rtp stream.sdp

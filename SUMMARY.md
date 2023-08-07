@@ -4,21 +4,30 @@
 # General
 
 * [Getting Started](content/GettingStarted.md)
+    * [Preparing uSD card instructions](content/preparing_usd.md)
+    * [Program eMMC Flash](content/program_emmc_flash.md)
 * [Board Start Up Guide](content/BoardStartUpGuide.md)
+    * [Camera Selection](content/CameraSelection.md)
 * [Build Bootloaders](content/BuildBootloaders.md)
 * [Helpful U-Boot Commands](content/HelpfulUBootCmds.md)
 * [Connect In-Circuit Debugger](content/ConnectInCircuitDebugger.md)
 * [Starting SSH server](content/StartingSSH.md)
-* [Preparing uSD card instructions](content/preparing_usd.md)
 * [Streaming Video](content/StreamingVideo.md)
-* [Program eMMC Flash](content/program_emmc_flash.md)
 
 ---
 # AI
 
-* [Video Inference with DRPAI and GStreamer](content/GStreamerDRPAI.md)
 * [Convert existing model to MistySOM](content/ConvertModelToMistySOM.md)
 * [Convert from Tensorflow](content/ConvertFromTensorflow.md)
+
+---
+# Demos
+
+**MistySOM-V2L**
+* [Video Inference with DRPAI and GStreamer](content/GStreamerDRPAI.md)
+
+**MistySOM-G2L**
+* Shopping Basket Demo _In Progress_
 
 ---
 # Add custom Device

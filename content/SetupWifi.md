@@ -1,6 +1,6 @@
 # Setup WiFi
 
-After you plug the supported WiFi adapter into the USB port, you can manually bring up the device with `ifconfig wlan0 up`. Confirm with `ifconfig` that your device is up:
+After you have connected a WiFi device, either using the Wireless/uSD pin on the MistyCarrier or plugging a supported WiFi adapter into the USB port, you can manually bring up the device with `ifconfig wlan0 up`. Confirm with `ifconfig` that your device is up:
 ```
 # ifconfig
 lo        Link encap:Local Loopback
@@ -20,11 +20,11 @@ wlan0     Link encap:Ethernet  HWaddr 18:A6:F7:0A:65:2D
 ```
 ### Scan Access Points
 
-In case you want to scan for every Wifi access point in your environment, you can use the command below to list their SSIDs:
+In case you want to scan for every WiFi access point in your environment, you can use the command below to list their SSIDs:
 
     iw wlan0 scan | egrep -w "signal:|SSID:" | paste -d ' ' - - | sort
       
-If your Wifi module is working correctly, the output of the command above should be similar to this:
+If your WiFi module is working correctly, the output of the command above should be similar to this:
 
     signal: -42.00 dBm      SSID: MistyWest
     signal: -43.00 dBm      SSID: MistyDeploy
@@ -36,7 +36,7 @@ If your Wifi module is working correctly, the output of the command above should
 
 # Configuration
 
-To connect to a specific Wifi access point, you need to provide the `wpa_supplicant` with the SSID and its passphrase using the command below:
+To connect to a specific WiFi access point, you need to provide the `wpa_supplicant` with the SSID and its passphrase using the command below:
 
     mkdir /etc/wpa_supplicant
     wpa_passphrase {YOUR-SSID} {YOUR-PASSPHRASE} > /etc/wpa_supplicant/wpa_supplicant-wlan0.conf
@@ -53,30 +53,44 @@ In case you are using WPA-Enterprise or other advanced configuration, see the [w
     
 # Connect
 
-After the configuration file is ready, enable the two services below to automatically connect to the SSID on each boot:
+After the configuration file is ready, enable the two services below to connect to the SSID on each boot automatically:
     
     systemctl enable --now wpa_supplicant@wlan0
-    systemctl enable --now dhcpcd@wlan0
     
 ### Need Other Services to Run After WiFi is Connected?
    
 Every service file with the parameter `After=network-online.target` will run after the WiFi is connected and an IP address is acquired.
     
 ### Need a Static IP?
-You will most likely be using a dynamic IP address and the DHCP client service would obtain the IP per each connection. In case you want to use a static IP, create or edit the `/etc/dhcpcd.conf` file. For example:
+You will most likely be using a dynamic IP address and the DHCP client service obtains the IP per each connection. In case you want to use a static IP, create or edit the `/etc/dhcpcd.conf` file. For example:
 
     interface wlan0
     static ip_address=192.168.1.10/24	
     static routers=192.168.1.1
     static domain_name_servers=192.168.1.1 8.8.8.8
     
-More complicated configurations are possible, for example combining with the `arping` option. See [dhcpcd.conf(5)](https://man.archlinux.org/man/dhcpcd.conf.5) for details.
+More complicated configurations are possible, for example, combining with the `arping` option. See [dhcpcd.conf(5)](https://man.archlinux.org/man/dhcpcd.conf.5) for details.
 
 A restart will be required for the new configuration to work.
     
 # Check Connection
 
-To check if you are on a working connection, you can check the output of `ip a` command and make sure your wlan0 device obtained a correct IP:
+To check if you are on a working connection, you can check the output of `iw wlan0 link` command:
+
+    Connected to 62:22:32:28:53:7e (on wlan0)
+            SSID: MW (Limited MAC)
+            freq: 5200
+            RX: 1028880 bytes (6289 packets)
+            TX: 495655879 bytes (355731 packets)
+            signal: -82 dBm
+            rx bitrate: 6.0 MBit/s
+            tx bitrate: 27.0 MBit/s
+
+            bss flags:
+            dtim period:    3
+            beacon int:     100
+
+To make sure your wlan0 device obtained a correct IP, you can check the output of `ip a` command:
 
     1: lo: <LOOPBACK,UP,LOWER_UP> mtu 65536 qdisc noqueue qlen 1000
         link/loopback 00:00:00:00:00:00 brd 00:00:00:00:00:00
@@ -102,7 +116,38 @@ Additionally, the `ping mistywest.com` command should show you that the domain n
     64 bytes from 172.67.213.204: seq=1 ttl=59 time=20.089 ms
     64 bytes from 172.67.213.204: seq=2 ttl=59 time=17.214 ms
     64 bytes from 172.67.213.204: seq=3 ttl=59 time=22.551 ms
-    
+
+# Power Saving
+
+By default, many WiFi modules, including the module on MistyCarrier, use an active power-saving configuration. To check the status of this configuration you can use the command below:
+
+    iw wlan0 get power_save
+
+To disable the power saving temporarily, you can run the command below:
+
+    iw wlan0 set power_save off
+
+If you want to make this setting permanent, you can create a service in `/lib/systemd/system/wifi_powersave@.service` with the content:
+
+    [Unit]
+    Description=Set WiFi power save %i
+    After=sys-subsystem-net-devices-wlan0.device
+
+    [Service]
+    Type=oneshot
+    RemainAfterExit=yes
+    ExecStart=/usr/sbin/iw dev wlan0 set power_save %i
+
+    [Install]
+    WantedBy=sys-subsystem-net-devices-wlan0.device
+
+Then you can enable the service with `systemctl enable wifi_powersave@off.service`
+
+
 # Troubleshooting
 
-TBD
+- The Wifi connection is unstable or slow compared to your other devices?
+
+    - Check if you are using a different frequency with `iw wlan0 link`. Different frequencies cover different ranges. For example, maybe other devices are using 2.4GHz frequency while your device is using 5GHz frequency which is faster but less stable in further distances.
+
+    - It might be because of the power saving. See the section below to turn it off and see if it improves your connection.

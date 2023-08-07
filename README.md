@@ -5,18 +5,25 @@
 
 * [Getting Started](content/GettingStarted.md)
 * [Board Start Up Guide](content/BoardStartUpGuide.md)
+    * [Camera Selection](content/CameraSelection.md)
 * [Build Bootloaders](content/BuildBootloaders.md)
 * [Helpful U-Boot Commands](content/HelpfulUBootCmds.md)
 * [Connect In-Circuit Debugger](content/ConnectInCircuitDebugger.md)
 * [Starting SSH server](content/StartingSSH.md)
 * [Preparing uSD card instructions](content/preparing_usd.md)
 * [Streaming Video](content/StreamingVideo.md)
-* [Video Inference with DRPAI and GStreamer](content/GStreamerDRPAI.md)
 * [Program eMMC Flash](content/program_emmc_flash.md)
 
 ### AI
 * [ Convert existing model to MistySOM](content/ConvertModelToMistySOM.md)
 * [ Convert from Tensorflow](https://tvm.apache.org/docs/how_to/compile_models/from_tensorflow.html) (hosted on [tvm.apache.org](https://tvm.apache.org))
+
+### Demos
+**MistySOM-V2L**
+* [Video Inference with DRPAI and GStreamer](content/GStreamerDRPAI.md)
+
+**MistySOM-G2L**
+* Shopping Basket Demo _In Progress_
 
 ### Add custom Device
 

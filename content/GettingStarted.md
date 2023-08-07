@@ -2,10 +2,6 @@
 
 ### MistySOM
 
-
-### 
-
-
 ### Table Of Contents
 
                                 
@@ -46,9 +42,9 @@
 
 ## Introduction
 
-This guide gets you started and setup to develop software and/or firmware for MistySOM.
+This guide gets you started and set up to develop software and/or firmware for MistySOM.
 
-MistyWest provides an environment in a docker container to build the BSP[^2] and a SDK[^3] for both versions of MistySOM. The host computer requires docker to be configured, setup and running. The requirements for setting up the host computer are described in the section **[Setting Up Host Computer](#setting-up-host-computer)**.
+MistyWest provides an environment in a docker container to build the BSP[^2] and an SDK[^3] for both versions of MistySOM. The host computer requires docker to be configured, set up and running. The requirements for setting up the host computer are described in the section **[Setting Up Host Computer](#setting-up-host-computer)**.
 
 ### Dependencies
 
@@ -65,7 +61,7 @@ Docker is a great solution to this problem and provides:
 
 
 
-* Lightweight and simple to share configuration and setup files (allows creation of identical environments)
+* Lightweight and simple to share configuration and setup files (allows the creation of identical environments)
 * A git revision controlled build environment
 * Flexible allocation of RAM and hard drive memory
 * Little CPU/IO overhead (build time is not impacted)
@@ -78,7 +74,7 @@ Docker's efficiency allows multiple containers to be run simultaneously without 
 
 ### Setting Up Host Computer
 
-A Linux host with running docker daemon is required for building the MistySOM BSP and SDK. Docker can be installed through a distribution’s packaging manager. Look up how to install docker and start dockerd for your respective distributions. Some links to find documentation about some common distributions are listed below:
+A Linux host with a running docker daemon is required for building the MistySOM BSP and SDK. Docker can be installed through a distribution’s packaging manager. Look up how to install docker and start dockerd for your respective distributions. Some links to find documentation about some common distributions are listed below:
 
 
 #### Ubuntu
@@ -150,7 +146,7 @@ This will download the required files and build the container. To enable caching
 _(hint: you can execute `chmod -R 777 /path/to/dir` to grant read, write & execute access for the directory to everybody on your system )_
 
 
-The owner uid and gid setting can be confirmed with
+The owner's uid and gid settings can be confirmed with
 
 
 ```
@@ -194,7 +190,7 @@ This will automatically build the BSP and the SDK and copy the resulting files i
 
 ### Installation of the SDK
 
-To install the SDK, execute it as user root on host, e.g. with sudo as shown in the command below 
+To install the SDK, execute it as user root on the host, e.g. with sudo as shown in the command below 
 
 (Note that ` /path/to/` is the location of your extracted MistySOMContainer archive)
 
@@ -204,7 +200,7 @@ $ sudo /path/to/out/deploy/sdk/poky-glibc-x86_64-core-image-<image_type>- aarch6
 ```
 
 
-Upon which, paths can be setup by executing:
+Upon which, paths can be set up by executing:
 
 
 ```
@@ -228,7 +224,7 @@ This command has to be invoked every time before the SDK is used.
 
 #### Building the SDK
 
-The `run.sh` script in addition can be started with the argument `-s` to auto trigger compilation of the SDK after the initial BSP build has finished. The SDK must not be built by itself, hence the `-s` switch will automatically build the BSP, followed by the SDK.
+The `run.sh` script, in addition, can be started with the argument `-s` to trigger the compilation of the SDK after the initial BSP build has finished. The SDK must not be built by itself, hence the `-s` switch will automatically build the BSP, followed by the SDK.
 
 
 <table>
@@ -298,6 +294,12 @@ The files in the above `images/` directory include:
    </td>
   </tr>
   <tr>
+   <td>Partitioned image
+   </td>
+   <td><code>&lt;image-name>-smarc-rzv2l.wic.bz2</code>
+   </td>
+  </tr>
+  <tr>
    <td>Boot Loader
    </td>
    <td><code>bl2_bp-smarc-rzv2l_pmic.srec & fip-smarc-rzv2l_pmic.srec</code>
@@ -320,28 +322,7 @@ The files in the above `images/` directory include:
 
 and the resources can simply be copied to the host with `docker cp  NAME:SRC DST` where `NAME` is the name of the running container that can be retrieved by running `docker ps` on the host.
 
-#### Load files to uSD card
-In order to test the newly built BSP, files need to be loaded to a uSD card that MistySOM will boot from. Before the files can be copied, the card has to be prepared accordingly, please follow the instructions on the [Preparing uSD card instructions](preparing_usd.md) page accordingly.
-After the uSD card has been prepared, mount the two partitions and copy the following files:
-* Linux kernel to the first partition (FAT32):
-```
-sudo cp /path/to/output/imges/smarc-rzg2l/Image-smarc-rzv2l.bin /path/to/mountpart1/Image
-```
-* Device tree blob to the first partition (FAT32)
-```
-sudo cp /path/to/output/imges/smarc-rzg2l/r9a07g044l2-smarc.dtb /path/to/mountpart1/
-```
-* Root filesystem to the second partition (ext4) 
-```
-sudo cp /path/to/output/imges/smarc-rzg2l/<image-name>-smarc-rzv2l.tar.bz2 /path/to/mountpart2/
-cd /path/to/mountpart2/
-tar -xvf <image-name>-smarc-rzv2l.tar.bz2
-```
-After this, your uSD card is ready to be inserted into the MistyCarrier uSD slot.
-
-#### Note to WSL users:
-
-Make sure to work with files on Linux mounts (avoid use of mounted Windows partitions)
+In order to test the newly built BSP, files need to be loaded to a uSD card that MistySOM will boot from. Please follow the instructions on the [Preparing uSD card](/content/preparing_usd.md) page accordingly.
 
 
 #### Run time information
@@ -351,7 +332,7 @@ Make sure to work with files on Linux mounts (avoid use of mounted Windows parti
 * `./build.sh` Builds the container image from the Dockerfile and downloads the required files from the web. 
 * `./run.sh` Will start the container image, upon start, the `exec.sh` script is executed from within the container
 * `exec.sh` invokes `start.sh` which sets up the Yocto build environment inside the container
-* after the environment has been setup, `exec.sh` will invoke the bitbake[^4] commands required to build the binary files
+* after the environment has been set up, `exec.sh` will invoke the bitbake[^4] commands required to build the binary files
 
 
 ## Develop Example Application
@@ -539,20 +520,20 @@ When the container gets started with the `-n` argument like:
 The container image gets started with the Yocto build environment setup. For administrative tasks, the primary user in the container image is called `yocto` with the password set to `yocto`.
 
 ## Configure U-Boot 
-In order for MistySOM to boot with the files copied onto the uSD card above, the bootloader needs to be configured accordingly. For instructions on how to configure U-Boot, please follow the information on [Configure U-Boot](BoardStartUpGuide.md#configure-u-boot)
+In order for MistySOM to boot with the files copied onto the uSD card above, the bootloader needs to be configured accordingly. For instructions on how to configure U-Boot, please follow the information on [Configure U-Boot](/content/BoardStartUpGuide.md#configure-u-boot)
 
 ## Connecting the Hardware
 
 To test the build generated by following the instructions above, the MistySOM hardware has to be connected and powered up.
 For development purposes, use the FTDI serial console cable[^6] and the UISB-C power cable[^7]
-Connect the FTDI able to connector `J40` on MistyCarrier and connect the USB-C power cable to `J1`. The locations of the two connectors are hightlighted in the following image: 
+Connect the FTDI able to connector `J40` on MistyCarrier and connect the USB-C power cable to `J1`. The locations of the two connectors are highlighted in the following image: 
 <img src="files/img/MistyCarrier_PowerFTDI.png" alt="MistyWest" width="400"/>
 
-Open a serial terminal: ([instructions with tera Term for Windows](https://learn.sparkfun.com/tutorials/terminal-basics/tera-term-windows) or [instructions with screen for Linux](https://www.cyberciti.biz/faq/unix-linux-apple-osx-bsd-screen-set-baud-rate/)) and set the baudrate to `115200`bps. If you connect the board succesffuly within the first few seconds of it booting, you should see boot messages followed by a login prompt:
+Open a serial terminal: ([instructions with tera Term for Windows](https://learn.sparkfun.com/tutorials/terminal-basics/tera-term-windows) or [instructions with screen for Linux](https://www.cyberciti.biz/faq/unix-linux-apple-osx-bsd-screen-set-baud-rate/)) and set the baudrate to `115200`bps. If you connect the board successfully within the first few seconds of it booting, you should see boot messages followed by a login prompt:
 ```
 smarc-rzg2l login:
 ```
-If you don't see anything, press the `Enter` key and the above login prompt should appear. You can now login with username `root` which will bring you to the shell from where you can invoke and execute commands.
+If you don't see anything, press the `Enter` key and the above login prompt should appear. You can now log in with username `root` which will bring you to the shell from where you can invoke and execute commands.
 
 
 

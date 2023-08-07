@@ -15,13 +15,13 @@ The purpose of this tutorial is to demonstrate using the MistySOM Carrier board 
 
 ## Materials:
 
-- **MistyWest MistySOM EVK Kit** (based on  a MistySOM module using a Renesas RZ/G2L or RZ/V2L microcontroller  as mezzanine module mounted on MistyCarrier). Make sure the MistySOM board boots from a micro SD Card running the latest MistySOM-specific RZ/G2L or RZ/V2L V3.0.x  Linux image. A standard break-away 0.1" 2x20-pin dual male header should be soldered to the MistyCarrier J4 i/o pads if not populated. Refer to Fig 2 below.
+- **MistyWest MistySOM EVK Kit** (based on  a MistySOM module using a Renesas RZ/G2L or RZ/V2L microcontroller  as a mezzanine module mounted on MistyCarrier). Make sure the MistySOM board boots from a micro SD Card running the latest MistySOM-specific RZ/G2L or RZ/V2L V3.0.x  Linux image. A standard break-away 0.1" 2x20-pin dual male header should be soldered to the MistyCarrier J4 i/o pads if not populated. Refer to Fig 2 below.
 
 | ![VO-REVAFRONT-20221104_merge](../files/img/VO-REVAFRONT-20221104_merge.jpg) |
 | ------------------------------------------------------------ |
 | Fig 2 - MistyWest EVK Kit with MistySOM mezzanine RZ/G2L module hosted on MistyCARRIER board. |
 
-- **Standard +3.3V FTDI TTL-232R-3V3-2MM USB to UART serial cable** (https://ftdichip.com/products/ttl-232r-3v3/) connecting the 1x8-pin keyed J40 connector on the MistyCarrier to a USB 2.0 Type-A port on a host Linux or Windows PC. Refer to image in Fig 3 below.
+- **Standard +3.3V FTDI TTL-232R-3V3-2MM USB to UART serial cable** (https://ftdichip.com/products/ttl-232r-3v3/) connecting the 1x8-pin keyed J40 connector on the MistyCarrier to a USB 2.0 Type-A port on a host Linux or Windows PC. Refer to the image in Fig 3 below.
 
 | ![TTL-232R-3V3](../files/img/TTL-232R-3V3.jpg)     |
 | -------------------------------------------------- |
@@ -37,7 +37,7 @@ The purpose of this tutorial is to demonstrate using the MistySOM Carrier board 
 | ------------------------------------------------------------ |
 | Fig. 4 - Close-up of Molex Pigtail connector attached to PEAK PCAN-Adapter DB-9 D-Sub adapter |
 
-- **Peak PCAN-Adapter D-Sub to Screw Terminals Pigtail connector (p/n IPEK-003025) (one for each set of Molex Latch 3-pin pigtail wire leads for CAN0 and CAN1 ports) ** - Refer to Fig 4 above showing Molex pigtail as connected to PEAK PCAN-Adapter D-Sub connector screw terminals. Optional 120 ohm termination jumpers are not installed since CAN termination is installed on MistyCARRIER board.
+- **Peak PCAN-Adapter D-Sub to Screw Terminals Pigtail connector (p/n IPEK-003025) (one for each set of Molex Latch 3-pin pigtail wire leads for CAN0 and CAN1 ports) ** - Refer to Fig 4 above showing Molex pigtail as connected to PEAK PCAN-Adapter D-Sub connector screw terminals. Optional 120-ohm termination jumpers are not installed since CAN termination is installed on the MistyCARRIER board.
 
 - **Kvaser T-CANnector V2 (p/n 73-30130-00776-5)** - The T-CANnector V2 serves as a DB-9 CANbus hub with 3 female and 1 male DB-9 connectors. Refer to Fig 5 below. Each of the PEAK PCAN-Adapter terminals for the CAN0 and CAN1 ports from the MistyCarrier can connect to the T-CANnector hub. All peer devices connected to the CAN segment on the Kvaser T-CANnector V2 hub can communicate with each other.
 
@@ -49,7 +49,7 @@ The purpose of this tutorial is to demonstrate using the MistySOM Carrier board 
 
 - **Lawicel CANUSB CAN to USB Interface Converter**
 
-The Lawicel CANUSB interface (refer to Fig 6 below) is a relatively inexpensive CAN to USB dongle that plugs into any PC USB Port and gives SocketCAN connectivity to a host Linux PC. This means it can be treated by software as a standard COM Port (virtual serial RS232 port) with the FTDI USB drivers which eliminates the need for any extra drivers (DLL) or optionally by installing a direct driver DLL (D2XX) together with the CANUSB DLL for faster communications and higher CAN bus loads. The Lawicel CANUSB converter should be connected to the P4 DSUB-9 plug port on the Kvaser T-CANnector V2 (rather than the P1, P2 or P3 DSUB-9 socket connectors). Also, the switch for the 120 ohm termination resistor on the  Kvaser T-CANnector V2 hub should be enabled to establish termination for the Lawicel adapter at it's end of the CANbus segment.
+The Lawicel CANUSB interface (refer to Fig 6 below) is a relatively inexpensive CAN-to-USB dongle that plugs into any PC USB Port and gives SocketCAN connectivity to a host Linux PC. This means it can be treated by software as a standard COM Port (virtual serial RS232 port) with the FTDI USB drivers which eliminates the need for any extra drivers (DLL) or optionally by installing a direct driver DLL (D2XX) together with the CANUSB DLL for faster communications and higher CAN bus loads. The Lawicel CANUSB converter should be connected to the P4 DSUB-9 plug port on the Kvaser T-CANnector V2 (rather than the P1, P2 or P3 DSUB-9 socket connectors). Also, the switch for the 120 ohm termination resistor on the  Kvaser T-CANnector V2 hub should be enabled to establish termination for the Lawicel adapter at it's end of the CANbus segment.
 
 | ![Lawicel CANUSB_2D](../files/img/Lawicel CANUSB_2D.png) |
 | -------------------------------------------------------- |
@@ -58,7 +58,7 @@ The Lawicel CANUSB interface (refer to Fig 6 below) is a relatively inexpensive 
 
 
 
-- **SavvyCAN CAN analyzer software for Linux** - SavvyCAN (https://www.savvycan.com/) is a cross platform QT-based CAN bus capture and analysis software tool (supported on Linux) which is able to use any socketCAN compatible device. SavvyCAN can use any CAN interface supported by QT's SerialBus system (PeakCAN, Vector, SocketCAN, Lawicel CANUSB, J2534, etc). It can capture and send to multiple buses and CAN capture devices at once. SavvyCAN has many functions specifically meant for reverse engineering data found on the CAN bus:
+- **SavvyCAN CAN analyzer software for Linux** - SavvyCAN (https://www.savvycan.com/) is a cross-platform QT-based CAN bus capture and analysis software tool (supported on Linux) which is able to use any socketCAN compatible device. SavvyCAN can use any CAN interface supported by QT's SerialBus system (PeakCAN, Vector, SocketCAN, Lawicel CANUSB, J2534, etc). It can capture and send to multiple buses and CAN capture devices at once. SavvyCAN has many functions specifically meant for reverse engineering data found on the CAN bus:
 
   \- Ability to capture even very highly loaded buses
 
@@ -72,7 +72,7 @@ The Lawicel CANUSB interface (refer to Fig 6 below) is a relatively inexpensive 
 
   \- Load and Save many different file formats common to CAN capture tools (Vector captures, Microchip, CANDo, PCAN, and many more)
 
-  \- Load and Save DBC files. DBC files are used to store definitions for how data are formatted on the bus. You can turn the raw data into things like a RPM, odometer readings, and more.
+  \- Load and Save DBC files. DBC files are used to store definitions for how data are formatted on the bus. You can turn the raw data into things like RPM, odometer readings, and more.
 
   \- UDS scanning and decoding
 
@@ -224,7 +224,7 @@ It is possible to configure the SocketCAN in internal Loopback test mode. In tha
  $ ip link set can0 type can bitrate 1000000 dbitrate 2000000 fd on loopback on
 ```
 
-You can check that loopback option is on by printing the netlink status:
+You can check that the loopback option is on by printing the netlink status:
 
 ```
  $ ip  -details link show can0
@@ -249,7 +249,7 @@ While [cansniffer]([https://manpages.debian.org/testing/can-utils/candump.1.en.h
 ```
 # cansniffer can1
 ```
-or with a connection to `can0` on a secondboard:
+or with a connection to `can0` on a second board:
 ```
 # cansniffer can0
 ```
@@ -264,7 +264,7 @@ $ ip link set can0 up type can bitrate 1000000 dbitrate 2000000 fd on
 [ 24.704568] m_can 4400e000.can can0: bitrate error 1.6%
 [ 24.710140] IPv6: ADDRCONF(NETDEV_CHANGE): can0: link becomes ready
 
-repertoire of socketcan commands
+the repertoire of socketcan commands
 
 root@smarc-rzg2l:~# history
     1  ifconfig -a
