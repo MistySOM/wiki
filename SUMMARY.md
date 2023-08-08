@@ -23,10 +23,10 @@
 ---
 # Demos
 
-**MistySOM-V2L**
+## MistySOM-V2L
 * [Video Inference with DRPAI and GStreamer](content/GStreamerDRPAI.md)
 
-**MistySOM-G2L**
+## MistySOM-G2L
 * [Shopping Basket Demo](content/MistySOMG2LDemo.md)
 
 ---
