@@ -19,5 +19,4 @@ jobs:
           gh pr create --base master --head develop \
             --title "Merge from develop to master" \
             --body "This is an automated pull request created by GitHub Actions." \
-            --reviewer matinlotfali \
             --reviewer mistyron
