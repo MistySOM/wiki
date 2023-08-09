@@ -13,6 +13,8 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v3
+        with:
+            branch: develop
 
       - name: Check Review Status
         id: check_review_status
@@ -28,3 +30,9 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
             gh pr merge ${{ github.event.pull_request.number }} -m
+
+      - name: Fast-Forward develop
+        if: steps.check_review_status.outputs.review_requests == ''
+        run: |
+            git merge origin/master --ff-only
+            git push
