@@ -20,15 +20,15 @@ jobs:
       - name: Check Review Status
         id: check_review_status
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GH_TOKEN: ${{ secrets.PAT }}
         run: |
             r=$(gh pr view ${{ github.event.pull_request.number }} --json reviewRequests -q ".reviewRequests.[]")
-            echo "::set-output name=review_requests::$r"
+            echo "review_requests=$r" >> $GITHUB_OUTPUT
 
       - name: Merge into master
         if: steps.check_review_status.outputs.review_requests == ''
         env:
-          GITHUB_TOKEN: ${{ secrets.PAT }}
+          GH_TOKEN: ${{ secrets.PAT }}
         run: |
             gh pr merge ${{ github.event.pull_request.number }} -m
 
