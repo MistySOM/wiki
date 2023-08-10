@@ -542,11 +542,17 @@ If you don't see anything, press the `Enter` key and the above login prompt shou
 ## Notes
 
 [^1]: [https://github.com/MistySOM/rzv2l](https://github.com/MistySOM/rzv2l) or [https://github.com/MistySOM/rzg2l](https://github.com/MistySOM/rzg2l)
+
 [^2]: BSP Board Support Package, also see: [Board Support Package on Wikipedia](https://en.wikipedia.org/wiki/Board_support_package)
+
 [^3]: SDK Software Development Kit, also see [Software Development Kit on Wikipedia](https://en.wikipedia.org/wiki/Software_development_kit)
+
 [^4]: BitBake, also see [BitBake](https://en.wikipedia.org/wiki/BitBake)
+
 [^5]: bb files are bitbake recipes, also see [Recipes in BitBake User Manual](https://docs.yoctoproject.org/1.6/bitbake-user-manual/bitbake-user-manual.html#recipes)
+
 [^6]: USB to TTL Serial Cable (3V3): type number: FTDI TTL-232R-3V3-2MM
+
 [^7]: USB-C power cable that is connected to a 5V/3A power brick
 
 
