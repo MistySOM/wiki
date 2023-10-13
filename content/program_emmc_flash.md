@@ -12,6 +12,9 @@
    ```
    root@smarc-rzg2l:~# fdisk /dev/mmcblk0
    Command (m for help): n
+   p   primary (0 primary, 0 extended, 4 free)
+   e   extended (container for logical partitions)
+   Select (default p): p                                 <<<< just press ENTER for default value
    Partition number (1-128, default 1): 1                <<<< just press ENTER for default value
    First sector (34-124321758, default 2048): 2048       <<<< just press ENTER for default value
    Last sector, +/-sectors or +/-size{K,M,G,T,P} (2048-124321758, default 124321758): 124321758  <<<< just press ENTER for default value
@@ -20,13 +23,13 @@
    The partition table has been altered.
    ```
 
-3. Copy the currently booted root partition to the newly created partition:
+4. Copy the currently booted root partition to the newly created partition:
    ```
    root@smarc-rzg2l:~# dd bs=4M status=progress if=/dev/mmcblk1p2 of=/dev/mmcblk0p1
    root@smarc-rzg2l:~# sync
    ```
 
-4. Reboot and change the boot parameter in u-boot to boot from eMMC
+5. Reboot and change the boot parameter in u-boot to boot from eMMC
    ### RZG2L
    ```
    => setenv bootargs 'rw rootwait earlycon root=/dev/mmcblk0p1'
