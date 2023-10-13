@@ -40,7 +40,7 @@
    ### RZV2L
    ```
    => setenv bootargs 'rw rootwait earlycon root=/dev/mmcblk0p1'
-   => setenv bootcmd 'ext4load mmc 0:1 0x48080000 boot/Image-smarc-rzv2l.bin; ext4load mmc 0:1 0x48000000 boot/r9a07g054l2-smarc.dtb; booti 0x48080000 - 0x48000000'
+   => setenv bootcmd 'ext4load mmc 0:1 0x48080000 boot/Image; ext4load mmc 0:1 0x48000000 boot/r9a07g054l2-smarc.dtb; booti 0x48080000 - 0x48000000'
    => saveenv
    => boot
    ```
