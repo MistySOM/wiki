@@ -47,6 +47,10 @@ the same name as the model. For example, when using the parameter `model=yolov3`
 the command on your home directory `/home/user`, the plugin loads the TVM compiled model located in
 `/home/user/yolov3`.
 
+MistyWest has already placed compatible `yolov2`, `yolov3`, `tinyyolov2`, and `tinyyolov3` models 
+for you to download from [here](https://remote.mistywest.com/download/mh11/models.zip) and extract
+into the desired location. For details on how the GStreamer plugin uses them, refer to the next sections.
+
 ### Post Processor Dynamic Library
 
 Depending on the model you use, even though their input layers are the same, their output layers can be
