@@ -92,13 +92,15 @@ gst-launch-1.0 v4l2src device=/dev/video0 \
     ! autovideosink
 ```
 If your camera supports the BGR format (such as the coral camera), you can modify the camera size in 
-`~/v4l2init.sh` and skip the first `videoconvert` element like this:
+`~/v4l2init.sh` (with `ov5645_res=640x480`) and skip the first `videoconvert` element like this:
 ```
 gst-launch-1.0 v4l2src device=/dev/video0 ! video/x-raw, width=640, height=480, format=BGR \
     ! drpai model=yolov3 show-fps=true log-detects=true smooth-video-rate=30 \
     ! videoconvert \
     ! autovideosink
 ```
+
+
 ### Read Camera and Stream on Network
 
 In case you already have the streaming working based on [here](/content/StreamingVideo.md), you can 
