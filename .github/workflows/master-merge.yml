@@ -19,12 +19,16 @@ jobs:
 
       - name: Check Review Status
         id: check_review_status
+        env:
+          GH_TOKEN: ${{ secrets.GH_TOKEN }}
         run: |
             r=$(gh pr view ${{ github.event.pull_request.number }} --json reviewRequests -q ".reviewRequests.[]")
             echo "review_requests=$r" >> $GITHUB_OUTPUT
 
       - name: Merge into master
         if: steps.check_review_status.outputs.review_requests == ''
+        env:
+          GH_TOKEN: ${{ secrets.GH_TOKEN }}
         run: |
             gh pr merge ${{ github.event.pull_request.number }} -m
 
