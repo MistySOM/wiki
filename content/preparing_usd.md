@@ -12,6 +12,7 @@ sudo fdisk -l
 ## Use Partitioned Image
 
 You can use the command below to write the whole partitioned image into your uSD card:
+### MistySOM-G2L
 
 ```
 pv mistysom-image-smarc-rzg2l.wic.bz2 | bzcat | sudo dd bs=4M of=/dev/sdX
@@ -20,8 +21,17 @@ or if you don't have the `pv` package installed and you don't care about a progr
 ```
 bzcat mistysom-image-smarc-rzg2l.wic.bz2 | sudo dd bs=4M status=progress of=/dev/sdX
 ```
+### MistySOM-V2L
 
-This command automatically creates a partition table, 300 MB of FAT partition, and 900 MB of EXT4 partition. So it doesn't use the whole capacity of your uSD Card. If you need the whole capacity, you can resize the EXT4 partition with the command below:
+```
+pv mistysom-image-smarc-rzv2l.wic.bz2 | bzcat | sudo dd bs=4M of=/dev/sdX
+```
+or if you don't have the `pv` package installed and you don't care about a progress bar, you can change the command like below:
+```
+bzcat mistysom-image-smarc-rzv2l.wic.bz2 | sudo dd bs=4M status=progress of=/dev/sdX
+```
+
+The above commands automatically create a partition table, 300 MB of FAT partition, and 900 MB of EXT4 partition. So it doesn't use the whole capacity of your uSD Card. If you need the whole capacity, you can resize the EXT4 partition with the command below:
 ```
 resize2fs /dev/sdX2
 ```
@@ -73,6 +83,7 @@ Number  Start   End     Size    File system  Name     Flags
 ### Load files to the uSD card
 
 After the uSD card has been prepared, mount the two partitions and copy the following files:
+#### MistySOM-G2L
 * Linux kernel to the first partition (FAT32):
 ```
 sudo cp /path/to/output/imges/smarc-rzg2l/Image-smarc-rzv2l.bin /path/to/mountpart1/Image
@@ -84,6 +95,21 @@ sudo cp /path/to/output/imges/smarc-rzg2l/r9a07g044l2-smarc.dtb /path/to/mountpa
 * Root filesystem to the second partition (ext4)
 ```
 sudo cp /path/to/output/imges/smarc-rzg2l/<image-name>-smarc-rzv2l.tar.bz2 /path/to/mountpart2/
+cd /path/to/mountpart2/
+tar -xvf <image-name>-smarc-rzv2l.tar.bz2
+```
+#### MistySOM-V2L
+* Linux kernel to the first partition (FAT32):
+```
+sudo cp /path/to/output/imges/smarc-rzv2l/Image-smarc-rzv2l.bin /path/to/mountpart1/Image
+```
+* Device tree blob to the first partition (FAT32)
+```
+sudo cp /path/to/output/imges/smarc-rzv2l/r9a07g044l2-smarc.dtb /path/to/mountpart1/
+```
+* Root filesystem to the second partition (ext4)
+```
+sudo cp /path/to/output/imges/smarc-rzv2l/<image-name>-smarc-rzv2l.tar.bz2 /path/to/mountpart2/
 cd /path/to/mountpart2/
 tar -xvf <image-name>-smarc-rzv2l.tar.bz2
 ```
