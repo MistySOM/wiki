@@ -47,6 +47,10 @@ the same name as the model. For example, when using the parameter `model=yolov3`
 the command on your home directory `/home/user`, the plugin loads the TVM compiled model located in
 `/home/user/yolov3`.
 
+MistyWest has already placed compatible `yolov2`, `yolov3`, `tinyyolov2`, and `tinyyolov3` models 
+for you to download from [here](https://remote.mistywest.com/download/mh11/models.zip) and extract
+into the desired location. For details on how the GStreamer plugin uses them, refer to the next sections.
+
 ### Post Processor Dynamic Library
 
 Depending on the model you use, even though their input layers are the same, their output layers can be
@@ -88,13 +92,15 @@ gst-launch-1.0 v4l2src device=/dev/video0 \
     ! autovideosink
 ```
 If your camera supports the BGR format (such as the coral camera), you can modify the camera size in 
-`~/v4l2init.sh` and skip the first `videoconvert` element like this:
+`~/v4l2init.sh` (with `ov5645_res=640x480`) and skip the first `videoconvert` element like this:
 ```
 gst-launch-1.0 v4l2src device=/dev/video0 ! video/x-raw, width=640, height=480, format=BGR \
     ! drpai model=yolov3 show-fps=true log-detects=true smooth-video-rate=30 \
     ! videoconvert \
     ! autovideosink
 ```
+
+
 ### Read Camera and Stream on Network
 
 In case you already have the streaming working based on [here](/content/StreamingVideo.md), you can 
