@@ -86,7 +86,7 @@ After the uSD card has been prepared, mount the two partitions and copy the foll
 #### MistySOM-G2L
 * Linux kernel to the first partition (FAT32):
 ```
-sudo cp /path/to/output/imges/smarc-rzg2l/Image-smarc-rzv2l.bin /path/to/mountpart1/Image
+sudo cp /path/to/output/imges/smarc-rzg2l/Image-smarc-rzg2l.bin /path/to/mountpart1/Image
 ```
 * Device tree blob to the first partition (FAT32)
 ```
@@ -94,7 +94,7 @@ sudo cp /path/to/output/imges/smarc-rzg2l/r9a07g044l2-smarc.dtb /path/to/mountpa
 ```
 * Root filesystem to the second partition (ext4)
 ```
-sudo cp /path/to/output/imges/smarc-rzg2l/<image-name>-smarc-rzv2l.tar.bz2 /path/to/mountpart2/
+sudo cp /path/to/output/imges/smarc-rzg2l/<image-name>-smarc-rzg2l.tar.bz2 /path/to/mountpart2/
 cd /path/to/mountpart2/
 tar -xvf <image-name>-smarc-rzv2l.tar.bz2
 ```
@@ -105,7 +105,7 @@ sudo cp /path/to/output/imges/smarc-rzv2l/Image-smarc-rzv2l.bin /path/to/mountpa
 ```
 * Device tree blob to the first partition (FAT32)
 ```
-sudo cp /path/to/output/imges/smarc-rzv2l/r9a07g044l2-smarc.dtb /path/to/mountpart1/
+sudo cp /path/to/output/imges/smarc-rzv2l/r9a07g054l2-smarc.dtb /path/to/mountpart1/
 ```
 * Root filesystem to the second partition (ext4)
 ```
