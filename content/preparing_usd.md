@@ -113,7 +113,7 @@ sudo cp /path/to/output/imges/smarc-rzv2l/<image-name>-smarc-rzv2l.tar.bz2 /path
 cd /path/to/mountpart2/
 tar -xvf <image-name>-smarc-rzv2l.tar.bz2
 ```
-**NOTE**: For V2L and G2L, after this, your uSD card is ready to be inserted into the MistyCarrier uSD slot.
+**NOTE**: For V2L and G2L, after this, your uSD card is ready to be inserted into the MistyCarrier uSD slot. In order to be able to boot from the SD card, please make sure that jumper J23 is set to the `uSD` (pin 1&2) position. Jujmper J23 is located under the uSD card slot, a bit to the left as seen in the picture below and has two positions, `uSD` and `WIRELESS`:
 
 #### Note to WSL users:
 
