@@ -31,6 +31,7 @@ The plugin also provides you with the following parameters:
 |-----------------------|---------------------|--------:|----------------------------------------------------------------------|
 | **model**             | String              |     --- | The name of the pre-trained model and the directory prefix.          |
 | **multithread**       | Boolean             |    true | Use a separate thread for object detection.                          |
+| **tracking**          | Boolean             |    true | Track detected objects based on their previous locations.            |
 | **log-detects**       | Boolean             |   false | Print detected objects in standard output.                           |
 | **show-fps**          | Boolean             |   false | Render frame rates of video and DRPAI at the corner of the video.    |
 | **stop-error**        | Boolean             |    true | Stop the gstreamer if kernel modules fail to open.                   |
@@ -38,6 +39,15 @@ The plugin also provides you with the following parameters:
 | **max-drpai-rate**    | Float [0 - 120]     |     120 | Force maximum DRPAI frame rate using thread sleeps.                  |
 | **smooth-video-rate** | Float [1 - 1000]    |       1 | Number of last video frame rates to average for a more smooth value. |
 | **smooth-drpai-rate** | Float [1 - 1000]    |       1 | Number of last DRPAI frame rates to average for a more smooth value. |
+| **smooth-bbox-rate**  | Float [1 - 1000]    |       1 | Number of last bounding-box updates to average. (requires tracking)  |
+| **track-seconds**     | Float [0.001 - 100] |       2 | Number of seconds to wait for a tracked undetected object to forget it. |
+| **track-iou-thresh**  | Float [0 - 1]       |    0.25 | The threshold of IOU for tracking bounding-boxes. (1=exact overlap, 0.1=loose overlap) |
+| **filter-class**      | String              |       - | A comma-separated list of classes to filter the detection.           |
+| **filter-left**       | Integer [0 - 639]   |       0 | The left edge of the region of interest to filter the detection.     |
+| **filter-top**        | Integer [0 - 479]   |       0 | The top edge of the region of interest to filter the detection.      |
+| **filter-width**      | Integer [1 - 640]   |     640 | The left edge of the region of interest to filter the detection.     |
+| **filter-height**     | Integer [1 - 480]   |     480 | The left edge of the region of interest to filter the detection.     |
+
 
 ## AI Model
 
