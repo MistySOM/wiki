@@ -128,6 +128,10 @@ or
 ```
 $ git clone git@github.com:MistySOM/rzv2l.git
 ```
+make sure you have the latest submodules:
+```bash
+$ git submodule update --init --recursive
+```
 then enter the `Build/` directory. 
 ```
 $ cd Build/
