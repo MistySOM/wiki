@@ -9,7 +9,7 @@
 
    In fdisk, use the commands 'n' to make a new partition, and 'w' to write the partition (will automatically exit fdisk)
    In fdisk, you can just press the Enter Key to select the default value (you do not have to type the default value)
-   ```
+   ```console
    root@smarc-rzg2l:~# fdisk /dev/mmcblk0
    Command (m for help): n
    p   primary (0 primary, 0 extended, 4 free)
@@ -24,21 +24,22 @@
    ```
 
 4. Copy the currently booted root partition to the newly created partition:
-   ```
+   ```console
    root@smarc-rzg2l:~# dd bs=4M status=progress if=/dev/mmcblk1p2 of=/dev/mmcblk0p1
+   root@smarc-rzg2l:~# resize2fs /dev/mmcblk0p1
    root@smarc-rzg2l:~# sync
    ```
 
 5. Reboot and change the boot parameter in u-boot to boot from eMMC
    ### RZG2L
-   ```
+   ```shell
    => setenv bootargs 'rw rootwait earlycon root=/dev/mmcblk0p1'
    => setenv bootcmd 'ext4load mmc 0:1 0x48080000 boot/Image-smarc-rzg2l.bin; ext4load mmc 0:1 0x48000000 boot/r9a07g044l2-smarc.dtb; booti 0x48080000 - 0x48000000'
    => saveenv
    => boot
    ```
    ### RZV2L
-   ```
+   ```shell
    => setenv bootargs 'rw rootwait earlycon root=/dev/mmcblk0p1'
    => setenv bootcmd 'ext4load mmc 0:1 0x48080000 boot/Image; ext4load mmc 0:1 0x48000000 boot/r9a07g054l2-smarc.dtb; booti 0x48080000 - 0x48000000'
    => saveenv
