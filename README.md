@@ -17,6 +17,7 @@
 ### AI
 * [ Convert existing model to MistySOM](content/ConvertModelToMistySOM.md)
 * [ Convert from Tensorflow](https://tvm.apache.org/docs/how_to/compile_models/from_tensorflow.html) (hosted on [tvm.apache.org](https://tvm.apache.org))
+* [ Model List](https://github.com/renesas-rz/rzv_drp-ai_tvm/blob/main/docs/Model_List.md)
 
 ### Demos
 **MistySOM-V2L**
