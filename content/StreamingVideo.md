@@ -15,12 +15,12 @@ Use the command below:
 ````
 $ gst-launch-1.0 -v udpsrc port=51372 \
     caps="application/x-rtp, media=video, clock-rate=90000, encoding-name=H264, payload=96" \
-    ! rtph264depay ! decodebin ! videoconvert \
-    ! autovideosink
+    ! rtph264depay ! queue ! decodebin \
+    ! autovideosink sync=false
 ````
 - **Note:** In case you want to see the number of frames it receives per second, you can replace the `autovideosink` in the last line with:
     ````
-    fpsdisplaysink text-overlay=0 video-sink=autovideosink
+    fpsdisplaysink text-overlay=false sync=false
     ````
 
 ## VLC or FFmpeg
@@ -77,13 +77,13 @@ Then, you can send a video stream with **GStreamer**. Because the command is ver
 W="${2:-1920}"
 H="${3:-1080}"
 
-./v4l2-init.sh
+./v4l2-init.sh ${W}x${H}
 echo "Streaming to ${1} with resolution ${W}x${H}..."
 
-gst-launch-1.0 v4l2src device=/dev/video0 ! video/x-raw, width=1920, height=1080 \
-	! vspmfilter dmabuf-use=true ! video/x-raw,format=NV12,width=$W,height=$H \
-	! omxh264enc control-rate=2 target-bitrate=10485760 interval_intraframes=14 periodicty-idr=2 \
-	! video/x-h264,profile=\(string\)high,level=\(string\)4.2 \
+gst-launch-1.0 v4l2src device=/dev/video0 ! video/x-raw, width=$W, height=$H \
+	! vspmfilter dmabuf-use=true ! video/x-raw,format=NV12 \
+	! omxh264enc use-dmabuf=true control-rate=2 target-bitrate=10485760 interval_intraframes=14 periodicty-idr=2 \
+	! video/x-h264,profile=high,level=\(string\)4.2 \
 	! rtph264pay config-interval=-1 ! udpsink host=$1 port=51372
 ````
 - **Note:** Remember to make the file executable using `chmod +x stream.sh`
